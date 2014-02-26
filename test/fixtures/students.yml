@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mobile: 1
+  college_name: MyString
+  gender: false
+  dob: 2014-02-26
+  degree: MyString
+  graduate_year: 1
+  spamrate: 1
+
+two:
+  mobile: 1
+  college_name: MyString
+  gender: false
+  dob: 2014-02-26
+  degree: MyString
+  graduate_year: 1
+  spamrate: 1

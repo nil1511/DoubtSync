@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  tag: MyString
+  user_id: 1
+  time: 2014-02-26 12:06:29
+  spamrate: 1
+  visibility_to_prof: 1
+
+two:
+  text: MyText
+  tag: MyString
+  user_id: 1
+  time: 2014-02-26 12:06:29
+  spamrate: 1
+  visibility_to_prof: 1
