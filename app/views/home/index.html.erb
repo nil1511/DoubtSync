@@ -1,6 +1,12 @@
 <html>
 <header><title>DoubtSync</title></header>
 <body>
+<% if !current_user.nil? %>
+<%= current_user.username %>
+<% else %>
+<a href="/auth/register">Register</a>
+<a href="/auth/login">Login</a>
+<% end %>
 	<h2>Hello World <br>WIP <br>See You Soon</h2>
 </body>
 </html>
