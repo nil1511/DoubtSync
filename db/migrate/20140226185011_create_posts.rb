@@ -1,12 +1,11 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.text :text
-      t.string :tag
-      t.integer :student_id
-      t.datetime :time
+      t.string :text
+      t.text :tag
+      t.boolean :visibility_to_prof
       t.integer :spamrate
-      t.integer :visibility_to_prof
+      t.integer :user_id
 
       t.timestamps
     end

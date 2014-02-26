@@ -11,26 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226071722) do
+ActiveRecord::Schema.define(version: 20140226185153) do
 
   create_table "comments", force: true do |t|
-    t.text     "text"
-    t.integer  "post_id"
-    t.string   "tag"
+    t.string   "text"
+    t.text     "tag"
     t.integer  "user_id"
-    t.datetime "time"
+    t.integer  "post_id"
     t.integer  "spamrate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
-    t.text     "text"
-    t.string   "tag"
-    t.integer  "student_id"
-    t.datetime "time"
+    t.string   "text"
+    t.text     "tag"
+    t.boolean  "visibility_to_prof"
     t.integer  "spamrate"
-    t.integer  "visibility_to_prof"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

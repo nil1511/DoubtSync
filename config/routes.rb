@@ -1,11 +1,12 @@
 Doubtsync::Application.routes.draw do
+  root 'home#index'
   devise_for :users, path: "auth", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  resources :post
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -14,7 +15,6 @@ Doubtsync::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
   # Example resource route with options:
   #   resources :products do

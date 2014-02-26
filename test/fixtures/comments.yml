@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyText
-  post_id: 1
-  tag: MyString
+  text: MyString
+  tag: MyText
   user_id: 1
-  time: 2014-02-26 12:06:52
+  post_id: 1
   spamrate: 1
 
 two:
-  text: MyText
-  post_id: 1
-  tag: MyString
+  text: MyString
+  tag: MyText
   user_id: 1
-  time: 2014-02-26 12:06:52
+  post_id: 1
   spamrate: 1

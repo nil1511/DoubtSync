@@ -3,6 +3,7 @@
 <body>
 <% if !current_user.nil? %>
 <%= current_user.username %>
+
 <% else %>
 <a href="/auth/register">Register</a>
 <a href="/auth/login">Login</a>
