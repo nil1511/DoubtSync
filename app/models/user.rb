@@ -17,6 +17,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role_id                :integer
+#  profile_id             :integer
 #
 
 class User < ActiveRecord::Base
