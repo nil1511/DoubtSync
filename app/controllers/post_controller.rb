@@ -2,7 +2,7 @@ class PostController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
   def index
-    # TODO list all post of a user
+    render :json => current_user.posts
   end
 
   def create
