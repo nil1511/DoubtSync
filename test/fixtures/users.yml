@@ -14,8 +14,6 @@
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
 #  username               :string(255)
-#  user_type              :string(255)
-#  profile_id             :integer
 #  created_at             :datetime
 #  updated_at             :datetime
 #

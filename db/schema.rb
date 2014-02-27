@@ -71,8 +71,6 @@ ActiveRecord::Schema.define(version: 20140226185153) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "username"
-    t.string   "user_type"
-    t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
