@@ -26,7 +26,14 @@ class PostController < ApplicationController
   end
   
   def show
-    # TODO show a particular post
+    id =params[:id]
+    post = Post.find_by_id(id)
+    if !post.nil?
+      render :json => post
+    else
+      render :text => "invalid request | Post does not exit"
+    end
+
   end
 
 end

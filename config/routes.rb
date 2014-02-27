@@ -3,7 +3,9 @@ Doubtsync::Application.routes.draw do
   devise_for :users, path: "auth", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }
   resources :post
   post 'comment' => 'comment#create'
-
+  get 'comment/:id' => 'comment#index'
+  post 'comment/:id/edit' => 'comment#edit'
+  delete 'comment/:id' => 'comment#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
