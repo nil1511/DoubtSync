@@ -16,6 +16,7 @@
 #  username               :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  role_id                :integer
 #
 
 class User < ActiveRecord::Base
@@ -23,6 +24,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :posts
   has_many :comments
+  belongs_to :role
+  before_create :set_default_role
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  private
+  def set_default_role
+    self.role ||= Role.find_by_name('student')
+  end
 end
