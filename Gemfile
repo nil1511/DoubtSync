@@ -49,3 +49,9 @@ end
 gem 'debugger', group: [:development, :test]
 gem 'devise'
 gem 'annotate'
+
+#Useful Gems
+gem "better_errors"
+gem 'hirb'
+gem 'pry-rails'
+gem 'rack-mini-profiler'
