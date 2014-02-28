@@ -1,6 +1,8 @@
 class CommentController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
+  # TODO Check Authentication while crud
+
   def index
   	id =params[:id]
     post = Post.find_by_id(id)
@@ -12,22 +14,25 @@ class CommentController < ApplicationController
   end
 
   def create
-  	if user_signed_in?
-	  	data=params[:comment]
-	  	comment = Comment.new(:text => data['text'],:tag => data['tag'],:spamrate => 0)
-	  	post = Post.find_by_id(data['post_id'])
-	  	if !post.nil?
-	  		puts post
-	  	comment.save
-	  	post.comments << comment
-	  	current_user.comments << comment
-	  	render :text => "success"
-	  else
-	  	render :text => "failed"
-	  end
-  	else
-  		render :text =>"invalid request"
-  	end
+    if user_signed_in?
+      data=params[:comment]
+      format=params[:format]
+    	comment = Comment.new(:text => data['text'],:tag => data['tag'],:spamrate => 0)
+    	post = Post.find_by_id(data['post_id'])
+    	if !post.nil?
+    		puts post
+      	comment.save
+      	post.comments << comment
+      	current_user.comments << comment
+#      	render get_type format => post
+#        TODO use function
+        render format.to_sym => post
+      else
+      	render format.to_sym => "failed"
+      end
+    else
+    	render :text =>"invalid request"
+    end
   end
 
   def edit

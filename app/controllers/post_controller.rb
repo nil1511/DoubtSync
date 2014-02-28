@@ -1,6 +1,7 @@
 class PostController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
+  # TODO Check Authentication while crud
   def index
     render :json => current_user.posts
   end
