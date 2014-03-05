@@ -31,7 +31,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
 
       t.string :username
-      t.string :user_type
       t.integer :profile_id
 
       t.timestamps
