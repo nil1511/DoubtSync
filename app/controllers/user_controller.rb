@@ -10,7 +10,13 @@ class UserController < ApplicationController
 				render :text => "Not exist"
 			else
 				# TODO Show his details
-				render :text => "Found him"
+				if @user.role.eql? "student"
+					render 'index'
+				elsif @user.role.eql? "professor"
+					#TODO Profile page for professor
+				elsif @user.role.eql? "ambassador"
+					#TODO Profile page for ambassador
+				end
 			end
 		else
 			@user = User.find_by username: @id
