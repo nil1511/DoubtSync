@@ -45,7 +45,14 @@
     <span class="sent">Sent!</span>
   </span>
 </button>
+	</div>
 
+	<div>
+		<% @posts.each do |post| %>
+		  text: <%= post.text %><br/>
+		  tags: <%= post.tag %><br/>		 
+		  visibility_to_prof: <%= post.visibility_to_prof %><br/>
+		<% end %>
 	</div>
 	<!--Recent Post's -->
 </div>
