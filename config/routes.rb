@@ -1,5 +1,7 @@
 Doubtsync::Application.routes.draw do
   
+  get "user/manage" => 'user#manage'
+  post "user/manage" => 'user#save'
   get "user/:id" => 'user#index'
   get "main/index"
   get "main/feed"

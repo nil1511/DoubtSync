@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+	#TODO make sure user does not register with reserved keyword
+	#TODO Validation for profile form
 	def index
 		@id = params['id']
 		if @id.is_number?
@@ -19,6 +21,32 @@ class UserController < ApplicationController
 				# TODO Show his details
 				render :text => "Found him"
 			end
+		end
+	end
+	def manage
+		if current_user.role.name.eql? "student"
+			student = Student.find_by_id()
+			render 'profile'
+		else
+			render :text => current_user.role.name
+		end
+	end
+	def save
+		#TODO Check validation
+		if current_user.role.name.eql? "student"
+			if !Student.find_by user_id: current_user.id?
+				dob = params['user']
+				mobile = params['mobile']
+				student = Student.new(:first_name => params['first_name'],:last_name => params['last_name'],
+					:degree => params['degree'],:graduate_year => params['graduate'],:gender => params['gender'],
+					:dob => dob['dob'],:mobile => mobile['phone'],:user_id => current_user.id)
+				student.save
+					render :text =>  "saved"
+			else
+				render :text =>  "noththing something"
+			end
+		else
+			render :text =>  "TODO"+current_user.role.name
 		end
 
 	end

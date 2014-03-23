@@ -1,0 +1,21 @@
+<div>
+	<%= form_tag do %>
+		<%= label_tag(:first_name, "First Name") %>
+  		<%= text_field_tag(:first_name) %><br/>
+		<%= label_tag(:last_name, "Last Name") %>
+  		<%= text_field_tag(:last_name) %><br/>
+		<%= label_tag(:mobile, "Mobile no.") %>
+  		<%= telephone_field(:mobile, :phone) %><br/>
+		<!-- <input type="text" placeholder="college name"> -->
+		<%= radio_button_tag(:gender, "male") %>
+		<%= label_tag(:male, "Male") %>
+		<%= radio_button_tag(:gender, "female") %>
+		<%= label_tag(:female, "Female") %>
+		<%= date_field(:user, :dob) %><br />
+		<%= label_tag(:degree, "Degree") %>
+  		<%= text_field_tag(:degree) %><br/>
+		<%= label_tag(:graduate, "Graduate Year") %>
+  		<%= number_field_tag(:graduate) %><br/>
+		<%= submit_tag("Update") %>
+	<% end %>
+</div>
