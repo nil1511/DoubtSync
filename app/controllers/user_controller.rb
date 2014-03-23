@@ -7,16 +7,10 @@ class UserController < ApplicationController
 			@user = User.find_by_id(@id)
 			if @user.nil?
 				#TODO 404 pages here
-				render :text => "Not exist"
+				render :text => "User does not exist"
 			else
+				get_details
 				# TODO Show his details
-				if @user.role.eql? "student"
-					render 'index'
-				elsif @user.role.eql? "professor"
-					#TODO Profile page for professor
-				elsif @user.role.eql? "ambassador"
-					#TODO Profile page for ambassador
-				end
 			end
 		else
 			@user = User.find_by username: @id
@@ -29,6 +23,7 @@ class UserController < ApplicationController
 			end
 		end
 	end
+
 	def manage
 		if current_user.role.name.eql? "student"
 			@student = Student.find_by user_id: current_user.id
@@ -66,5 +61,23 @@ class UserController < ApplicationController
 			render :text =>  "TODO"+current_user.role.name
 		end
 
+	end
+
+	def get_details
+		if @user.role.name.eql? "student"
+			if !@user.student != nil? 
+				#TODO Implement a proper page
+				render :text => "Profile does not exits"
+			else
+				@student = @user.student
+					render 'index'
+			end
+		elsif @user.role.name.eql? "professor"
+			#TODO Profile page for professor
+			render :text => "professor profile comming soon"
+		elsif @user.role.name.eql? "ambassador"
+			#TODO Profile page for ambassador
+			render :text => "ambassador profile comming soon"
+		end
 	end
 end
