@@ -52,6 +52,6 @@ group :development do
   gem 'annotate'
   gem "better_errors"
   gem 'pry-rails'
-  gem 'rack-mini-profiler'
+  #gem 'rack-mini-profiler'
   gem 'hirb'
 end
