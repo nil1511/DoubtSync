@@ -15,4 +15,16 @@ $(function(){
 	});
 
 	$('textarea.postarea').hashtags();
+
+  postbutton = $('button.post');
+
+  postbutton.click(function(e) {
+    e.preventDefault();
+    $(this).toggleClass('active');
+  });
+
+  $(window).resize(function(e) {
+    postbutton.removeClass('active');
+  });
+
 })
