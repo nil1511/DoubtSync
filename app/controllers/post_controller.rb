@@ -9,8 +9,17 @@ class PostController < ApplicationController
   def create
   	if user_signed_in?
 	  	data=params[:post]
-	  	post = Post.new(:text => data['text'],:tag => data['tag'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)
+
+      #FIXME Added option to save tags and tag
+      #,:htags => data['htags']
+      # if !data
+      # render :text =>"invalid request"
+      # return
+      # end  
+      print params
+	  	post = Post.new(:text => data['text'],:tag => data['tags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)
 	  	post.save
+
 	  	current_user.posts << post
 	  	render :text => current_user.id
   	else

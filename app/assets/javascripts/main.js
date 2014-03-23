@@ -19,6 +19,22 @@ $(function(){
   postbutton = $('button.post');
 
   postbutton.click(function(e) {
+    var postarea = $('textarea.postarea');
+    if(!postarea.val().trim()){
+      console.log('fill something to post');
+        return;
+    }
+    var data ={};
+    
+    data.text = postarea.val();
+    data.htags = $('.hashtag').text().split('#').slice(1).toString();
+    data.visibility_to_prof = false;
+    data.tags = "";
+    
+    $.post('/post',{ post: JSON.stringify(data)},function(e){
+      console.log(e);
+    },"json");
+
     e.preventDefault();
     $(this).toggleClass('active');
   });
