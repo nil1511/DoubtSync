@@ -19,9 +19,6 @@ gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -48,13 +45,13 @@ end
 # Use debugger
 gem 'debugger', group: [:development, :test]
 gem 'devise'
-gem 'annotate'
 
-#Useful Gems
-gem "better_errors"
-gem 'hirb'
-gem 'pry-rails'
-gem 'rack-mini-profiler'
 group :development do
   gem 'meta_request'
+  gem 'binding_of_caller'
+  gem 'annotate'
+  gem "better_errors"
+  gem 'pry-rails'
+  gem 'rack-mini-profiler'
+  gem 'hirb'
 end
