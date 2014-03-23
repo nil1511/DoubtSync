@@ -20,18 +20,32 @@
 #  profile_id             :integer
 #
 
+
+#FIXME link to student or professor
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :posts
   has_many :comments
+  has_one :student
   belongs_to :role
   before_create :set_default_role
+  before_create :link_profile
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   private
   def set_default_role
     self.role ||= Role.find_by_name('student')
+  end
+  
+  private
+  def link_profile
+    if self.role=='student'
+      has_one :student
+    elsif self.role=='professor'
+      has_one :professor
+    end
   end
 end

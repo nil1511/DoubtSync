@@ -1,8 +1,11 @@
 <html>
 <header><title>DoubtSync</title></header>
-<body>
+<body style="float:right">
 <% if !current_user.nil? %>
 <%= current_user.username %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  </li>
 
 <% else %>
 <a href="/register">Register</a>

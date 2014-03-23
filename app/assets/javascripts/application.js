@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require modernizr
 //= require twitter/bootstrap
+//= require jquery-textntags
+//= require jquery.autosize
+//= require jquery.hashtags
 //= require turbolinks
 //= require_tree .
