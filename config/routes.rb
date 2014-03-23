@@ -1,5 +1,6 @@
 Doubtsync::Application.routes.draw do
   
+  get "user/:id" => 'user#index'
   get "main/index"
   get "main/feed"
   root 'home#index'
@@ -11,10 +12,6 @@ Doubtsync::Application.routes.draw do
   get 'comment/:id' => 'comment#index'
   post 'comment/:id/edit' => 'comment#edit'
   delete 'comment/:id' => 'comment#destroy'
-  
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
