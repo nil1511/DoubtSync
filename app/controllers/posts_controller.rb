@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # TODO Check Authentication while crud
   def index
-    render :json => current_user.posts
+    render :json => Post.from_users_followed_by(current_user)
   end
 
   def create

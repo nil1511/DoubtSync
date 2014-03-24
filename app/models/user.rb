@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
   
+  def get_posts
+    
+  end
+
   private
   def set_default_role
     self.role ||= Role.find_by_name('student')

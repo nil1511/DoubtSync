@@ -31,7 +31,7 @@ $(function(){
     data.visibility_to_prof = false;
     data.tags = "";
     
-    $.post('/post',{ post: JSON.stringify(data)},function(e){
+    $.post('/posts',{ post: JSON.stringify(data)},function(e){
       console.log(e);
     },"json");
 
