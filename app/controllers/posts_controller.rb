@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
   # TODO Check Authentication while crud

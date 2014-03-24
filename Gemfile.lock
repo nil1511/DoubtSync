@@ -180,7 +180,7 @@ DEPENDENCIES
   meta_request
   mysql2
   pry-rails
-  rails (= 4.0.4)
+  rails (~> 4.0)
   sass-rails
   sdoc
   therubyracer

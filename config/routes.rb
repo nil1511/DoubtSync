@@ -1,8 +1,8 @@
 Doubtsync::Application.routes.draw do
   
-  get "user/manage" => 'user#manage'
-  post "user/manage" => 'user#save'
-  get "user/:id" => 'user#index'
+  get "users/manage" => 'users#manage'
+  post "users/manage" => 'users#save'
+  get "users/:id" => 'users#index'
   resources :users do
     member do
       get :following, :followers
@@ -14,12 +14,12 @@ Doubtsync::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   devise_for :users, path: "", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }
-  resources :post
+  resources :posts
 
-  post 'comment' => 'comment#create'
-  get 'comment/:id' => 'comment#index'
-  post 'comment/:id/edit' => 'comment#edit'
-  delete 'comment/:id' => 'comment#destroy'
+  post 'comments' => 'comments#create'
+  get 'comments/:id' => 'comments#index'
+  post 'comments/:id/edit' => 'comments#edit'
+  delete 'comments/:id' => 'comments#destroy'
 
   root 'home#index'
   

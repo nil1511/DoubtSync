@@ -45,8 +45,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
 
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
 
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+  
   private
   def set_default_role
     self.role ||= Role.find_by_name('student')
@@ -59,18 +70,6 @@ class User < ActiveRecord::Base
     elsif self.role=='professor'
       has_one :professor
     end
-  end
-
-  def following?(other_user)
-    relationships.find_by(followed_id: other_user.id)
-  end
-
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-    relationships.find_by(followed_id: other_user.id).destroy
   end
 
 end
