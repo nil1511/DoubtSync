@@ -3,10 +3,16 @@ Doubtsync::Application.routes.draw do
   get "user/manage" => 'user#manage'
   post "user/manage" => 'user#save'
   get "user/:id" => 'user#index'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   get "main/index"
   get "main/feed"
-  root 'home#index'
   
+  resources :relationships, only: [:create, :destroy]
+
   devise_for :users, path: "", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }
   resources :post
 
@@ -15,6 +21,8 @@ Doubtsync::Application.routes.draw do
   post 'comment/:id/edit' => 'comment#edit'
   delete 'comment/:id' => 'comment#destroy'
 
+  root 'home#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

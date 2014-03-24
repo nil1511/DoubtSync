@@ -37,7 +37,7 @@ class UserController < ApplicationController
 		#TODO Check validation
 		#FIXME Dry
 		if current_user.role.name.eql? "student"
-			if !Student.find_by user_id: current_user.id?
+			if !Student.find_by user_id: current_user.id
 				dob = params['user']
 				mobile = params['mobile']
 				gender = params['gender'].eql?"male"

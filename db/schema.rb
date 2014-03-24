@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322063458) do
+ActiveRecord::Schema.define(version: 20140324071654) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20140322063458) do
     t.integer  "user_id"
     t.integer  "post_id"
     t.integer  "spamrate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "followings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "follow_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +52,17 @@ ActiveRecord::Schema.define(version: 20140322063458) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
