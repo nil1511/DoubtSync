@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SregistrationTest < ActiveSupport::TestCase
+class AmbassadorRegistrationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

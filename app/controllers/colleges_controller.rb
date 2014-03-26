@@ -9,7 +9,7 @@ class CollegesController < ApplicationController
   	# TODO create a job of creating registration link
   	authcode = Digest::SHA1.hexdigest(Time.now.to_f.to_s)
   	#Fixme use find instead for ambassador instead of value i.e. 3
-  	register = Sregistration.create(:email => email, :authcode => authcode, :role_id => 3);
+  	# register = Sregistration.create(:email => email, :authcode => authcode, :role_id => 3);
   	message = college_name.id.to_s << '&email=' << email << '&authcode=' << authcode;
   	render :text => "We will contact you via email " << message.to_s
   end
@@ -18,9 +18,13 @@ class CollegesController < ApplicationController
   def show
   	email = params['email']
   	authcode = params['authcode']
-  	ambassador = Sregistration.find_by(:email => email, :authcode => authcode, :role_id => 3);
+  	# ambassador = Sregistration.find_by(:email => email, :authcode => authcode, :role_id => 3);
   	if ambassador
-  	render :text => ambassador.email+" " << email << authcode;
+  	
+    #TODO Create college and set its ambassador
+
+    render :text => ambassador.email+" " << email << authcode;
+
   	else
   	render :text => 'Invalid link'
   	end

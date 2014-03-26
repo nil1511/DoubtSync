@@ -1,15 +1,14 @@
 # == Schema Information
 #
-# Table name: sregistrations
+# Table name: professor_pending_lists
 #
 #  id         :integer          not null, primary key
-#  role_id    :integer
 #  name       :string(255)
 #  email      :string(255)
-#  authcode   :string(255)
+#  college_id :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
 
-class Sregistration < ActiveRecord::Base
+class ProfessorPendingList < ActiveRecord::Base
 end
