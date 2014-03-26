@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+
   belongs_to :role
   
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -58,21 +58,35 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
   
-  def get_posts
-    
+  def profile
+    if self.role=='student'
+      Student.find_by(user_id: self.id)
+    elsif self.role=='professor'
+      Professor.find_by(user_id: self.id)
+    end
+  end
+
+  def set_role(new_role)
+    self.role ||= Role.find_by_name(new_role)
+    link_profile
   end
 
   private
   def set_default_role
     self.role ||= Role.find_by_name('student')
   end
-  
+
+
   private
   def link_profile
-    if self.role=='student'
+    if self.role=='student' or self.role=='ambassador'
       has_one :student
+      student = Student.new(:user_id => self.id)
+      student.save
     elsif self.role=='professor'
       has_one :professor
+      professor = Professor.new(:user_id => self.id)
+      professor.save
     end
   end
 

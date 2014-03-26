@@ -8,3 +8,8 @@
 ['student','professor','ambassador','blocked'].each do |role|
   Role.find_or_create_by_name role
 end
+
+['DA-IICT'].each do |college|
+  College.find_or_create_by_name role
+end
+

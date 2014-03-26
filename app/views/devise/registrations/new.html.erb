@@ -4,8 +4,14 @@
   <%= devise_error_messages! %>
   <div><%= f.label :username %><br />
   <%= f.text_field :username, :autofocus => true %>
+  
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
+
+  <div><%= f.label @college %><br />
+
+  <%= select_tag "college", options_from_collection_for_select(@college, "id", "name") %>
+
 
   <div><%= f.label :password %><br />
   <%= f.password_field :password %></div>
