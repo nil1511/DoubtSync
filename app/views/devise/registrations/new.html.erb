@@ -11,7 +11,7 @@
   <div><%= f.label 'College Name' %>
 
   <%= select_tag :college_id, options_from_collection_for_select(@college, "id", "name") %><br/>
-  <%= link_to "Is you college missing?", 'http://google.com' %><br /><br />
+  <%= link_to "Is you college missing?", 'colleges/new' %><br /><br />
 
   <div><%= f.label :password %>
   <%= f.password_field :password %></div>

@@ -1,2 +1,12 @@
-<h1>Colleges#new</h1>
-<p>Find me in app/views/colleges/new.html.erb</p>
+<div>
+	<%= form_tag do %>
+
+		<%= label_tag(:college_name, "College Name") %>
+  		<%= text_field_tag(:college_name) %><br/>
+  		<div>Explain the email address needed in details and we will email them with a link for student ambassador</div>
+		<%= label_tag(:email, "Email Address of College representative") %>
+  		<%= text_field_tag(:email) %><br/>
+		<%= submit_tag("Submit") %>
+		
+	<% end %>
+</div>
