@@ -6,12 +6,12 @@
 #  first_name    :string(255)
 #  last_name     :string(255)
 #  mobile        :integer
-#  college_name  :string(255)
 #  gender        :boolean
 #  dob           :date
 #  degree        :string(255)
 #  graduate_year :integer
 #  spamrate      :integer
+#  user_id       :integer
 #  created_at    :datetime
 #  updated_at    :datetime
 #

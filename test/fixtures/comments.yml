@@ -2,14 +2,17 @@
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
-#  text       :string(255)
-#  tag        :text
-#  user_id    :integer
-#  post_id    :integer
-#  spamrate   :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  text         :string(255)
+#  tagged_users :text
+#  htags        :text
+#  user_id      :integer
+#  post_id      :integer
+#  spamrate     :integer
+#  upvotes      :string(255)
+#  downvotes    :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

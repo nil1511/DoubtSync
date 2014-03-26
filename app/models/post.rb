@@ -4,10 +4,13 @@
 #
 #  id                 :integer          not null, primary key
 #  text               :string(255)
-#  tag                :text
+#  tagged_users       :text
+#  htags              :text
 #  visibility_to_prof :boolean
 #  spamrate           :integer
 #  user_id            :integer
+#  upvotes            :string(255)
+#  downvotes          :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
 #
