@@ -5,11 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 ['student','professor','ambassador','blocked'].each do |role|
   Role.find_or_create_by_name role
 end
 
 ['DA-IICT'].each do |college|
-  College.find_or_create_by_name role
+  College.find_or_create_by_name college
 end
 

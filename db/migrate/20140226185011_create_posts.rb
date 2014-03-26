@@ -7,6 +7,8 @@ class CreatePosts < ActiveRecord::Migration
       t.boolean :visibility_to_prof
       t.integer :spamrate
       t.integer :user_id
+      t.string :upvotes
+      t.string :downvotes
 
       t.timestamps
     end

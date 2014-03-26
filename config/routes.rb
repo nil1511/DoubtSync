@@ -1,5 +1,6 @@
 Doubtsync::Application.routes.draw do
   
+  get "colleges/new"
   get "users/manage" => 'users#manage'
   post "users/manage" => 'users#save'
   get "users/:id" => 'users#index'

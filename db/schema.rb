@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140326060245) do
 
   create_table "colleges", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 20140326060245) do
     t.boolean  "visibility_to_prof"
     t.integer  "spamrate"
     t.integer  "user_id"
+    t.string   "upvotes"
+    t.string   "downvotes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,7 +77,8 @@ ActiveRecord::Schema.define(version: 20140326060245) do
 
   create_table "sregistrations", force: true do |t|
     t.integer  "role_id"
-    t.text     "email"
+    t.string   "name"
+    t.string   "email"
     t.string   "authcode"
     t.datetime "created_at"
     t.datetime "updated_at"
