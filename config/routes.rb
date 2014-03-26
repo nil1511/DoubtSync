@@ -3,6 +3,7 @@ Doubtsync::Application.routes.draw do
   get "colleges/new"
   post "colleges/new" => 'colleges#create'
   get "colleges/:id&:email&:authcode" => 'colleges#show'
+  post "colleges/ambassadorregistration" => 'colleges#update'
   get "users/manage" => 'users#manage'
   post "users/manage" => 'users#save'
   get "users/:id" => 'users#index'
