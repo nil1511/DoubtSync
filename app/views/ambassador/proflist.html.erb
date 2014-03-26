@@ -1,0 +1,11 @@
+<% if @proffile %>
+<div>Something </div>
+<% else %>
+	<label>Upload a text file contain profressor email id or csv file with professor email followed by their name</label>
+	<%= form_tag({action: :uploadFile}, multipart: true) do %>
+	  <%= file_field_tag 'proffile' %>
+	  <%= submit_tag "Upload" %>
+	<% end %>
+	
+
+<% end %>

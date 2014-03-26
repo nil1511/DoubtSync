@@ -1,5 +1,8 @@
 Doubtsync::Application.routes.draw do
   
+  get "ambassador/proflist"
+  post "ambassador/proflist" => 'ambassador#uploadFile'
+  get "ambassador/resumeformat"
   get "colleges/new"
   post "colleges/new" => 'colleges#create'
   get "colleges/:id" => 'colleges#show'

@@ -50,10 +50,13 @@ class CollegesController < ApplicationController
 
     #TODO Destroy entry using unqiue freeze code instead of email
     d = UpComingCollege.find_by(:email => email)
+    if d
     d.destroy
+    end
     ar = AmbassadorRegistration.find_by(:email=> email)
-    ar.destroy
-
+    if ar
+      ar.destroy
+    end
     render :text => "College Created";
 
   	# else
