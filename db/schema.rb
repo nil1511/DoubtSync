@@ -11,28 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324071654) do
+ActiveRecord::Schema.define(version: 20140326060245) do
 
-  create_table "comments", force: true do |t|
-    t.string   "text"
-    t.text     "tag"
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.integer  "spamrate"
+  create_table "colleges", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "followings", force: true do |t|
+  create_table "comments", force: true do |t|
+    t.string   "text"
+    t.text     "tagged_users"
+    t.text     "htags"
     t.integer  "user_id"
-    t.integer  "follow_id"
+    t.integer  "post_id"
+    t.integer  "spamrate"
+    t.string   "upvotes"
+    t.string   "downvotes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
     t.string   "text"
-    t.text     "tag"
+    t.text     "tagged_users"
+    t.text     "htags"
     t.boolean  "visibility_to_prof"
     t.integer  "spamrate"
     t.integer  "user_id"
@@ -44,13 +47,12 @@ ActiveRecord::Schema.define(version: 20140324071654) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "mobile"
-    t.string   "college_name"
     t.boolean  "gender"
     t.date     "dob"
     t.integer  "spamrate"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "relationships", force: true do |t|
@@ -70,19 +72,26 @@ ActiveRecord::Schema.define(version: 20140324071654) do
     t.datetime "updated_at"
   end
 
+  create_table "sregistrations", force: true do |t|
+    t.integer  "role_id"
+    t.text     "email"
+    t.string   "authcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "students", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "mobile"
-    t.string   "college_name"
     t.boolean  "gender"
     t.date     "dob"
     t.string   "degree"
     t.integer  "graduate_year"
     t.integer  "spamrate"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -98,9 +107,10 @@ ActiveRecord::Schema.define(version: 20140324071654) do
     t.string   "last_sign_in_ip"
     t.string   "username"
     t.integer  "profile_id"
+    t.integer  "role_id"
+    t.integer  "college_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

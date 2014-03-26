@@ -4,10 +4,10 @@ class CreateProfessors < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.integer :mobile
-      t.string :college_name
       t.boolean :gender
       t.date :dob
       t.integer :spamrate
+      t.integer :user_id
 
       t.timestamps
     end

@@ -32,7 +32,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :username
       t.integer :profile_id
-
+      t.integer :role_id
+      t.integer :college_id
       t.timestamps
     end
 

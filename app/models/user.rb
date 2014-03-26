@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_one :student
+  
   belongs_to :role
   
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
