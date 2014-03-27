@@ -1,12 +1,35 @@
+<div class="container">
+	<h1>DoubtSync  	
+	</h1><footer>Where doubt connects</footer>
 
 
 <% if !current_user.nil? %>
 <%= current_user.username %>
+  <!-- render feed page -->
   <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
   </li>
-
 <% else %>
-<a href="/register">Register</a>
-<a href="/login">Login</a>
+<div class="row">
+	<div class="col-md-3 pull-right">
+	<%= form_for(:user, :url => session_path(:user), html: {role: 'form',id:'loginform' } ) do |f| %>
+	<div class="form-group">
+		<%= f.label :email %>
+	  	<%= f.email_field :email, class: 'form-control', placeholder: "Enter email",:autofocus=>true %>
+	</div>
+	<div class="form-group">	
+	<%= f.label :password %>
+	<%= f.password_field :password, class: 'form-control', placeholder: "password" %>
+	</div>
+	  <%= f.check_box :remember_me %>
+	  <%= f.label :remember_me %><br>
+	  <%= f.submit 'Sign in', class: 'btn btn-primary login' %>
+	  <a href="register"><%= f.submit 'Sign up', class: 'btn btn-default register', type: 'button' %></a><br>
+	  <%= link_to "Forgot your password?", new_password_path(:user) %>
+	<% end %>
+
+	</div>
+
+</div>
 <% end %>
+</div>

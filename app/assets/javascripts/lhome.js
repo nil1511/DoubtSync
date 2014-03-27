@@ -3,3 +3,4 @@
 //= require underscore
 //= require modernizr
 //= require bootstrap/bootstrap.min
+//= require home
