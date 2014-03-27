@@ -26,15 +26,26 @@ $(function(){
         return;
     }
     var data ={};
-    
     data.text = postarea.val();
-    data.htags = $('.hashtag').text().split('#').slice(1).toString();
+    // data.htags = $('.hashtag').text().split('#').slice(1).toString();
     data.visibility_to_prof = false;
     data.tags = "";
+      postarea.textntags('getTags', function(tags) {
+        // data.tags = tags.id;
+        
+        for(a in tags){
+          console.log(tags[a].id);  
+          data.tags += tags[a].id+','
+        }
+        if(data.tags.length>0)
+        data.tags=data.tags.substring(0,data.tags.length-1);
+        // console.log(data.tags);
+        $.post('/posts',{ post: JSON.stringify(data)},function(e){
+          console.log(JSON.stringify(data));
+          console.log(e);
+        },"json");
+    });
     
-    $.post('/posts',{ post: JSON.stringify(data)},function(e){
-      console.log(e);
-    },"json");
 
     e.preventDefault();
     $(this).toggleClass('active');

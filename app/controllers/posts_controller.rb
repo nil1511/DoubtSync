@@ -7,21 +7,23 @@ class PostsController < ApplicationController
   end
 
   def create
-  	if user_signed_in?
-	  	data=params[:post]
-
+  	if user_signed_in? and params[:post]
+	  	data=ActiveSupport::JSON.decode(params[:post])
+      puts data;
+      puts data['text'];
       #FIXME Added option to save tags and tag
+      
       #,:htags => data['htags']
       # if !data
       # render :text =>"invalid request"
       # return
       # end  
-      print params
-	  	post = Post.new(:text => data['text'],:tag => data['tags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)
+      # print params
+	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)
 	  	post.save
-
 	  	current_user.posts << post
 	  	render :text => current_user.id
+
   	else
   		render :text =>"invalid request"
   	end

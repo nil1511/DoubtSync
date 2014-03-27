@@ -61,7 +61,7 @@
     <div>
       <% @posts.each do |post| %>
         text: <%= post.text %><br/>
-        tags: <%= post.tag %><br/>     
+        tags: <%= post.tagged_users %><br/>     
         visibility_to_prof: <%= post.visibility_to_prof %><br/>
         author:<%= post.user.username %><br/><br />
       <% end %>
