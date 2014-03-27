@@ -19,6 +19,7 @@ Doubtsync::Application.routes.draw do
   end
   get "main/index"
   get "main/feed"
+  get 'main/user' => 'main#user'
   
   resources :relationships, only: [:create, :destroy]
 

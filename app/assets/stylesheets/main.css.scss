@@ -4,7 +4,7 @@
 button.post {
   position: relative;
   display: block;
-  margin: 125px auto;
+  
   line-height: 65px;
   text-decoration: none;
   text-align: center;
@@ -21,7 +21,7 @@ button.post {
   border: none;
   outline: 0 none;
   width: 250px;
-  height: 80px;
+  height: 75px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -117,14 +117,6 @@ button.post.active .submerge {
   height: 40px;
 }
 
-#newpost{
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.textntags-wrapper,.textntags-beautifier{
-  height: 0;
-}
 
 .return:hover {
   color: #458ecc;
@@ -245,4 +237,8 @@ button.post.active .submerge {
   button.post.active .splash-2 {
     -webkit-animation-delay: 3s;
   }
+}
+#posta{
+  min-height: 100px !important;
+  max-height: 150px;
 }

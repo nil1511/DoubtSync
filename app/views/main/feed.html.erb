@@ -38,9 +38,12 @@
 
   <div class="col-md-8">
   <!-- central area -->
-	<div id="newpost" class="col-md-6">
-    <!-- new post -->
-    <textarea class="postarea"></textarea>
+    <div class="row">
+	   <div id="newpost" class="col-md-8">
+      <!-- new post -->
+        <textarea class="postarea" id="posta"></textarea>
+      </div>
+      <div id="newpost" class="col-md-4">
     	<button class="post">
         <img class="splash" src="/assets/watersplash_3.svg" alt="Splash!" />
         <img class="splash splash-2" src="/assets/watersplash_3.svg" alt="Splash!" />
@@ -53,8 +56,8 @@
           <span class="sent">Sent!</span>
         </span>
       </button>
-    </div>
-
+      </div>
+</div>
     <div>
       <% @posts.each do |post| %>
         text: <%= post.text %><br/>
