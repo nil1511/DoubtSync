@@ -26,12 +26,18 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+#   validates :email, presence: true
+#   validates :username, presence: true
+
+  validates :username,
+  :uniqueness => {:case_sensitive => false}
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_one :college
-
-  belongs_to :role
   
+  belongs_to :college
+  belongs_to :role
+
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
 
@@ -42,7 +48,8 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
 
   before_create :set_default_role
-  before_create :link_profile
+
+  after_create :link_profile
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -69,7 +76,6 @@ class User < ActiveRecord::Base
 
   def set_role(new_role)
     self.role ||= Role.find_by_name(new_role)
-    link_profile
   end
 
   private
@@ -77,15 +83,12 @@ class User < ActiveRecord::Base
     self.role ||= Role.find_by_name('student')
   end
 
-
-  private
   def link_profile
-    if self.role=='student' or self.role=='ambassador'
-      has_one :student
+    if self.role.name=='student' or self.role.name=='ambassador'
       student = Student.new(:user_id => self.id)
       student.save
-    elsif self.role=='professor'
-      has_one :professor
+
+    elsif self.role.name=='professor'
       professor = Professor.new(:user_id => self.id)
       professor.save
     end

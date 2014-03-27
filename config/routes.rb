@@ -22,8 +22,10 @@ Doubtsync::Application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
 
-  devise_for :users, path: "", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
+  devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
   resources :posts
+  # get 'register' => 'register#new', as: :register
+  
 
   post 'comments' => 'comments#create'
   get 'comments/:id' => 'comments#index'

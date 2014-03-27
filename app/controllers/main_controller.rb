@@ -3,6 +3,7 @@ class MainController < ApplicationController
   def index
   	
   end
+  # TODO add client size validation for Registeration and then login
   def feed
   	#FIXME Check header's nav bar on corresponding erb
   	@posts = Post.from_users_followed_by(current_user)
