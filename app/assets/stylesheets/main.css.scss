@@ -242,3 +242,10 @@ button.post.active .submerge {
   min-height: 100px !important;
   max-height: 150px;
 }
+#posts{
+  position: relative;
+  top: 30px;
+}
+#posts div{
+  border: #000 solid thin;
+}

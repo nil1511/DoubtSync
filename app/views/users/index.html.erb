@@ -3,9 +3,9 @@
     <%= render 'shared/stats' %>
         <%= render 'follow_form' if user_signed_in? %>
   </section>
-	Name: <%= @student.first_name << " " << @student.last_name %><br />
-	Gender: <%= @student.gender ? 'male' : 'female' %><br />
-	College: <%= @student.college_name %><br />
-	Degree: <%= @student.degree %><br />
-	Graduate Year: <%= @student.graduate_year %>
+	Name: <%= @student.first_name if @student.first_name << " " << @student.last_name if @student.last_name %><br />
+	Gender: <%= @student.gender if @student.gender ? 'male' : 'female' %><br />
+	College: <%= current_user.college.name %><br />
+	Degree: <%= @student.degree if @student.degree %><br />
+	Graduate Year: <%= @student.graduate_year if @student.graduate_year %>
 </div>

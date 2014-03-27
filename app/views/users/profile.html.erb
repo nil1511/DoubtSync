@@ -1,5 +1,5 @@
-<div>
-	<%= form_tag do %>
+<div class="container">
+	<%= form_tag 'users/manage', role: 'form'  do %>
 		<% if@student %>
 		<%= label_tag(:first_name, "First Name") %>
   		<%= text_field_tag(:first_name,@student.first_name) %><br/>
@@ -17,6 +17,7 @@
   		<%= text_field_tag(:degree,@student.degree) %><br/>
 		<%= label_tag(:graduate, "Graduate Year") %>
   		<%= number_field_tag(:graduate,@student.graduate_year) %><br/>
+  		
   		<% else %>
   		<%= label_tag(:first_name, "First Name") %>
   		<%= text_field_tag(:first_name) %><br/>

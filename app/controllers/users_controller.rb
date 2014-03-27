@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 			# 	student.save
 			# 		render :text =>  "saved"
 			# else
-				student = current_user.student
+				student = current_user.profile
 				dob = params['user']
 				mobile = params['mobile']
 				gender = params['gender'].eql?"male"
@@ -80,11 +80,11 @@ class UsersController < ApplicationController
 
 	def get_details
 		if @user.role.name.eql? "student"
-			if !@user.student != nil? 
+			if !@user.profile != nil? 
 				#TODO Implement a proper page
 				render :text => "Profile does not exits"
 			else
-				@student = @user.student
+				@student = @user.profile
 					render 'index'
 			end
 		elsif @user.role.name.eql? "professor"

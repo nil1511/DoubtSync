@@ -67,9 +67,9 @@ class User < ActiveRecord::Base
   end
   
   def profile
-    if self.role=='student'
+    if self.role.name=='student'
       Student.find_by(user_id: self.id)
-    elsif self.role=='professor'
+    elsif self.role.name=='professor'
       Professor.find_by(user_id: self.id)
     end
   end
@@ -87,6 +87,8 @@ class User < ActiveRecord::Base
     if self.role.name=='student' or self.role.name=='ambassador'
       student = Student.new(:user_id => self.id)
       student.save
+      self.profile_id = student.id
+      self.save
 
     elsif self.role.name=='professor'
       professor = Professor.new(:user_id => self.id)
