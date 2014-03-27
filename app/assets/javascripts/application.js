@@ -15,8 +15,6 @@
 //= require underscore
 //= require modernizr
 //= require jquery-textntags
-//= require jquery.autosize
-//= require jquery.hashtags
 //= require turbolinks
 //= require bootstrap/bootstrap.min
 //= require_tree .

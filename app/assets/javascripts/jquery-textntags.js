@@ -43,7 +43,6 @@
     jQuery.browser = browser;
 
 
-
     // Keys "enum"
     var KEY = { V: 86, Z: 90, BACKSPACE : 8, TAB : 9, RETURN : 13, ESC : 27, LEFT : 37, UP : 38, RIGHT : 39, DOWN : 40, COMMA : 188, SPACE : 32, HOME : 36, END : 35, 'DELETE': 46 };
     var defaultSettings = {
@@ -194,7 +193,7 @@
         
         function getBeautifiedText (tagged_text) {
             var beautified_text = tagged_text || getTaggedText();
-	    beautified_text = beautified_text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        beautified_text = beautified_text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
             _.each(settings.triggers, function (trigger) {
                 var markup = templates.tagHighlight({idx: trigger.parserGroups.title, class_name: trigger.classes.tagHighlight});
                 beautified_text = beautified_text.replace(trigger.parser, markup);
@@ -346,7 +345,7 @@
                 case keys.RETURN:
                 case keys.TAB:
                     if (elTagListItemActive && elTagListItemActive.length) {
-						editorAddingTag = true;
+                        editorAddingTag = true;
                         elTagListItemActive.click();
                         return false;
                     }
@@ -393,12 +392,12 @@
             if (e.keyCode == KEY.RETURN) {
                 updateBeautifier(elEditor.val());
             }
-			if (editorAddingTag) {
-				if (e.keyCode == KEY.RETURN || e.keyCode == KEY.TAB) {
-					e.preventDefault();
-				}
-				editorAddingTag = false;
-			}
+            if (editorAddingTag) {
+                if (e.keyCode == KEY.RETURN || e.keyCode == KEY.TAB) {
+                    e.preventDefault();
+                }
+                editorAddingTag = false;
+            }
         }
 
         function onEditorKeyUp (e) {
@@ -627,19 +626,19 @@
                 if (!_.isFunction(callback)) {
                     return;
                 }
-				var fbTagsCollection = {}, triggers = settings.triggers;
-					
-				_.each(tagsCollection, function (tagPos) {
-					var objPropTransformer = transformObjectProperties(triggers[tagPos[2]].keys_map),
-						localTag = objPropTransformer(tagPos[3], false);
-					fbTagsCollection[tagPos[0]] = [{
-						id: localTag.id,
-						name: localTag.title,
-						type: localTag.type,
-						offset: tagPos[0],
-						length: tagPos[1]
-					}];
-				});
+                var fbTagsCollection = {}, triggers = settings.triggers;
+                    
+                _.each(tagsCollection, function (tagPos) {
+                    var objPropTransformer = transformObjectProperties(triggers[tagPos[2]].keys_map),
+                        localTag = objPropTransformer(tagPos[3], false);
+                    fbTagsCollection[tagPos[0]] = [{
+                        id: localTag.id,
+                        name: localTag.title,
+                        type: localTag.type,
+                        offset: tagPos[0],
+                        length: tagPos[1]
+                    }];
+                });
 
                 callback.call(this, fbTagsCollection);
             },
