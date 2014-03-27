@@ -15,10 +15,6 @@ gem 'uglifier'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
 
-gem "therubyracer"
-gem "less-rails"
-gem 'twitter-bootstrap-rails'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
