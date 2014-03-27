@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default" role="navigation">
-<div class="container-fluid">
+<div class="container">
 <div class="navbar-header">
    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-       <a class="navbar-brand" href="#">Brand</a>
+       <a class="navbar-brand" href="#">DoubtSync</a>
     </div>
 
 
@@ -22,37 +22,54 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
 	    <li class="active"><a href="#">Posts</a></li>
-		<li><a href="#">Books</a></li>
-		<li><a href="#">Events</a></li>
+		<li><a href="#" title="Coming Soon">Books</a></li>
+		<li><a href="#" title="Coming Soon">Events</a></li>
       </ul>
     </div>
 </div>
 </nav>
-<div class="container">
-	<!--New Post -->
-	<div class="newpost col-md-4">
-		<textarea class="postarea"></textarea>
-		<button class="post">
-  <img class="splash" src="/assets/watersplash_3.svg" alt="Splash!" />
-  <img class="splash splash-2" src="/assets/watersplash_3.svg" alt="Splash!" />
-  <img class="sub" src="/assets/sublogo_16.svg" class="Submarine" />
-  <img class="submerge" src="/assets/submerge.svg" alt="Water" />
-  <span class="main-text">
-    <span class="submit">Sub</span>mit
-  </span>
-  <span class="sent-text">
-    <span class="sent">Sent!</span>
-  </span>
-</button>
-	</div>
+<div class="container-fuild">
 
-	<div>
-		<% @posts.each do |post| %>
-		  text: <%= post.text %><br/>
-		  tags: <%= post.tag %><br/>		 
-		  visibility_to_prof: <%= post.visibility_to_prof %><br/>
-      author:<%= post.user.username %><br/><br />
-		<% end %>
-	</div>
-	<!--Recent Post's -->
+  <div class="row">
+  <div class="col-md-2">
+    <!-- left sidebar -->
+  </div>
+	
+
+  <div class="col-md-8">
+  <!-- central area -->
+	<div id="newpost" class="col-md-6">
+    <!-- new post -->
+    <textarea class="postarea"></textarea>
+    	<button class="post">
+        <img class="splash" src="/assets/watersplash_3.svg" alt="Splash!" />
+        <img class="splash splash-2" src="/assets/watersplash_3.svg" alt="Splash!" />
+        <img class="sub" src="/assets/sublogo_16.svg" class="Submarine" />
+        <img class="submerge" src="/assets/submerge.svg" alt="Water" />
+        <span class="main-text">
+          <span class="submit">Sub</span>mit
+        </span>
+        <span class="sent-text">
+          <span class="sent">Sent!</span>
+        </span>
+      </button>
+    </div>
+
+    <div>
+      <% @posts.each do |post| %>
+        text: <%= post.text %><br/>
+        tags: <%= post.tag %><br/>     
+        visibility_to_prof: <%= post.visibility_to_prof %><br/>
+        author:<%= post.user.username %><br/><br />
+      <% end %>
+    </div>
+	
+  </div>
+	
+
+  <div class="col-md-2" style="border:1px solid #000">
+    <!-- rigth sidebar -->
+  </div>
+	
+  </div>
 </div>

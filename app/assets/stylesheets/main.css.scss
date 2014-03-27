@@ -117,6 +117,15 @@ button.post.active .submerge {
   height: 40px;
 }
 
+#newpost{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.textntags-wrapper,.textntags-beautifier{
+  height: 0;
+}
+
 .return:hover {
   color: #458ecc;
   border: 2px solid #458ecc;
