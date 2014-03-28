@@ -9,7 +9,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :user_id
       t.string :upvotes
       t.string :downvotes
-
+      t.attachment :document
       t.timestamps
     end
   end

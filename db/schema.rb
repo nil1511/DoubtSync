@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.integer  "spamrate"
     t.string   "upvotes"
     t.string   "downvotes"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +55,10 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.integer  "user_id"
     t.string   "upvotes"
     t.string   "downvotes"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,15 +100,6 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.datetime "updated_at"
   end
 
-  create_table "sregistrations", force: true do |t|
-    t.integer  "role_id"
-    t.string   "name"
-    t.string   "email"
-    t.string   "authcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "students", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -111,6 +110,10 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.integer  "graduate_year"
     t.integer  "spamrate"
     t.integer  "user_id"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,6 +140,10 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.integer  "profile_id"
     t.integer  "role_id"
     t.integer  "college_id"
+    t.integer  "avatar_file_size"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

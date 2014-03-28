@@ -17,6 +17,10 @@
 #  profile_id             :integer
 #  role_id                :integer
 #  college_id             :integer
+#  avatar_file_size       :integer
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_updated_at      :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
 #
@@ -28,6 +32,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 #   validates :email, presence: true
 #   validates :username, presence: true
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   validates :username,
   :uniqueness => {:case_sensitive => false}

@@ -34,6 +34,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :profile_id
       t.integer :role_id
       t.integer :college_id
+      t.integer :avatar_file_size
+      t.string :avatar_file_name
+      t.string :avatar_content_type
+      t.datetime :avatar_updated_at
+
       t.timestamps
     end
 

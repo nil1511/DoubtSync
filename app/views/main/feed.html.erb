@@ -10,7 +10,6 @@
        <a class="navbar-brand" href="#">DoubtSync</a>
     </div>
 
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
@@ -24,6 +23,7 @@
 	    <li class="active"><a href="#">Posts</a></li>
 		<li><a href="#" title="Coming Soon">Books</a></li>
 		<li><a href="#" title="Coming Soon">Events</a></li>
+    <li style="position:absolute;right:0;"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       </ul>
     </div>
 </div>

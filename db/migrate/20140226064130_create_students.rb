@@ -10,7 +10,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :graduate_year
       t.integer :spamrate
       t.integer :user_id
-
+      t.attachment :resume
       t.timestamps
     end
   end

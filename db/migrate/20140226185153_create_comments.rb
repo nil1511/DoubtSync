@@ -9,7 +9,8 @@ class CreateComments < ActiveRecord::Migration
       t.integer :spamrate
       t.string :upvotes
       t.string :downvotes
-
+      t.attachment :document
+      
       t.timestamps
     end
   end

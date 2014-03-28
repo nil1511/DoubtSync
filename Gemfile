@@ -31,7 +31,7 @@ end
 
 gem 'devise'
 gem 'will_paginate'
-
+gem "paperclip", "~> 4.1"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
