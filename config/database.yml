@@ -14,8 +14,7 @@ development:
   database: doubtsync_development
   pool: 5
   username: root
-  password: toor
-  socket: /var/run/mysqld/mysqld.sock
+  password: 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,14 +25,12 @@ test:
   database: doubtsync_test
   pool: 5
   username: root
-  password: toor
-  socket: /var/run/mysqld/mysqld.sock
-
+  password: 
+  
 production:
   adapter: mysql2
   encoding: utf8
   database: doubtsync_production
   pool: 5
   username: root
-  password: toor
-  socket: /var/run/mysqld/mysqld.sock
+  password: 
