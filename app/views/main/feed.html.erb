@@ -65,15 +65,30 @@
     
     <div id='posts'>
       <% @posts.each do |post| %>
-      <div class="col-md-7 post" data-pid="<%= post.id %>">
-        text: <%= post.text %><br/>
+      <div class="col-md-7 singlepost" data-pid="<%= post.id %>">
+        <div class="imagecontainer">
+        <% if post.visibility_to_prof %>
+        <%= image_tag(post.user.avatar.url,class: 'profilepic img-responsive') %>
+        <% else %>
+        <%= image_tag('/images/original/anonymous.png',class: 'profilepic img-responsive') %>
+        <% end %>
+        <span><%= post.user.username %></span>
+        </div>
+        <div class="posttext">
+          <span class="view glyphicon glyphicon-plus-sign"></span>
+          <% if post.user == current_user %>
+          <span class="delete glyphicon glyphicon-remove-circle"></span>
+          <% end %>
+          <p class="ptext"><%= post.text %></p>
+        </div>
+        <!-- text: <%= post.text %><br/>
         tags: <%= post.tagged_users %><br/>
-        visibility_to_prof: <%= post.visibility_to_prof %><br/>
-        author:<%= post.user.username %><br/><br />
+        visibility_to_prof: <br/>
+        author:<%= post.user.username %><br/><br /> 
         <span class='up'>upvote</span>:<%= post.upvotes %>
         <span class='up'>downvote</span>:<%= post.downvotes %>
-        <input placeholder="comment" type="text" name="comment">
-        <br><br>
+        <input placeholder="comment" type="text" name="comment">-->
+        
       </div>
       <% end %>
     </div>

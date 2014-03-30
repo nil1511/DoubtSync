@@ -28,7 +28,7 @@ $(function(){
     var data ={};
     data.text = postarea.val();
     // data.htags = $('.hashtag').text().split('#').slice(1).toString();
-    data.visibility_to_prof = false;
+    data.visibility_to_prof = true;
     data.tags = "";
       postarea.textntags('getTags', function(tags) {
         // data.tags = tags.id;
@@ -55,4 +55,25 @@ $(function(){
     postbutton.removeClass('active');
   });
 
-})
+  $('.view').on('click',function (e) {
+    
+  });
+
+  $('.delete').on('click',function (e) {
+    
+    c=confirm('Do you want to delete this query?');
+    if(c){
+      var post = $(this).parent('div.posttext').parent('div.singlepost');  
+      $.ajax({
+      url: '/posts/'+post.data('pid'),
+      type: 'DELETE',
+      success: function(result) {
+        if(result)
+          post.remove();
+        }
+      });
+
+    }
+  });
+
+});

@@ -20,7 +20,7 @@
   <%= f.label 'College Name' %>
   <%  @college=College.all %>
   <%= select_tag :college_id, options_from_collection_for_select(@college, "id", "name"),class: 'form-control'%>
-  <%= link_to "Is you college missing?", 'colleges/new' %>
+  <%= link_to "Is your college missing?", 'colleges/new' %>
   </div>
   
 

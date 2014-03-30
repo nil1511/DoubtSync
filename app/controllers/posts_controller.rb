@@ -34,7 +34,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # TODO Delete a post
+    # TODO Give JSON response
+    id =params[:id]
+    post = Post.find_by_id(id)
+    if post.user == current_user
+      a=post.destroy
+      render :text => 'true'
+    else
+      render :text => "You are not autorized to delete this post"
+    end
+
   end
   
   def show

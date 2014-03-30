@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 				render :text => "User does not exist"
 			else
 				get_details
-				# TODO Show his details
 			end
 		else
 			@user = User.find_by username: @id
