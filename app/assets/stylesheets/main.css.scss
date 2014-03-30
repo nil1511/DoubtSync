@@ -335,6 +335,10 @@ button.post.active .submerge {
   }
   .commentimage{
     position: absolute;
+    span{
+      display: block;
+      text-align: center;
+    }
   }
   .commenttext{
     width: 400px;
