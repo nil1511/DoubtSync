@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 	#TODO Validation for profile form
 	def index
 		@id = params['id']
+		if @id.nil?
+			@id = current_user.id
+		end
 		if @id.is_number?
 			@user = User.find_by_id(@id)
 			if @user.nil?
@@ -20,8 +23,7 @@ class UsersController < ApplicationController
 				#TODO 404 pages here
 				render :text => "Not exist"
 			else
-				# TODO Show his details
-				render :text => "Found him"
+				get_details
 			end
 		end
 	end
@@ -47,7 +49,7 @@ class UsersController < ApplicationController
 					:degree => params['degree'],:graduate_year => params['graduate'],:gender => gender,
 					:dob => dob['dob'],:mobile => mobile['phone'])
 				student.save
-				render :text =>  "updated"
+				redirect_to '/users/profile'
 			# end
 		else
 			render :text =>  "TODO"+current_user.role.name
@@ -67,6 +69,12 @@ class UsersController < ApplicationController
 	    @user = User.find(params[:id])
 	    @users = @user.followers.paginate(page: params[:page])
 	    render 'show_follow'
+  	end
+
+  	def profile
+  		params = {};
+  		params['id'] = current_user.id;
+  		index;
   	end
 
 	def get_details

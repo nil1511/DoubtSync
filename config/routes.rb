@@ -10,8 +10,11 @@ Doubtsync::Application.routes.draw do
 
   get "users/manage" => 'users#manage'
   post "users/manage" => 'users#save'
+  get "users/profile" => 'users#profile'
   get "users/:id" => 'users#index'
   
+  
+
   resources :users do
     member do
       get :following, :followers
