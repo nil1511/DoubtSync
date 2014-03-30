@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	layout 'users'
 
 	#TODO make sure user does not register with reserved keyword
 	#TODO Validation for profile form
