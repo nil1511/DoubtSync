@@ -1,5 +1,5 @@
 $(function(){
-
+  $('.comments').hide();
   var ajax_request = false;
   $('textarea.postarea').textntags({
       onDataRequest:function (mode, query, triggerChar, callback) {
@@ -55,15 +55,35 @@ $(function(){
     postbutton.removeClass('active');
   });
 
-  $('.view').on('click',function (e) {
-    
+  $('.view.glyphicon-plus-sign').on('click',function (e) {
+    var post = $(this).parent('div').parent('div.posttext').parent('div.singlepost'); 
+    c = post.children('.comments');
+
+    if($(e.target).hasClass('glyphicon-minus-sign')){
+      c.slideUp('fast',function () {
+        
+          $(e.target).removeClass('glyphicon-minus-sign');
+          $(e.target).addClass('glyphicon-plus-sign');
+        
+      });
+    }else
+    {
+      c.slideDown('fast',function () {
+        
+        if($(e.target).hasClass('glyphicon')){
+          $(e.target).removeClass('glyphicon-plus-sign');
+          $(e.target).addClass('glyphicon-minus-sign');
+        }
+      });
+        
+    }
   });
 
   $('.delete').on('click',function (e) {
     
     c=confirm('Do you want to delete this query?');
     if(c){
-      var post = $(this).parent('div.posttext').parent('div.singlepost');  
+      var post = $(this).parent('div').parent('div.posttext').parent('div.singlepost');  
       $.ajax({
       url: '/posts/'+post.data('pid'),
       type: 'DELETE',
