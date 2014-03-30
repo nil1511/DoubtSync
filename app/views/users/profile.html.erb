@@ -1,41 +1,83 @@
 <div class="container">
-	<%= form_tag 'manage', role: 'form'  do %>
+	<%= form_tag 'manage', role: 'form' ,class:'form-horizontal' do %>
 		<% if@student %>
-		<%= label_tag(:first_name, "First Name") %>
-  		<%= text_field_tag(:first_name,@student.first_name) %><br/>
-		<%= label_tag(:last_name, "Last Name") %>
-  		<%= text_field_tag(:last_name,@student.last_name) %><br/>
-		<%= label_tag(:mobile, "Mobile no.") %>
-  		<%= telephone_field(:mobile, :phone,value: @student.mobile) %><br/>
+		<div class="form-group">
+		<%= label_tag(:first_name, "First Name" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= text_field_tag(:first_name,@student.first_name, class: 'form-control', placeholder: 'Enter First Name') %></div>
+  		</div>
+  		<div class="form-group">
+		<%= label_tag(:last_name, "Last Name" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= text_field_tag(:last_name,@student.last_name, class: 'form-control', placeholder: 'Enter Last Name') %></div>
+  		</div>
+  		<div class="form-group">
+		<%= label_tag(:mobile, "Mobile no." ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= telephone_field(:mobile, :phone,value: @student.mobile, class: 'form-control', placeholder: 'Enter your mobile number') %></div>
+  		</div>
 		<!-- <input type="text" placeholder="college name"> -->
-		<%= radio_button_tag(:gender, "male",checked: @student.gender) %>
+		<div class="form-group">
+		<%= label_tag(:gender, "Gender" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+		<%= radio_button_tag(:gender, "male",checked: @student.gender, class: 'form-control') %>
 		<%= label_tag(:male, "Male") %>
-		<%= radio_button_tag(:gender, "female",checked: !@student.gender) %>
-		<%= label_tag(:female, "Female") %>
-		<%= date_field(:user, :dob,value: @student.dob) %><br />
-		<%= label_tag(:degree, "Degree") %>
-  		<%= text_field_tag(:degree,@student.degree) %><br/>
-		<%= label_tag(:graduate, "Graduate Year") %>
-  		<%= number_field_tag(:graduate,@student.graduate_year) %><br/>
+		<%= radio_button_tag(:gender, "female",checked: !@student.gender, class: 'form-control') %>
+		<%= label_tag(:female, "Female") %></div>
+		</div>
+		<div class="form-group">
+		<%= label_tag(:dob, "Date of birth" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+		<%= date_field(:user, :dob,value: @student.dob, class: 'form-control') %></div></div>
+		<div class="form-group">
+		<%= label_tag(:degree, "Degree" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= text_field_tag(:degree,@student.degree, class: 'form-control',placeholder: 'Enter name of your Degree') %></div></div>
+  		<div class="form-group">
+		<%= label_tag(:graduate, "Graduate Year" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= number_field_tag(:graduate,@student.graduate_year, class: 'form-control',placeholder: 'Enter Year of your graduation') %></div></div>
   		
   		<% else %>
-  		<%= label_tag(:first_name, "First Name") %>
-  		<%= text_field_tag(:first_name) %><br/>
-		<%= label_tag(:last_name, "Last Name") %>
-  		<%= text_field_tag(:last_name) %><br/>
-		<%= label_tag(:mobile, "Mobile no.") %>
-  		<%= telephone_field(:mobile, :phone) %><br/>
+  		<div class="form-group ">
+		<%= label_tag(:first_name, "First Name" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= text_field_tag(:first_name, class: 'form-control', placeholder: 'Enter First Name') %></div>
+  		</div>
+  		<div class="form-group">
+		<%= label_tag(:last_name, "Last Name" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= text_field_tag(:last_name, class: 'form-control', placeholder: 'Enter Last Name') %></div>
+  		</div>
+  		<div class="form-group">
+		<%= label_tag(:mobile, "Mobile no." ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= telephone_field(:mobile, :phone, class: 'form-control', placeholder: 'Enter your mobile number') %></div>
+  		</div>
 		<!-- <input type="text" placeholder="college name"> -->
-		<%= radio_button_tag(:gender, "male",:checked) %>
-		<%= label_tag(:male, "Male") %>
-		<%= radio_button_tag(:gender, "female") %>
-		<%= label_tag(:female, "Female") %>
-		<%= date_field(:user, :dob) %><br />
-		<%= label_tag(:degree, "Degree") %>
-  		<%= text_field_tag(:degree) %><br/>
-		<%= label_tag(:graduate, "Graduate Year") %>
-  		<%= number_field_tag(:graduate) %><br/>
+		<div class="form-group">
+		<%= label_tag(:gender, "Gender" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+		<%= radio_button_tag(:gender, "male",checked: true, class: 'form-control') %>
+		<%= label_tag(:male, "Male" ,class: 'col-sm-2 control-label') %>
+		<%= radio_button_tag(:gender, "female", class: 'form-control') %>
+		<%= label_tag(:female, "Female" ,class: 'col-sm-2 control-label') %></div>
+		</div>
+		<div class="form-group">
+		<%= label_tag(:dob, "Date of birth" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+		<%= date_field(:user, :dob, class: 'form-control') %></div></div>
+		<div class="form-group">
+		<%= label_tag(:degree, "Degree" ,class: 'col-sm-2 control-label') %>
+		<div class="col-sm-10">
+  		<%= text_field_tag(:degree, class: 'form-control',placeholder: 'Enter name of your Degree') %></div></div>
+  		<div class="form-group">
+		<%= label_tag(:graduate, "Graduate Year" ,class: 'col-sm-2 control-label') %>
+  		<div class="col-sm-10">
+  		<%= number_field_tag(:graduate, class: 'form-control',placeholder: 'Enter Year of your graduation') %></div></div>
   		<% end %>
-		<%= submit_tag("Update") %>
+  		<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+		<%= submit_tag("Update",class: "btn btn-default") %></div></div>
 	<% end %>
 </div>
