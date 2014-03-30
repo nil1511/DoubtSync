@@ -1,10 +1,54 @@
-<div>
+<nav class="navbar navbar-default" role="navigation">
+<div class="container">
+<div class="navbar-header">
+   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/">DoubtSync</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+	    <li><a href="#">Posts</a></li>
+		<li><a href="#" title="Coming Soon">Books</a></li>
+		<li><a href="#" title="Coming Soon">Events</a></li>
+    <li style="position:absolute;right:0;"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+      </ul>
+    </div>
+</div>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<!--Profile Pic-->
+		<div class="profileinfo">
+			<img src="<%= current_user.avatar.url %>" alt="" width="200" height="200" style="border:double #FFFFFF thick">
+		</div>
+
+		<!--Information-->
+		<div class="profileinfo">
+			<p style="margin-left:30px;font-family:Georgia, 'Times New Roman', Times, serif; font-size:24px"><%= @student.first_name if @student.first_name<< " " << @student.last_name if @student.last_name %></p>
+<p style="margin-left:30px; font-family:Georgia, 'Times New Roman', Times, serif; font-size:24px"><%= current_user.college.name %></p>
+<!-- <p style="margin-left:30px; font-family:Georgia, 'Times New Roman', Times, serif; font-size:24px">Other Information</p> -->
+		</div>
+	</div>
   <section>
-    <%= render 'shared/stats' %>
+    	<%= render 'shared/stats' %>
         <%= render 'follow_form' if user_signed_in? %>
   </section>
-  	Photo: <%= image_tag(current_user.avatar.url(:thumb)) %><br />
-	Name: <%= @student.first_name if @student.first_name << " " << @student.last_name if @student.last_name %><br />
+  	<!-- Photo: <%= image_tag(current_user.avatar.url(:thumb)) %><br /> -->
+	<!-- Name: <%= @student.first_name if @student.first_name << " " << @student.last_name if @student.last_name %><br /> -->
 	Gender: <%= @student.gender if @student.gender ? 'male' : 'female' %><br />
 	College: <%= current_user.college.name %><br />
 	Degree: <%= @student.degree if @student.degree %><br />
