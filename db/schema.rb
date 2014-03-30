@@ -30,14 +30,14 @@ ActiveRecord::Schema.define(version: 20140326202556) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "text"
+    t.text     "text"
     t.text     "tagged_users"
     t.text     "htags"
     t.integer  "user_id"
     t.integer  "post_id"
     t.integer  "spamrate"
-    t.string   "upvotes"
-    t.string   "downvotes"
+    t.text     "upvotes"
+    t.text     "downvotes"
     t.string   "document_file_name"
     t.string   "document_content_type"
     t.integer  "document_file_size"
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 20140326202556) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "text"
+    t.text     "text"
     t.text     "tagged_users"
     t.text     "htags"
     t.boolean  "visibility_to_prof"
     t.integer  "spamrate"
     t.integer  "user_id"
-    t.string   "upvotes"
-    t.string   "downvotes"
+    t.text     "upvotes"
+    t.text     "downvotes"
     t.string   "document_file_name"
     t.string   "document_content_type"
     t.integer  "document_file_size"

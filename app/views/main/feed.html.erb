@@ -69,10 +69,11 @@
         <div class="imagecontainer">
         <% if post.visibility_to_prof %>
         <%= image_tag(post.user.avatar.url,class: 'profilepic img-responsive') %>
+        <span><%= post.user.username %></span>
         <% else %>
         <%= image_tag('/images/original/anonymous.png',class: 'profilepic img-responsive') %>
+        <span>Anonymous</span>
         <% end %>
-        <span><%= post.user.username %></span>
         </div>
         <div class="posttext">
           <span class="view glyphicon glyphicon-plus-sign"></span>
