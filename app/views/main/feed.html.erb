@@ -76,10 +76,12 @@
         <% end %>
         </div>
         <div class="posttext">
+          <div>
           <span class="view glyphicon glyphicon-plus-sign"></span>
           <% if post.user == current_user %>
           <span class="delete glyphicon glyphicon-remove-circle"></span>
           <% end %>
+          </div>
           <p class="ptext"><%= post.text %></p>
         </div>
         <!-- text: <%= post.text %><br/>

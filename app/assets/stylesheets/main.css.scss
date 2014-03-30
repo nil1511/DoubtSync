@@ -258,12 +258,16 @@ button.post.active .submerge {
 }
 .posttext{
   margin-left: 10px;
+  width: 400px;
   display: inline-block;
+  float: right;
+  padding: 5px;
+  margin-right: 20px;
 }
 .view,.delete{
   float: right;
   position:absolute;
-  right: 20px;
+  right: 5px;
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: 24px;
@@ -275,7 +279,6 @@ button.post.active .submerge {
   margin-top: 35px;  
 }
 }
-
 .singlepost{
   .imagecontainer{
     display: inline-block;
