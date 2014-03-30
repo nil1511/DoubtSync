@@ -84,7 +84,27 @@
           </div>
           <p class="ptext"><%= post.text %></p>
         </div>
-        <!-- text: <%= post.text %><br/>
+        <!-- Comments -->
+        <div class="comments">
+          <div class="commentimage">
+          <%= image_tag('/images/original/anonymous.png',class: 'profilepic img-responsive') %>
+          <p class="ptext">Aminfw</p>
+          </div>
+          <div class="commenttext">
+          <div>
+          <span class="up glyphicon glyphicon-circle-arrow-up"></span>
+          <span class="number">131</span>
+          <span class="down glyphicon glyphicon-circle-arrow-down"></span>
+          </div>
+          <p class="ctext">Yeh hai comment tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          </div>
+          <div class="insertcomment">
+            <textarea class="writecomment"></textarea>
+            <button class="commentpost">Post</button>
+          </div>
+        </div>
+
+<!-- text: <%= post.text %><br/>
         tags: <%= post.tagged_users %><br/>
         visibility_to_prof: <br/>
         author:<%= post.user.username %><br/><br /> 

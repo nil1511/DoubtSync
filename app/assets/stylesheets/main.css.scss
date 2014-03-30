@@ -280,8 +280,10 @@ button.post.active .submerge {
 }
 }
 .singlepost{
+
   .imagecontainer{
     display: inline-block;
+    position: absolute;
     span{
       display: block;
       text-align: center;
@@ -292,8 +294,59 @@ button.post.active .submerge {
     position: relative;
     top: -30px;
     margin-bottom: -30px;
+    min-height: 70px;
   }
 }
 .singlepost:hover{
     background-color: #eee;
+}
+.comments{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .up,.down{
+  float: right;
+  position:absolute;
+  right: 0px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+  }
+
+  .number{
+  float: right;
+  position:absolute;
+  right: 0px;
+  margin-top: 26px;
+  margin-bottom: 10px;  
+  text-align: center;
+  cursor: pointer;   
+  }
+
+  .down{
+  margin-top: 45px;  
+  } 
+  .commentimage,.commenttext{
+  display: inline-block;
+  }
+  .commentimage{
+    position: absolute;
+  }
+  .commenttext{
+    width: 400px;
+    min-height: 60px;
+    margin-left: 55px;
+  }
+  .writecomment{
+    width: 400px;
+  }
+  .commentpost{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
 }
