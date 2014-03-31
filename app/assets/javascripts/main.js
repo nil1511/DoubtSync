@@ -22,12 +22,14 @@ $(function(){
     var postarea = $('textarea.postarea');
     if(!postarea.val().trim()){
       console.log('fill something to post');
+
         return;
     }
     var data ={};
     data.text = postarea.val();
     // data.htags = $('.hashtag').text().split('#').slice(1).toString();
-    data.visibility_to_prof = true;
+
+    data.visibility_to_prof = $('#anoncheckbox').prop('checked');
     data.tags = "";
       postarea.textntags('getTags', function(tags) {
         // data.tags = tags.id;
@@ -43,9 +45,10 @@ $(function(){
           console.log(JSON.stringify(data));
           console.log(e);
         },"json");
+        postarea.val('');
+        $('#anoncheckbox').prop('checked',false);
     });
     
-
     e.preventDefault();
     $(this).toggleClass('active');
   });
