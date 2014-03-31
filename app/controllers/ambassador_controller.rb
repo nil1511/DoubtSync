@@ -1,6 +1,11 @@
 class AmbassadorController < ApplicationController
   def proflist
   	#Todo show registration form
+    #render :text => current_user.role.id
+    if current_user.role.id != 3 
+      render :text => "No autorized"
+      return;
+    end
   	@proffile = nil;
   end
 
@@ -8,6 +13,7 @@ class AmbassadorController < ApplicationController
   end
 
   def uploadFile
+
   	 io = params['proffile']
   	 if(io.content_type=="text/csv")
   	 file = io.open;
