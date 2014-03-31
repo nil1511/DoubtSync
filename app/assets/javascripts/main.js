@@ -121,10 +121,34 @@ $(function(){
           <p class="ctext">'+data.text+'</p>\
           </div>\
           </div>';
-          var comment = post.children('.comments').children('.singlecomment').last().after(c);
+          var comment = post.children('.comments');
+
+          console.log(comment)
+          if(comment.children('.singlecomment').length == 1)
+          comment.children('.singlecomment').last().after(c);
+          else
+          comment.children('.insertcomment').before(c);
           textarea.val('');
       } 
     },"json");
+  });
+
+  $('.up').on('click',function (e) {
+    var comment = $(this).parent('div').parent('.commenttext').parent('.singlecomment');
+    var cid = comment.data('cid');
+    $.post('/comments/'+cid+'/up',function (argument) {
+      console.log(argument)
+    })
   })
+
+  $('.down').on('click',function (e) {
+    var comment = $(this).parent('div').parent('.commenttext').parent('.singlecomment');
+    var cid = comment.data('cid');
+    $.post('/comments/'+cid+'/down',function (argument) {
+      console.log(argument)
+    })
+  })
+
+
 
 });

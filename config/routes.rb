@@ -33,6 +33,8 @@ Doubtsync::Application.routes.draw do
   post 'comments' => 'comments#create'
   get 'comments/:id' => 'comments#index'
   post 'comments/:id/edit' => 'comments#edit'
+  post 'comments/:id/up' => 'comments#upvote'
+  post 'comments/:id/down' => 'comments#downvote'
   delete 'comments/:id' => 'comments#destroy'
 
   root 'home#index'

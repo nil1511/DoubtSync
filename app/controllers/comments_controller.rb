@@ -59,5 +59,27 @@ class CommentsController < ApplicationController
       render :text => "invalid request"
     end
   end
-
+  def upvote
+    id =params[:id]
+    comment = Comment.find_by_id(id)
+    if !comment.nil?
+      comment.upvotes = comment.upvotes.to_s << current_user.id.to_s << ','
+      comment.save
+      render :text => "up"
+    else
+      render :text => "invalid request"
+    end
+  end
+  def downvote
+    id =params[:id]
+    comment = Comment.find_by_id(id)
+    if !comment.nil?
+      comment.downvotes = comment.downvotes.to_s << current_user.id.to_s << ','
+      comment.save
+      render :text => "down"
+    else
+      render :text => "invalid request"
+    end
+    
+  end
 end

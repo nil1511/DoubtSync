@@ -95,7 +95,16 @@
           <div class="commenttext">
           <div>
           <span class="up glyphicon glyphicon-circle-arrow-up"></span>
-          <span class="number">0</span>
+          <span class="number">
+          <% up = comment.upvotes.to_s.count(',');down = comment.downvotes.to_s.count(','); %>
+          <% if up > down %>
+          +<%= up - down %>
+          <% elsif up < down %>
+          -<%= down - up %>
+          <% else %>
+          0
+          <% end %>
+          </span>
           <span class="down glyphicon glyphicon-circle-arrow-down"></span>
           </div>
           <p class="ctext"><%= comment.text %></p>
