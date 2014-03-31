@@ -16,7 +16,6 @@ $(function(){
       }
   });
 
-
   postbutton = $('button.post');
 
   postbutton.click(function(e) {
@@ -92,8 +91,38 @@ $(function(){
           post.remove();
         }
       });
-
     }
   });
+
+  $('.commentpost').on('click',function(e){    
+    var post = $(this).parent('div.insertcomment').parent('div.comments').parent('div.singlepost'); 
+    if($(this).prev().val()==''){
+      return false;
+    }
+    console.log(post.data('pid'),$(this).prev().val());
+    var data = {};
+    data.text = $(this).prev().val();
+    data.post_id = post.data('pid');
+    $.post('/comments',{ comment: JSON.stringify(data)},function(e){
+      if(e==1){ 
+          var c = 
+          '<div class="singlecomment">\
+          <div class="commentimage">\
+          <img alt="Anonymous" class="profilepic img-responsive" src="/images/original/anonymous.png">\
+          <span>me</span>\
+          </div>\
+          <div class="commenttext">\
+          <div>\
+          <span class="up glyphicon glyphicon-circle-arrow-up"></span>\
+          <span class="number">0</span>\
+          <span class="down glyphicon glyphicon-circle-arrow-down"></span>\
+          </div>\
+          <p class="ctext">'+data.text+'</p>\
+          </div>\
+          </div>';
+          var comment = $('.singlecomment').after(c);
+      }
+    },"json");
+  })
 
 });

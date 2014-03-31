@@ -15,10 +15,12 @@ class CommentsController < ApplicationController
 
   def create
     if user_signed_in?
-      data=params[:comment]
-      format=params[:format]
-    	comment = Comment.new(:text => data['text'],:tag => data['tag'],:spamrate => 0)
-    	post = Post.find_by_id(data['post_id'])
+      data=ActiveSupport::JSON.decode(params[:comment])
+      pid = data['post_id']
+      format= 'json'
+      puts data;
+    	comment = Comment.new(:text => data['text'],:spamrate => 0)
+    	post = Post.find_by_id(pid)
     	if !post.nil?
     		puts post
       	comment.save
@@ -26,7 +28,7 @@ class CommentsController < ApplicationController
       	current_user.comments << comment
 #      	render get_type format => post
 #        TODO use function
-        render format.to_sym => post
+        render format.to_sym => '1'
       else
       	render format.to_sym => "failed"
       end
