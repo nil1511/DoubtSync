@@ -63,7 +63,14 @@ class CommentsController < ApplicationController
     id =params[:id]
     comment = Comment.find_by_id(id)
     if !comment.nil?
-      comment.upvotes = comment.upvotes.to_s << current_user.id.to_s << ','
+      if comment.downvotes.to_s.index(current_user.id.to_s)
+        comment.downvotes = comment.downvotes.to_s.delete(current_user.id.to_s + ',')
+      elsif !comment.upvotes.to_s.index(current_user.id.to_s)
+        comment.upvotes = comment.upvotes.to_s + current_user.id.to_s + ','
+      else
+        render :text => "already"
+        return;  
+      end
       comment.save
       render :text => "up"
     else
@@ -74,7 +81,14 @@ class CommentsController < ApplicationController
     id =params[:id]
     comment = Comment.find_by_id(id)
     if !comment.nil?
-      comment.downvotes = comment.downvotes.to_s << current_user.id.to_s << ','
+      if comment.upvotes.to_s.index(current_user.id.to_s)
+        comment.upvotes = comment.upvotes.to_s.delete(current_user.id.to_s + ',')
+      elsif !comment.downvotes.to_s.index(current_user.id.to_s)
+        comment.downvotes = comment.downvotes.to_s + current_user.id.to_s + ','
+      else
+        render :text => "already"
+        return;  
+      end
       comment.save
       render :text => "down"
     else

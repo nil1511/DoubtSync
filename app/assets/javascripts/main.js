@@ -129,7 +129,7 @@ $(function(){
           else
           comment.children('.insertcomment').before(c);
           textarea.val('');
-      } 
+      }
     },"json");
   });
 
