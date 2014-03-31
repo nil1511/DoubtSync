@@ -5,7 +5,7 @@ class MainController < ApplicationController
   end
   # TODO add client side validation for Registeration and then login
   def feed
-  	@posts = Post.from_users_followed_by(current_user)  	
+  	@posts = Post.from_users_followed_by(current_user)
   end
   def user
   	key = params['search']

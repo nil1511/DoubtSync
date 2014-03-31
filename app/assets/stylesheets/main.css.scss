@@ -321,6 +321,7 @@ button.post.active .submerge {
   margin-top: 26px;
   font-weight: normal;
   font-size: small;
+  width: 24px;
   }
 
   .down{
@@ -349,4 +350,7 @@ button.post.active .submerge {
     right: 10px;
     bottom: 10px;
   }
+}
+.singlecomment{
+  position: relative;
 }

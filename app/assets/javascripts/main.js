@@ -101,14 +101,15 @@ $(function(){
     }
     console.log(post.data('pid'),$(this).prev().val());
     var data = {};
-    data.text = $(this).prev().val();
+    var textarea = $(this).prev();
+    data.text = textarea.val();
     data.post_id = post.data('pid');
     $.post('/comments',{ comment: JSON.stringify(data)},function(e){
       if(e==1){ 
           var c = 
           '<div class="singlecomment">\
           <div class="commentimage">\
-          <img alt="Anonymous" class="profilepic img-responsive" src="/images/original/anonymous.png">\
+          <img alt="Anonymous" class="profilepic img-responsive" src="/images/original/missing.png">\
           <span>me</span>\
           </div>\
           <div class="commenttext">\
@@ -120,8 +121,9 @@ $(function(){
           <p class="ctext">'+data.text+'</p>\
           </div>\
           </div>';
-          var comment = $('.singlecomment').after(c);
-      }
+          var comment = post.children('.comments').children('.singlecomment').last().after(c);
+          textarea.val('');
+      } 
     },"json");
   })
 

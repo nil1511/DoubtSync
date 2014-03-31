@@ -86,20 +86,22 @@
         </div>
         <!-- Comments -->
         <div class="comments">
-        <div class="singlecomment">
+        <% post.comments.each do |comment| %>
+        <div class="singlecomment"  data-cid="<%= comment.id %>">
           <div class="commentimage">
-          <%= image_tag('/images/original/anonymous.png',class: 'profilepic img-responsive') %>
-          <span>Aminfw</span>
+          <%= image_tag(comment.user.avatar.url,class: 'profilepic img-responsive') %>
+          <span><%= comment.user.username %></span>
           </div>
           <div class="commenttext">
           <div>
           <span class="up glyphicon glyphicon-circle-arrow-up"></span>
-          <span class="number">131</span>
+          <span class="number">0</span>
           <span class="down glyphicon glyphicon-circle-arrow-down"></span>
           </div>
-          <p class="ctext">Yeh hai comment tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p class="ctext"><%= comment.text %></p>
           </div>
           </div>
+          <% end %>
           <div class="insertcomment">
             <textarea class="writecomment"></textarea>
             <button class="commentpost">Post</button>
