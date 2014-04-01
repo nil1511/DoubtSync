@@ -1,9 +1,11 @@
 class BooksController < ApplicationController
+	skip_before_action :verify_authenticity_token
 	before_filter :authenticate_user!
 	
 	def new
 	  if user_signed_in? and params[:book]
-	  	data=ActiveSupport::JSON.decode(params[:book])
+	  	puts params[:book]
+	  	data=params[:book]
 		book = Book.new(:name => data['name'],:author => data['author'],
 			:edition => data['edition'],:description => data['description'],
 			:tags => data['tags'],:price => data['price'],:contact => data['contact'],

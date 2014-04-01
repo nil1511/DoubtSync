@@ -7,7 +7,7 @@ class CreateBooks < ActiveRecord::Migration
       t.text :description
       t.text :tags
       t.integer :price
-      t.integer :contact
+      t.string :contact
       t.integer :user_id
 
       t.timestamps

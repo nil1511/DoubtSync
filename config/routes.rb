@@ -43,7 +43,6 @@ Doubtsync::Application.routes.draw do
   post 'events/:id/edit' => 'events#edit'
   delete 'events/:id' => 'events#destroy'
 
-
   root 'home#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

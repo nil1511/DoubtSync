@@ -1,13 +1,15 @@
 class EventsController < ApplicationController
+	skip_before_action :verify_authenticity_token
 	before_filter :authenticate_user!
 
 	def new
-	  if user_signed_in? and params[:event]
-	  	data=ActiveSupport::JSON.decode(params[:event])
-		event = Event.new(:name => data['name'],:venue => data['venue']
-			,:duration => data['duration'],:description => data['description']
-			,:date => data['date'],:url => data['url']
-			,:college_id => current_user.college.id,:user_id => current_user.id)
+	  if user_signed_in? and params[:event]	  	
+	  	puts params[:event]
+	  	data=params[:event]
+		event = Event.new(:name => data['name'],:venue => data['venue'],
+			:duration => data['duration'],:description => data['description'],
+			:date => data['date'],:url => data['url'],
+			:college_id => current_user.college.id,:user_id => current_user.id)
 	  	event.save
 	  	current_user.events << event
 	  	render :text => 'suceeded'
