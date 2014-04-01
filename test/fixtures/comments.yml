@@ -3,14 +3,14 @@
 # Table name: comments
 #
 #  id                    :integer          not null, primary key
-#  text                  :string(255)
+#  text                  :text
 #  tagged_users          :text
 #  htags                 :text
 #  user_id               :integer
 #  post_id               :integer
 #  spamrate              :integer
-#  upvotes               :string(255)
-#  downvotes             :string(255)
+#  upvotes               :text
+#  downvotes             :text
 #  document_file_name    :string(255)
 #  document_content_type :string(255)
 #  document_file_size    :integer

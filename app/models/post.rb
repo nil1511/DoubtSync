@@ -3,14 +3,14 @@
 # Table name: posts
 #
 #  id                    :integer          not null, primary key
-#  text                  :string(255)
+#  text                  :text
 #  tagged_users          :text
 #  htags                 :text
 #  visibility_to_prof    :boolean
 #  spamrate              :integer
 #  user_id               :integer
-#  upvotes               :string(255)
-#  downvotes             :string(255)
+#  upvotes               :text
+#  downvotes             :text
 #  document_file_name    :string(255)
 #  document_content_type :string(255)
 #  document_file_size    :integer
