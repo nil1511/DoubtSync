@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	skip_before_action :verify_authenticity_token
+  before_filter :authenticate_user!
 
   # TODO Check Authentication while crud
   def index
@@ -9,8 +10,8 @@ class PostsController < ApplicationController
   def create
   	if user_signed_in? and params[:post]
 	  	data=ActiveSupport::JSON.decode(params[:post])
-      puts data;
-      puts data['text'];
+      # puts data;
+      # puts data['text'];
       #FIXME Added option to save tags and tag
       
       #,:htags => data['htags']

@@ -13,8 +13,6 @@ Doubtsync::Application.routes.draw do
   get "users/profile" => 'users#profile'
   get "users/:id" => 'users#index'
   
-  
-
   resources :users do
     member do
       get :following, :followers
@@ -27,15 +25,24 @@ Doubtsync::Application.routes.draw do
   devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
   resources :posts
   resources :relationships, only: [:create, :destroy]
-  # get 'register' => 'register#new', as: :register
   
-
   post 'comments' => 'comments#create'
   get 'comments/:id' => 'comments#index'
   post 'comments/:id/edit' => 'comments#edit'
   post 'comments/:id/up' => 'comments#upvote'
   post 'comments/:id/down' => 'comments#downvote'
   delete 'comments/:id' => 'comments#destroy'
+
+  post 'books' => 'books#new'
+  get 'books/:id' => 'books#show'
+  post 'books/:id/edit' => 'books#edit'
+  delete 'books/:id' => 'books#destroy'
+
+  post 'events' => 'events#new'
+  get 'events/:id' => 'events#show'
+  post 'events/:id/edit' => 'events#edit'
+  delete 'events/:id' => 'events#destroy'
+
 
   root 'home#index'
   

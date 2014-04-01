@@ -11,13 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326202556) do
+ActiveRecord::Schema.define(version: 20140401105101) do
 
   create_table "ambassador_registrations", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "authcode"
     t.string   "college_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "books", force: true do |t|
+    t.string   "name"
+    t.string   "author"
+    t.string   "edition"
+    t.text     "description"
+    t.text     "tags"
+    t.integer  "price"
+    t.integer  "contact"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +55,32 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "venue"
+    t.string   "duration"
+    t.datetime "date"
+    t.text     "description"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "url"
+    t.integer  "college_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "read"
+    t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -114,6 +153,13 @@ ActiveRecord::Schema.define(version: 20140326202556) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.text     "name"
+    t.text     "group"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,5 @@
 class AmbassadorController < ApplicationController
+  
   def proflist
   	#Todo show registration form
   	@proffile = nil;
