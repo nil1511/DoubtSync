@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :books, dependent: :destroy
+  has_many :events
+  has_many :notifications, dependent: :destroy
   
   belongs_to :college
   belongs_to :role
