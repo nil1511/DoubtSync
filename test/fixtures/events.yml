@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  photo: 
+  date: 2014-04-01 14:54:30
+  duration: MyString
+  college_id: 1
+  user_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  photo: 
+  date: 2014-04-01 14:54:30
+  duration: MyString
+  college_id: 1
+  user_id: 1
