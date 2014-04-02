@@ -52,16 +52,19 @@ $(function(){
 
     data.visibility_to_prof = !$('#anoncheckbox').prop('checked');
     data.tags = "";
+    data.htags = "";
       postarea.textntags('getTags', function(tags) {
         // data.tags = tags.id;
-        
+        // console.log(tags)
         for(a in tags){
-          console.log(tags[a].user_id);  
+          if (tags[a].type == 'user')
           data.tags += tags[a].user_id+','
+        else if (tags[a].type == 'topic')
+          data.htags += tags[a].id+','
         }
+
         if(data.tags.length>0)
         data.tags=data.tags.substring(0,data.tags.length-1);
-        console.log(data.tags);
         $.post('/posts',{ post: JSON.stringify(data)},function(e){
           if(e != 'invalid request'){
             var anon='';
@@ -95,6 +98,7 @@ $(function(){
           console.log(e);
         },"json");
         postarea.val('');
+        $('.textntags-beautifier').children('div').html('')
         $('#anoncheckbox').prop('checked',false);
     });
     
