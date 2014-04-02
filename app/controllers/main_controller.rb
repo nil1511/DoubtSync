@@ -15,8 +15,8 @@ class MainController < ApplicationController
   	key = params['search']
   	student = Student.where('first_name LIKE :s', s:'%'<<key<<'%')
   	professor = Professor.where('first_name LIKE :s', s:'%'<<key<<'%')
-  	@student = student.to_json(only: [:id,:first_name])
-  	@professor = professor.to_json(only: [:id,:first_name])
+  	@student = student.to_json(only: [:user_id,:first_name])
+  	@professor = professor.to_json(only: [:user_id,:first_name])
   	#FIXME Merge json
   	render :json => @student
   end

@@ -86,7 +86,18 @@
           <span class="delete glyphicon glyphicon-remove-circle"></span>
           <% end %>
           </div>
-          <p class="ptext"><%= post.text %></p>
+          <%
+          tags = post.tagged_users
+          tags = tags.split(',')
+          tags.each do |tag|
+            if tag.to_i ==0
+              next
+            end
+            student = Student.find_by_id(tag.to_i)
+            post.text[student.first_name.to_s] = '<a href="/users/'+student.user_id.to_s+'" target="_blank">'+student.first_name+'</a>' 
+          end
+          %>
+          <p class="ptext"><%= post.text.html_safe %></p>
         </div>
         <!-- Comments -->
         <div class="comments">

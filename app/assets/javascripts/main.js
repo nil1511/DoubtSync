@@ -35,12 +35,12 @@ $(function(){
         // data.tags = tags.id;
         
         for(a in tags){
-          console.log(tags[a].id);  
-          data.tags += tags[a].id+','
+          console.log(tags[a].user_id);  
+          data.tags += tags[a].user_id+','
         }
         if(data.tags.length>0)
         data.tags=data.tags.substring(0,data.tags.length-1);
-        // console.log(data.tags);
+        console.log(data.tags);
         $.post('/posts',{ post: JSON.stringify(data)},function(e){
           if(e != 'invalid request'){
             var anon='';
