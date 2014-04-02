@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401105101) do
+ActiveRecord::Schema.define(version: 20140402093811) do
 
   create_table "ambassador_registrations", force: true do |t|
     t.string   "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140401105101) do
     t.text     "description"
     t.text     "tags"
     t.integer  "price"
-    t.integer  "contact"
+    t.string   "contact"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(version: 20140401105101) do
     t.datetime "updated_at"
   end
 
+  create_table "followed_topics", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notifications", force: true do |t|
     t.string   "text"
     t.integer  "user_id"
@@ -118,6 +125,12 @@ ActiveRecord::Schema.define(version: 20140401105101) do
     t.date     "dob"
     t.integer  "spamrate"
     t.integer  "user_id"
+    t.text     "aoi"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.text     "topics_covered"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -153,6 +166,14 @@ ActiveRecord::Schema.define(version: 20140401105101) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
+    t.text     "aoi"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topic_posts", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

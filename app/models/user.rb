@@ -41,9 +41,11 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :books, dependent: :destroy
-  has_many :events
   has_many :notifications, dependent: :destroy
-  
+  has_many :events
+  has_many :followed_topics
+  has_many :topics, through: :followed_topics
+
   belongs_to :college
   belongs_to :role
 
@@ -104,5 +106,4 @@ class User < ActiveRecord::Base
       professor.save
     end
   end
-
 end

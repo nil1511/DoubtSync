@@ -8,6 +8,9 @@ class CreateProfessors < ActiveRecord::Migration
       t.date :dob
       t.integer :spamrate
       t.integer :user_id
+      t.text :aoi #Area of interest
+      t.attachment :resume
+      t.text :topics_covered #course taught
 
       t.timestamps
     end

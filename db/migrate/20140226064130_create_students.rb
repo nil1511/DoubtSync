@@ -11,6 +11,8 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :spamrate
       t.integer :user_id
       t.attachment :resume
+      t.text :aoi #Area of interest
+      
       t.timestamps
     end
   end

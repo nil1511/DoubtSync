@@ -10,6 +10,12 @@
 #
 
 class Topic < ActiveRecord::Base
-	belongs_to :user
 	validates :name, presence: true
+
+	has_many :topic_posts
+	has_many :posts, through: :topic_posts
+
+	has_many :followed_topics
+	has_many :users, through: :followed_topics
+	# belongs_to :user
 end
