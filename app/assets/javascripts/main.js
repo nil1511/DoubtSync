@@ -29,7 +29,7 @@ $(function(){
     data.text = postarea.val();
     // data.htags = $('.hashtag').text().split('#').slice(1).toString();
 
-    data.visibility_to_prof = $('#anoncheckbox').prop('checked');
+    data.visibility_to_prof = !$('#anoncheckbox').prop('checked');
     data.tags = "";
       postarea.textntags('getTags', function(tags) {
         // data.tags = tags.id;
