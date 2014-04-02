@@ -39,7 +39,7 @@
   display: none;
   background: #fff;
   border: 1px solid #b2b2b2;
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   z-index: 10000;
@@ -119,8 +119,8 @@
   width: 100%;
   font-family: Arial;
   font-size: 13px;
+  height: 150px;
   line-height: 17px;
-  min-height: 17px;
 }
 
 .textntags-wrapper .textntags-beautifier > div > strong {

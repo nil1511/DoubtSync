@@ -73,7 +73,7 @@
             tagHighlight      : ''
         }
     };
-    
+
     function transformObjectPropertiesFn(keys_map) {
         return function (obj, localToPublic) {
             var new_obj = {};
@@ -269,7 +269,7 @@
         
         function updateBeautifier () {
             elBeautifier.find('div').html(getBeautifiedText());
-            elEditor.css('height', elBeautifier.outerHeight() + 'px');
+            //elEditor.css('height', elBeautifier.outerHeight() + 'px');
         }
         
         function checkForTrigger(look_ahead) {
@@ -316,7 +316,7 @@
             editorSelectionLength = sEnd - sStart;
             editorTextLength = plain_text.length;
             editorKeyCode = e.keyCode;
-
+            
             switch (e.keyCode) {
                 case keys.UP:
                 case keys.DOWN:
@@ -565,8 +565,12 @@
                     selectTagListItem(tagItem, trigger.classes.tagActiveDropDown);
                 }
             });
-
-            elTagList.show();
+            var pos = $(editor).getCaretPosition();
+            elTagList.css('left',pos.left);
+            elTagList.css('top',pos.top - 150 + 7);
+            elTagList.show(0,function(){
+                elTagList.css('display','inline-block');
+            });
         }
         
         function searchTags (query, triggerChar) {
