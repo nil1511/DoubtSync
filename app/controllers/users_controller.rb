@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 			render :text => current_user.role.name
 		end
 	end
+	
 	def save
 		#TODO Check validation
 		#FIXME Dry
@@ -55,7 +56,6 @@ class UsersController < ApplicationController
 		else
 			render :text =>  "TODO"+current_user.role.name
 		end
-
 	end
 
 	def following

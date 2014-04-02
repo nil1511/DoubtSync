@@ -5,6 +5,10 @@ class MainController < ApplicationController
   end
   # TODO add client side validation for Registeration and then login
   def feed
+    if current_user.profile.first_name.to_s == ''
+
+      redirect_to '/users/manage'
+    end
   	@posts = Post.from_users_followed_by(current_user)
   end
   def user
