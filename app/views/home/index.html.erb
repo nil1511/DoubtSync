@@ -14,8 +14,8 @@
 	<div class="col-md-3 pull-right">
 	<%= form_for(:user, :url => session_path(:user), html: {role: 'form',id:'loginform' } ) do |f| %>
 	<div class="form-group">
-		<%= f.label :email %>
-	  	<%= f.email_field :email, class: 'form-control', placeholder: "Enter username",:autofocus=>true %>
+		<%= f.label :username %>
+	  	<%= f.text_field :username, class: 'form-control', placeholder: "Enter username",:autofocus=>true %>
 	</div>
 	<div class="form-group">	
 	<%= f.label :password %>
