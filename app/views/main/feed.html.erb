@@ -72,10 +72,10 @@
       <div class="col-md-7 singlepost" data-pid="<%= post.id %>">
         <div class="imagecontainer">
         <% if post.visibility_to_prof %>
-        <%= image_tag(post.user.avatar.url,class: 'profilepic img-responsive') %>
+        <%= image_tag(post.user.avatar.url,class: 'profilepic img-responsive',alt: post.user.username,title: post.user.profile.first_name << " " << post.user.profile.last_name) %>
         <span><%= post.user.username %></span>
         <% else %>
-        <%= image_tag('/images/original/anonymous.png',class: 'profilepic img-responsive') %>
+        <%= image_tag('/images/original/anonymous.png',class: 'profilepic img-responsive',alt: 'Anonymous',title: 'Anonymous') %>
         <span>Anonymous</span>
         <% end %>
         </div>
@@ -93,7 +93,7 @@
         <% post.comments.each do |comment| %>
         <div class="singlecomment"  data-cid="<%= comment.id %>">
           <div class="commentimage">
-          <%= image_tag(comment.user.avatar.url,class: 'profilepic img-responsive') %>
+          <%= image_tag(comment.user.avatar.url,class: 'profilepic img-responsive',alt: comment.user.username,title: comment.user.profile.first_name << " " << comment.user.profile.last_name) %>
           <span><%= comment.user.username %></span>
           </div>
           <div class="commenttext">
