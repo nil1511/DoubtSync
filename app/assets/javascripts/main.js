@@ -65,6 +65,7 @@ $(function(){
 
         if(data.tags.length>0)
         data.tags=data.tags.substring(0,data.tags.length-1);
+        data.htags=data.htags.substring(0,data.htags.length-1);
         $.post('/posts',{ post: JSON.stringify(data)},function(e){
           if(e != 'invalid request'){
             var anon='';

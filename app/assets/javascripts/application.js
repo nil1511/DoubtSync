@@ -16,6 +16,5 @@
 //= require modernizr
 //= require jquery.caretposition
 //= require jquery-textntags
-//= require turbolinks
 //= require bootstrap/bootstrap.min
 //= require_tree .

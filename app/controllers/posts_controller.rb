@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 	skip_before_action :verify_authenticity_token
   before_filter :authenticate_user!
-
   # TODO Check Authentication while crud
   def index
     render :json => Post.from_users_followed_by(current_user)
@@ -9,11 +8,12 @@ class PostsController < ApplicationController
 
   def create
   	if user_signed_in? and params[:post]
-	  	data=ActiveSupport::JSON.decode(params[:post])
+	  	data=params[:post]
 	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)
 	  	post.save
 	  	current_user.posts << post
-      #TODO add resque job to send notification and add to topic
+      Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id,post.tagged_users,post.htags))
+
 	  	render :text => post.id
 
   	else
