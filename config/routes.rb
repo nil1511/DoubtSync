@@ -23,6 +23,7 @@ Doubtsync::Application.routes.draw do
   get 'main/user' => 'main#user'
 
   devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
+   
   resources :posts
   resources :relationships, only: [:create, :destroy]
   
