@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 	  	post.save
 	  	current_user.posts << post
       
-	  	render :text => current_user.id
+	  	render :text => post.id
 
   	else
   		render :text =>"invalid request"

@@ -42,7 +42,35 @@ $(function(){
         data.tags=data.tags.substring(0,data.tags.length-1);
         // console.log(data.tags);
         $.post('/posts',{ post: JSON.stringify(data)},function(e){
-          console.log(JSON.stringify(data));
+          if(e != 'invalid request'){
+            var anon='';
+            if(data.visibility_to_prof){
+              anon = '<img alt="me" class="profilepic img-responsive" src="/images/original/missing.png" title="Anonymous">\
+        <span>me</span>';
+            }else{
+              anon = '<img alt="Anonymous" class="profilepic img-responsive" src="/images/original/anonymous.png" title="Anonymous">\
+        <span>Anonymous</span>';
+            }
+            var p ='<div class="col-md-7 singlepost" data-pid="'+e+'">\
+        <div class="imagecontainer">'+
+        anon
+        +'</div>\
+        <div class="posttext">\
+          <div>\
+          <span class="view glyphicon glyphicon-plus-sign"></span>\
+          <span class="delete glyphicon glyphicon-remove-circle"></span>\
+          </div>\
+          <p class="ptext">'+data.text+'</p>\
+        </div>\
+        <div class="comments" style="display: none;">\
+          <div class="insertcomment">\
+            <textarea class="writecomment"></textarea>\
+            <button class="commentpost">Post</button>\
+          </div>\
+        </div>\
+      </div>';
+       $('#posts').prepend(p);
+          }
           console.log(e);
         },"json");
         postarea.val('');

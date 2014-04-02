@@ -6,7 +6,7 @@ $('#updateprofile').on('click',function (e) {
 	if($('#first_name').val().trim()==""){
 		$('#first_name').parent().parent('.form-group').addClass('has-error');
 		button = false;
-	}:w
+	}
 	else
 		$('#first_name').parent().parent('.form-group').removeClass('has-error');
 	
