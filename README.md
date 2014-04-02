@@ -1,45 +1,18 @@
-Sen-Proj
-========
+#DoubtSync
 
 
-Intercollege Education Portal for professor and student.
+##Intercollege Education Portal for professor and student.
+
+
 To run this you will need mysql2 
 
-Tasks on the ways (rake notes)
+rename database.yml.sample to database.yml
 
-app/controllers/colleges_controller.rb:
-  * [ 9] [TODO] create a job of creating registration link
-  * [17] [TODO] Check may be a bugs as we are not storing college name
 
-app/controllers/comments_controller.rb:
-  * [ 4] [TODO] Check Authentication while crud
-  * [28] [TODO] use function
-  * [39] [TODO] Modularized functions DRY Code
+run these command to setup
 
-app/controllers/main_controller.rb:
-  * [ 7] [FIXME] Check header's nav bar on corresponding erb
-
-app/controllers/posts_controller.rb:
-  * [ 4] [TODO] Check Authentication while crud
-  * [13] [FIXME] Added option to save tags and tag
-  * [31] [TODO] Edit a post
-  * [35] [TODO] Delete a post
-
-app/controllers/registers_controller.rb:
-  * [ 4] [TODO] Sort array according to name of college
-
-app/controllers/users_controller.rb:
-  * [ 3] [TODO] make sure user does not register with reserved keyword
-  * [ 4] [TODO] Validation for profile form
-  * [10] [TODO] 404 pages here
-  * [14] [TODO] Show his details
-  * [19] [TODO] 404 pages here
-  * [22] [TODO] Show his details
-  * [38] [TODO] Check validation
-  * [39] [FIXME] Dry
-  * [84] [TODO] Implement a proper page
-  * [91] [TODO] Profile page for professor
-  * [94] [TODO] Profile page for ambassador
-
-app/models/user.rb:
-  * [24] [FIXME] link to student or professor
+`bundle install`
+`rake db:create`
+`rake db:migrate`
+`rake db:seed`
+`rails s`
