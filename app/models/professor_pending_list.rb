@@ -11,4 +11,8 @@
 #
 
 class ProfessorPendingList < ActiveRecord::Base
+	validates :email, presence: true
+	validates :college_id, presence: true
+	validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+	#validates :name, presence: true
 end

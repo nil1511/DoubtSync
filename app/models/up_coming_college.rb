@@ -10,4 +10,14 @@
 #
 
 class UpComingCollege < ActiveRecord::Base
+
+  validates :name, presence: true,
+  :uniqueness => {:case_sensitive => false}
+
+  validates :email, presence: true, 
+  :uniqueness => {:case_sensitive => false}
+  
+  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  
+
 end
