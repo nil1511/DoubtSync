@@ -2,17 +2,38 @@ $(function(){
   $('.comments').hide();
   var ajax_request = false;
   $('textarea.postarea').textntags({
+     triggers: {
+      '#': {
+            uniqueTags   : false,
+            syntax       : _.template('#[<%= id %>:<%= type %>:<%= title %>]'),
+            parser       : /(#)\[(\d+):([\w\s\.\-]+):([\w\s@\.,-\/#!$%\^&\*;:{}=\-_`~()]+)\]/gi,
+            parserGroups : {id: 2, type: 3, title: 4},
+        }},
       onDataRequest:function (mode, query, triggerChar, callback) {
           // fix for overlapping requests
           if(ajax_request) ajax_request.abort();
+
+          if(triggerChar == '@')
           ajax_request = $.getJSON('user?search='+query, function(responseData) {
               query = query.toLowerCase();
-              responseData = _.filter(responseData, function(item) {item.type ='contact'; 
-                return item.first_name.toLowerCase().indexOf(query) > -1; });
+              responseData = _.filter(responseData, function(item) {
+                item.type ='user';
+                item.name = item.first_name;
+                item.id = item.user_id;
+                return item.name.toLowerCase().indexOf(query) > -1; });
               callback.call(this, responseData);
               ajax_request = false;
           });
-
+          else
+          ajax_request = $.getJSON('topic?search='+query, function(responseData) {
+              query = query.toLowerCase();
+              responseData = _.filter(responseData, function(item) {
+                item.type ='topic';
+                return item.name.toLowerCase().indexOf(query) > -1; 
+              });
+              callback.call(this, responseData);
+              ajax_request = false;
+          });
       }
   });
 

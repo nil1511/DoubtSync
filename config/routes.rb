@@ -21,6 +21,7 @@ Doubtsync::Application.routes.draw do
   get "main/index"
   get "main/feed"
   get 'main/user' => 'main#user'
+  get 'main/topic' => 'main#topic'
 
   devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
    

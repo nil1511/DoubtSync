@@ -20,4 +20,12 @@ class MainController < ApplicationController
   	#FIXME Merge json
   	render :json => @student
   end
+
+  def topic
+    key = params['search']
+    topic = Topic.where('name LIKE :s', s:'%'<<key<<'%')
+    @topic = topic.to_json(only: [:id,:name])
+    
+    render :json => @topic
+  end
 end

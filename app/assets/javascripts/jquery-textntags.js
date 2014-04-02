@@ -63,7 +63,7 @@
         minChars        : 2,
         uniqueTags      : true,
         showImageOrIcon : true,
-        keys_map        : {id: 'user_id', title: 'first_name', description: '', img: 'avatar', no_img_class: 'icon', type: 'type'},
+        keys_map        : {id: 'id', title: 'name', description: '', img: 'avatar', no_img_class: 'icon', type: 'type'},
         syntax          : _.template('@[[<%= id %>:<%= type %>:<%= title %>]]'),
         parser          : /(@)\[\[(\d+):([\w\s\.\-]+):([\w\s@\.,-\/#!$%\^&\*;:{}=\-_`~()]+)\]\]/gi,
         parserGroups    : {id: 2, type: 3, title: 4},
