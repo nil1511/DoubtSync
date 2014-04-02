@@ -50,6 +50,9 @@ class UsersController < ApplicationController
 				student.update(:first_name => params['first_name'],:last_name => params['last_name'],
 					:degree => params['degree'],:graduate_year => params['graduate'],:gender => gender,
 					:dob => dob['dob'],:mobile => mobile['phone'])
+				student.user.avatar = params['user']['avatar'];
+				a= student.user.save
+				puts a
 				student.save
 				redirect_to '/users/profile'
 			# end
