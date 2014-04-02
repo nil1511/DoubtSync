@@ -1,5 +1,6 @@
 $(function(){
-	$('.btn.login').on('click',function (event) {
+	$('#loginform .btn.login').on('click',function (event) {
+
 		if($('#user_email').val()==''){
 			$('#user_email').parent('.form-group').addClass('has-error')
 			return false;
