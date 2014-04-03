@@ -11,6 +11,7 @@ class CollegesController < ApplicationController
   	authcode = Digest::SHA1.hexdigest(Time.now.to_f.to_s)
   	#Fixme use find instead for ambassador instead of value i.e. 3
   	register = AmbassadorRegistration.create(:email => email, :authcode => authcode, :college_name => college_name);
+    
   	message = URI.encode(college.id.to_s << '?email=' << email << '&authcode=' << authcode)
   	render :text => "We will contact you via email " << message.to_s
   end

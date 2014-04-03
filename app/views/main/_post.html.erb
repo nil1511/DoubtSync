@@ -14,7 +14,7 @@
   %>
 <div class="col-md-8 singlepost well" data-pid="<%= post.id %>">
 <div class="media">
-  <a class="pull-left" href="#">
+  <a class="pull-left" href="/users/<%= post.user.id %>">
         <% if post.visibility_to_prof 
             name = post.user.name;
             %>
@@ -38,13 +38,12 @@
 
 <div class="panel-footer" style="background-color:#FFFFFF">
 <div class="media" data-pid="<%= post.id %>">
-  <a class="pull-left" href="#">
+  <a class="pull-left" href="/users/<%= post.user.id %>">
 
     <%= image_tag(current_user.avatar.url(:thumb),class: 'profilepic img-responsive media-object',alt: current_user.name,title: current_user.name,style: "width:40px; height:40px;") %>
   </a>
   <div class="media-body">
          <input type="text" class="form-control" id="info" placeholder="Enter Comment">
-    
         
         <button type="submit" class="btn btn-info commentpost" style="float:right; margin-top:10px">Submit</button>
          <div class="form-group">

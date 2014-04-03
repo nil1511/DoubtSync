@@ -63,17 +63,31 @@ class UsersController < ApplicationController
 	end
 
 	def following
-	    @title = "Following"
-	    @user = User.find(params[:id])
-	    @users = @user.followed_users.paginate(page: params[:page])
-	    render 'show_follow'
+	    #@title = "Following"
+	    user = User.find(params[:id])
+	    @users = user.followed_users
+	    
+	    @userlist = @users.map do |u|
+  		{ :id => u.id, 
+  		  :name => u.name, 
+  		  :photo => u.avatar.url(:thumb), 
+  		  :username => u.username }
+  		end
+
+	    render :json => @userlist
 	end
 
   	def followers
 	    @title = "Followers"
 	    @user = User.find(params[:id])
-	    @users = @user.followers.paginate(page: params[:page])
-	    render 'show_follow'
+	    @users = @user.followers
+	    @userlist = @users.map do |u|
+  		{ :id => u.id, 
+  		  :name => u.name, 
+  		  :photo => u.avatar.url(:thumb), 
+  		  :username => u.username }
+  		end
+	   	render :json => @userlist
   	end
 
   	def profile

@@ -8,8 +8,8 @@ class PostsController < ApplicationController
 
   def create
   	if user_signed_in? and params[:post]
-	  	data=params[:post]
-	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)
+	  	data=ActiveSupport::JSON.decode(params[:post])
+	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)      
 	  	post.save
 	  	current_user.posts << post
       Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id,post.tagged_users,post.htags))

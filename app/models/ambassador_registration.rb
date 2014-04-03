@@ -12,7 +12,6 @@
 #
 
 class AmbassadorRegistration < ActiveRecord::Base
-	validates :name, presence: true
 	validates :email, presence: true
 	validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 	validates :authcode, presence: true
