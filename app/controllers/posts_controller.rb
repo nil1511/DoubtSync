@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'])      
 	  	post.save
 	  	current_user.posts << post
-      Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id,post.text,post.tagged_users,post.htags))
+      Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id))
 
 	  	render :text => post.id
 
