@@ -49,6 +49,8 @@ class CommentsController < ApplicationController
       comment.spam = comment.spam.to_s + current_user.id.to_s + ','
 
       if(comment.spam.to_s.count(',')==5)
+        comment.user.profile.spamrate = comment.user.profile.spamrate.to_i+ 1 
+        comment.user.save
         comment.destroy
       else
       comment.save

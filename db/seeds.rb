@@ -44,3 +44,9 @@ User.create(:email => 'ptest2@daiict.ac.in', :password => 'qwerqwer',
       :password_confirmation => 'qwerqwer', :role_id => 2,
       :username => 'ptest2', :college_id => 1);
 puts 'Added professor'
+
+puts 'Adding Topics'
+['Soft Engineering','Coding Thoery','Basic Electronic Circuits','Calculus and Complex Variables','Communication Skills','ICT for Freshers','Introduction to Programming'].each do |topic|
+  Topic.find_or_create_by_name topic
+end
+puts 'Added Topics'

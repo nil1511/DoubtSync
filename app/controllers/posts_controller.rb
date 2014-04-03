@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'])      
 	  	post.save
 	  	current_user.posts << post
-      Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id,post.tagged_users,post.htags))
+      Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id,post.text,post.tagged_users,post.htags))
 
 	  	render :text => post.id
 
@@ -35,7 +35,10 @@ class PostsController < ApplicationController
       end
       post.spam = post.spam.to_s + current_user.id.to_s + ','
       if (post.spam.to_s.count(',')==5)
+        post.user.profile.spamrate =post.user.profile.spamrate.to_i+ 1 
+        post.user.save
         post.destroy
+
       else
       post.save
       end
