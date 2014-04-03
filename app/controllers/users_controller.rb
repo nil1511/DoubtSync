@@ -92,10 +92,12 @@ class UsersController < ApplicationController
 			end
 		elsif @user.role.name.eql? "professor"
 			#TODO Profile page for professor
-			render :text => "professor profile comming soon"
+		 	render :text => "professor profile comming soon"
+		 	
 		elsif @user.role.name.eql? "ambassador"
-			#TODO Profile page for ambassador
-			render :text => "ambassador profile comming soon"
+			# TODO create new page using partial views
+			@student = @user.profile
+			render 'index'
 		end
 	end
 end

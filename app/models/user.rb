@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   end
   
   def profile
-    if self.role.name=='student'
+    if self.role.name=='student' or self.role.name=='ambassador'
       Student.find_by(user_id: self.id)
     elsif self.role.name=='professor'
       Professor.find_by(user_id: self.id)
