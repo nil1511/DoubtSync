@@ -3,16 +3,24 @@ class BooksController < ApplicationController
 	before_filter :authenticate_user!
 	
 	def new
-	  if user_signed_in? and params[:book]
-	  	puts params[:book]
-	  	data=params[:book]
-		book = Book.new(:name => data['name'],:author => data['author'],
-			:edition => data['edition'],:description => data['description'],
-			:tags => data['tags'],:price => data['price'],:contact => data['contact'],
+	  if user_signed_in? and params['name']
+
+	  	# puts params[:book]
+	  	# data=params[:book]
+		# book = Book.new(:name => data['name'],:author => data['author'],
+		# 	:edition => data['edition'],:description => data['description'],
+		# 	:tags => data['tags'],:price => data['price'],:contact => data['contact'],
+		# 	:user_id => current_user.id)
+
+		book = Book.new(:name => params['name'],:author => params['author'],
+			:edition => params['edition'],:description => params['description'],
+			:tags => params['tags'],:price => params['price'],:contact => params['contact'],
 			:user_id => current_user.id)
 	  	book.save
 	  	current_user.books << book
-	  	render :text => 'suceeded'
+	  	#render :text => 'suceeded'
+	  	redirect_to '/'
+
 	  else
 	  	render :text => 'failed'
 	  end

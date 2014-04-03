@@ -21,24 +21,28 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
 	    <li class="active"><a href="/main/feed#post">Posts</a></li>
-		<li><a href="#" title="Coming Soon">Books</a></li>
-		<li><a href="#" title="Coming Soon">Events</a></li>
+		<li><a href="/main/feed#books" title="Coming Soon">Books</a></li>
+		<li><a href="/main/feed#events" title="Coming Soon">Events</a></li>
     <li style="position:absolute;right:0;"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       </ul>
     </div>
 </div>
 </nav>
 <div class="container-fuild">
-  <div class="row">
+  <div style="position: relative;display: inline-block;">
   <div class="col-md-2">
     <!-- left sidebar -->
-    <ul>
+    <ul class="rightside">
       <li>
         <a href="/users/<%= current_user.id%>">My Profile</a>
       </li>
+      <li>
+        <button id="addbook" class="btn" data-toggle='modal' data-target='#newbook'>Advertise a Book</button>
+      </li>
     </ul>
   </div>
-	
+	<!-- New Book Form -->
+  <%= render 'add_book_model' %>
 
   <div class="col-md-8">
   <!-- central area -->
@@ -48,7 +52,6 @@
       <div class="anon">
       <input type="checkbox" id="anoncheckbox">Anonymous
       </div>
-
         <textarea class="postarea" id="posta"></textarea>
       </div>
       <div id="newpost" class="col-md-4">
