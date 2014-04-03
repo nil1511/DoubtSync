@@ -1,0 +1,38 @@
+  <div class="panel-footer" style="background-color:#F9F9F9">
+  <li class="media">
+    <a class="pull-left" href="#">
+    <%= image_tag(comment.user.avatar.url(:thumb),class: 'commentimg img-responsive',alt: comment.user.name,title: comment.user.name) %>
+    </a>
+    <div class="media-body">
+   <ul class="nav nav-pills nav-stacked" style="float:right" data-cid="<%= comment.id %>">
+     <li>
+     <button type="button" class="up btn btn-success btn-sm">
+     <span class="glyphicon glyphicon-thumbs-up"></span>
+     </button>
+     </li>
+     <li class="number">
+     <% 
+          up = comment.upvotes.to_s.count(',');
+          down = comment.downvotes.to_s.count(','); 
+          %>
+          <% if up > down %>
+          +<%= up - down %>
+          <% elsif up < down %>
+          -<%= down - up %>
+          <% else %>
+          0
+          <% end %>
+     </li>
+     <li>
+     <button type="button" class="down btn btn-danger btn-sm">
+      <span class="glyphicon glyphicon-thumbs-down"></span>
+     </button>
+     </li>
+  </ul>
+  <button type="button" class="btn btn-default btn-xs disabled" style="float:right; margin-right:10px">Mark as spam</button>
+  
+      <h5 class="media-heading" style="color:#00557D"><%= comment.user.name %></h5>
+    <p><%= comment.text %></p>
+    </div>
+  </li>
+  </div>

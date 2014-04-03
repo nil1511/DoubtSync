@@ -1,0 +1,76 @@
+<% @posts.each do |post| %>
+  <%
+      tags = post.tagged_users.to_s
+      tags = tags.split(',')
+      tags.each do |tag|
+        if tag.to_i ==0
+          next
+        end
+        student = Student.find_by_id(tag.to_i)
+        if post.text.include? student.first_name.to_s
+        post.text[student.first_name.to_s] = '<a href="/users/'+student.user_id.to_s+'" target="_blank">'+student.first_name+'</a>' 
+        end
+      end
+  %>
+<div class="col-md-8 singlepost well" data-pid="<%= post.id %>">
+<div class="media">
+  <a class="pull-left" href="#">
+        <% if post.visibility_to_prof 
+            name = post.user.name;
+            %>
+        <%= image_tag(post.user.avatar.url(:thumb),class: 'profilepic img-responsive media-object',alt: name,title: name) %>
+        <% else 
+        name = 'Anonymous';
+        %>
+        <%= image_tag('/images/thumb/anonymous.png',class: 'profilepic img-responsive media-object',alt: name,title: name ) %>
+        <% end %>
+  </a>
+  
+  <div class="media-body">
+    <button type="button" class="btn btn-warning btn-sm" style="float:right">Spam</button>
+    <h4 class="media-heading" style="color:#00557D"><%= name %></h4>
+  <p><%= post.text.html_safe %>
+  </p>
+  </div>
+  
+</div>
+
+
+<div class="panel-footer" style="background-color:#FFFFFF">
+<div class="media" data-pid="<%= post.id %>">
+  <a class="pull-left" href="#">
+
+    <%= image_tag(current_user.avatar.url(:thumb),class: 'profilepic img-responsive media-object',alt: current_user.name,title: current_user.name,style: "width:40px; height:40px;") %>
+  </a>
+  <div class="media-body">
+         <input type="text" class="form-control" id="info" placeholder="Enter Comment">
+    
+        
+        <button type="submit" class="btn btn-info commentpost" style="float:right; margin-top:10px">Submit</button>
+         <div class="form-group">
+    <label for="exampleInputFile" style="margin-top:5px">File input</label>
+    <input type="file" id="exampleInputFile">
+   
+  </div>
+  
+        
+  </div>
+</div>
+
+</div>
+
+
+<!--Comment Thread List-->
+
+
+<br>
+<button type="button" class="btn btn-info disabled">View Previous Messages</button>
+
+<ul class="media-list">
+<br>
+<% post.comments.each do |comment| %>
+<%= render 'comment', comment: comment %>
+<% end %>  
+</ul>
+</div>
+<% end %>

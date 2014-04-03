@@ -1,33 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
-<div class="container">
-<div class="navbar-header">
-   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-       <a class="navbar-brand" href="/">DoubtSync</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-	    <li class="active"><a href="/main/feed#post">Posts</a></li>
-		<li><a href="/main/feed#books" title="Coming Soon">Books</a></li>
-		<li><a href="/main/feed#events" title="Coming Soon">Events</a></li>
-    <li style="position:absolute;right:0;"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-      </ul>
-    </div>
-</div>
-</nav>
+<%= render 'shared/header' %>
 <div class="container-fuild">
   <div style="position: relative;display: inline-block;">
   <div class="col-md-2">
@@ -47,6 +18,7 @@
   <div class="col-md-8">
   <!-- central area -->
     <div class="row">
+
 	   <div id="newpost" class="col-md-8">
       <!-- new post -->
       <div class="anon">
@@ -54,7 +26,8 @@
       </div>
         <textarea class="postarea" id="posta"></textarea>
       </div>
-      <div id="newpost" class="col-md-4">
+
+      <div id="newpostbutton" class="col-md-4">
     	<button class="post">
         <img class="splash" src="/assets/watersplash_3.svg" alt="Splash!" />
         <img class="splash splash-2" src="/assets/watersplash_3.svg" alt="Splash!" />
@@ -72,120 +45,7 @@
     
     <br >
     <div id='posts'>
-      <% @posts.each do |post| %>
-      <%
-          tags = post.tagged_users.to_s
-          tags = tags.split(',')
-          tags.each do |tag|
-            if tag.to_i ==0
-              next
-            end
-            student = Student.find_by_id(tag.to_i)
-            if post.text.include? student.first_name.to_s
-            post.text[student.first_name.to_s] = '<a href="/users/'+student.user_id.to_s+'" target="_blank">'+student.first_name+'</a>' 
-            end
-          end
-      %>
-  <div class="col-md-8 singlepost well" data-pid="<%= post.id %>">
-<div class="media">
-  <a class="pull-left" href="#">
-        <% if post.visibility_to_prof 
-            name = post.user.name;
-            %>
-        <%= image_tag(post.user.avatar.url(:thumb),class: 'profilepic img-responsive media-object',alt: name,title: name) %>
-        <% else 
-        name = 'Anonymous';
-        %>
-        <%= image_tag('/images/thumb/anonymous.png',class: 'profilepic img-responsive media-object',alt: name,title: name ) %>
-        <% end %>
-  </a>
-  
-  <div class="media-body">
-    <button type="button" class="btn btn-warning btn-sm" style="float:right">Spam</button>
-    <h4 class="media-heading" style="color:#00557D"><%= name %></h4>
-  <p><%= post.text.html_safe %>
-  </p>
-  </div>
-  
-</div>
-
-
-<div class="panel-footer" style="background-color:#FFFFFF">
-<div class="media" data-pid="<%= post.id %>">
-  <a class="pull-left" href="#">
-
-    <%= image_tag(current_user.avatar.url(:thumb),class: 'profilepic img-responsive media-object',alt: current_user.name,title: current_user.name,style: "width:40px; height:40px;") %>
-  </a>
-  <div class="media-body">
-         <input type="text" class="form-control" id="info" placeholder="Enter Comment">
-    
-        
-        <button type="submit" class="btn btn-info commentpost" style="float:right; margin-top:10px">Submit</button>
-         <div class="form-group">
-    <label for="exampleInputFile" style="margin-top:5px">File input</label>
-    <input type="file" id="exampleInputFile">
-   
-  </div>
-  
-        
-  </div>
-</div>
-
-</div>
-
-
-<!--Comment Thread List-->
-
-
-<br>
-<button type="button" class="btn btn-info disabled">View Previous Messages</button>
-
-<ul class="media-list">
-<br>
-<% post.comments.each do |comment| %>
-  <div class="panel-footer" style="background-color:#F9F9F9">
-  <li class="media">
-    <a class="pull-left" href="#">
-    <%= image_tag(comment.user.avatar.url(:thumb),class: 'commentimg img-responsive',alt: comment.user.name,title: comment.user.name) %>
-    </a>
-    <div class="media-body">
-   <ul class="nav nav-pills nav-stacked" style="float:right" data-cid="<%= comment.id %>">
-     <li>
-     <button type="button" class="up btn btn-success btn-sm">
-     <span class="glyphicon glyphicon-thumbs-up"></span>
-     </button>
-     </li>
-     <li class="number">
-     <% 
-          up = comment.upvotes.to_s.count(',');
-          down = comment.downvotes.to_s.count(','); 
-          %>
-          <% if up > down %>
-          +<%= up - down %>
-          <% elsif up < down %>
-          -<%= down - up %>
-          <% else %>
-          0
-          <% end %>
-     </li>
-     <li>
-     <button type="button" class="down btn btn-danger btn-sm">
-      <span class="glyphicon glyphicon-thumbs-down"></span>
-     </button>
-     </li>
-  </ul>
-  <button type="button" class="btn btn-default btn-xs disabled" style="float:right; margin-right:10px">Mark as spam</button>
-  
-      <h5 class="media-heading" style="color:#00557D"><%= comment.user.name %></h5>
-    <p><%= comment.text %></p>
-    </div>
-  </li>
-  </div>
-  <% end %>
-  
-</ul>
-</div>
-      <% end %>
+    <%= render 'post' %>
     </div>
   </div>
 	
