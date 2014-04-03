@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author
       t.string :edition
       t.text :description
+      t.attachment :photo
       t.text :tags
       t.integer :price
       t.string :contact

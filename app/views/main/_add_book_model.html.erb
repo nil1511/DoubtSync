@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="newBookForm">Add New Book</h4>
       </div>
       <div class="modal-body">
-        <%= form_tag '/books', role: 'form' ,class:'form-horizontal' do %>
+        <%= form_tag '/books', role: 'form' ,class:'form-horizontal',multipart: true do %>
 
     <div class="form-group">
       <%= label_tag(:name, "Name" , class: 'col-sm-4 control-label') %>
@@ -29,6 +29,13 @@
     </div>
     </div>
     
+    <div class="form-group">
+      <%= label_tag(:photo, "Photo" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= file_field(:book, :photo, accept:'image/png,image/jpeg') %>
+    </div>
+    </div>
+
     <div class="form-group">
       <%= label_tag(:description, "Description" ,class: 'col-sm-4 control-label') %>
     <div class="col-sm-8">
