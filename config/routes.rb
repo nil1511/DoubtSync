@@ -41,7 +41,7 @@ Doubtsync::Application.routes.draw do
   delete 'books/:id' => 'books#destroy'
 
   post 'events' => 'events#new'
-  get 'events/:id' => 'events#show'
+  get 'events/:date' => 'events#show'
   post 'events/:id/edit' => 'events#edit'
   delete 'events/:id' => 'events#destroy'
 

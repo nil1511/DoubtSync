@@ -13,17 +13,18 @@ class EventsController < ApplicationController
 			event.photo = params['event']['photo'];
 	  	event.save
 	  	current_user.events << event
-	  	render :text => 'suceeded'
+	  	redirect_to '/'
+	  	#render :text => 'suceeded'
 	  else
 	  	render :text => 'failed'
 	  end
 	end
 
 	def show
-		id =params[:id]
-	    event = Event.find_by_id(id)
+		date =params[:date]
+	    event = Event.where('date like :d',d:'%'+date+'%')
 	    if !event.nil?
-	      render :json => event
+	      render :json => event.to_json(only: [:name,:description,:id])
 	    else
 	      render :text => "invalid request | event does not exit"
 	    end

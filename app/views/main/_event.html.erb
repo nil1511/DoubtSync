@@ -6,23 +6,31 @@
 			isStripped:false,
 			target:"calander",
 			cellColorScheme:"beige"
-			/*selectedDate:{				This is an example of what the full configuration offers.
-				day:5,						For full documentation about these settings please see the full version of the code.
-				month:9,
-				year:2006
-			},
-			yearsRange:[1978,2020],
-			limitToToday:false,
-			dateFormat:"%m-%d-%Y",
-			imgPath:"img/",
-			weekStartDay:1*/
 		});
 		
 		g_globalObject2.setOnSelectedDelegate(function(){
 			var obj = g_globalObject2.getSelectedDay();
-			alert("a date was just selected and the date is : " + obj.day + "/" + obj.month + "/" + obj.year);
-			//document.getElementById("div3_example_result").innerHTML = obj.day + "/" + obj.month + "/" + obj.year;
-		});		
+			var m = obj.month;
+			var d = obj.day;
+			if (obj.month < 10)
+				m='0'+obj.month
+			if (obj.day < 10)
+				d='0'+obj.day
+			console.log('/events/'+obj.year+'-'+m+'-'+d);
+			$.get('/events/'+obj.year+'-'+m+'-'+d,function(e){
+				$('#events').html('');
+
+				for(a in e){
+				var event = '<div class="panel-footer" data-event="'+e[a].id+'" style="background-color:#FFFFFF">\
+   <h5 style="color:#005E8A">'+e[a].name+'</h5>\
+   <h6>'+e[a].description+'</h6>\
+   </div>';
+   $('#events').append(event);
+				}
+				
+			});
+			console.log("a date was just selected and the date is : " + obj.day + "/" + obj.month + "/" + obj.year);
+		});
 		
 	};
 </script>
@@ -34,17 +42,13 @@
   <div id="calander" style="margin:10px 0 10px 0; height:200px;">
   </div>
   <!-- Event List which opens when clicked some date in callender -->
-   <div class="panel-footer" style="background-color:#FFFFFF">
+  <div id="events">
+  <!-- 	<div class="panel-footer" style="background-color:#FFFFFF">
    <h5 style="color:#005E8A">Event Name</h5>
    <h6> event description </h6>
     <button type="submit" class="btn btn-success btn-xs">Going</button>
-	 <button type="submit" class="btn btn-danger btn-xs"> Not Going</button>
+	 <button type="submit" class="btn btn-danger btn-xs"> Not Going</button> 
+   </div>  -->
    </div>
-  	<div class="panel-footer" style="background-color:#FFFFFF">
-   <h5 style="color:#005E8A">Event Name</h5>
-   <h6> event description </h6>
-    <button type="submit" class="btn btn-success btn-xs">Going</button>
-	 <button type="submit" class="btn btn-danger btn-xs"> Not Going</button>
-   </div> 
   
 </div>
