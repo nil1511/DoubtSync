@@ -3,7 +3,7 @@ class MainController < ApplicationController
   def index
   	redirect_to :action => 'feed'
   end
-  # TODO add client side validation for Registeration and then login
+  #TODO add client side validation for Registeration and then login
   def feed
     if current_user.profile.first_name.to_s == ''
       redirect_to '/users/manage'
@@ -15,12 +15,22 @@ class MainController < ApplicationController
   	key = params['search']
   	student = Student.where('first_name LIKE :s', s:'%'<<key<<'%')
   	professor = Professor.where('first_name LIKE :s', s:'%'<<key<<'%')
-  	@student = student.to_json(only: [:user_id,:first_name])
-  	@professor = professor.to_json(only: [:user_id,:first_name])
-  	#FIXME Merge json
-  	render :json => @student
+  	@userlist = student.map do |u|
+    { :id => u.user_id, 
+      :name => u.first_name, 
+    }
+    end
+    
+    @userlist += professor.map do |u|
+    { :id => u.user_id, 
+      :name => u.first_name, 
+    }
+    end
+  	
+    render :json => @userlist
+
   end
-  
+
   def topic
     key = params['search']
     topic = Topic.where('name LIKE :s', s:'%'<<key<<'%')

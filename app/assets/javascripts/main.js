@@ -18,8 +18,6 @@ $(function(){
               query = query.toLowerCase();
               responseData = _.filter(responseData, function(item) {
                 item.type ='user';
-                item.name = item.first_name;
-                item.id = item.user_id;
                 return item.name.toLowerCase().indexOf(query) > -1; });
               callback.call(this, responseData);
               ajax_request = false;
