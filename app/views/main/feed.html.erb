@@ -3,7 +3,7 @@
   <div style="position: relative;display: inline-block;">
   <div class="col-md-2">
     <!-- left sidebar -->
-    <ul class="rightside">
+    <ul class="leftside">
       <li>
         <a href="/users/<%= current_user.id%>">My Profile</a>
       </li>
@@ -50,8 +50,15 @@
   </div>
 	
   <div class="col-md-2">
-    <!-- rigth sidebar -->
+    <ul class="rightside">
+      <li>
+        <button id="addevent" class="btn" data-toggle='modal' data-target='#newevent'>Create a Event</button>
+      </li>
+    </ul>
   </div>
+
+  <!-- New Event Form -->
+  <%= render 'add_event_model' %>
 	
   </div>
 </div>

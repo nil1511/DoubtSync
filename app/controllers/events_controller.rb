@@ -6,10 +6,11 @@ class EventsController < ApplicationController
 	  if user_signed_in? and params[:event]	  	
 	  	puts params[:event]
 	  	data=params[:event]
-		event = Event.new(:name => data['name'],:venue => data['venue'],
-			:duration => data['duration'],:description => data['description'],
-			:date => data['date'],:url => data['url'],
+		event = Event.new(:name => params['name'],:venue => params['venue'],
+			:duration => params['duration'],:description => params['description'],
+			:date => params[:event]['date'],:url => params['url'],
 			:college_id => current_user.college.id,:user_id => current_user.id)
+			event.photo = params['event']['photo'];
 	  	event.save
 	  	current_user.events << event
 	  	render :text => 'suceeded'
