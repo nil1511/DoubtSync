@@ -30,11 +30,12 @@ class UsersController < ApplicationController
 	end
 
 	def manage
-		if current_user.role.name.eql? "student"
+		if current_user.role.name.eql? "student" or current_user.role.name.eql? "ambassador"
 			@student = Student.find_by user_id: current_user.id
 			
 			render 'profile'
 		else
+			#TODO Edit profile for professor coming soon
 			render :text => current_user.role.name
 		end
 	end
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
 	def save
 		#TODO Check validation
 		#FIXME Dry
-		if current_user.role.name.eql? "student"
+		if current_user.role.name.eql? "student" or current_user.role.name.eql? "ambassador" 
 				student = current_user.profile
 				dob = params['user']
 				mobile = params['mobile']
@@ -93,7 +94,7 @@ class UsersController < ApplicationController
 		elsif @user.role.name.eql? "professor"
 			#TODO Profile page for professor
 		 	render :text => "professor profile comming soon"
-		 	
+
 		elsif @user.role.name.eql? "ambassador"
 			# TODO create new page using partial views
 			@student = @user.profile
