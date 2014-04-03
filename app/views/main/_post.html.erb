@@ -27,7 +27,7 @@
   </a>
   
   <div class="media-body">
-    <button type="button" class="btn btn-warning btn-sm" style="float:right">Spam</button>
+    <button type="button" class="btn btn-warning btn-sm spam" style="float:right">Spam</button>
     <h4 class="media-heading" style="color:#00557D"><%= name %></h4>
   <p><%= post.text.html_safe %>
   </p>
@@ -45,7 +45,7 @@
   <div class="media-body">
          <input type="text" class="form-control" id="info" placeholder="Enter Comment">
         
-        <button type="submit" class="btn btn-info commentpost" style="float:right; margin-top:10px">Submit</button>
+        <button type="submit" class="btn btn-info commentpost" style="float:right; margin-top:10px">Comment</button>
          <div class="form-group">
     <label for="exampleInputFile" style="margin-top:5px">File input</label>
     <input type="file" id="exampleInputFile">
@@ -60,10 +60,8 @@
 
 
 <!--Comment Thread List-->
-
-
-<br>
-<button type="button" class="btn btn-info disabled">View Previous Messages</button>
+<!-- <br>
+<button type="button" class="btn btn-info disabled">View Previous Messages</button> -->
 
 <ul class="media-list">
 <br>

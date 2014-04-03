@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :tagged_users
       t.text :htags
       t.boolean :visibility_to_prof
-      t.integer :spamrate
+      t.string :spam
       t.integer :user_id      
       t.text :upvotes
       t.text :downvotes

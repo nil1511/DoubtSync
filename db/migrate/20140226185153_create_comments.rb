@@ -6,7 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.text :htags
       t.integer :user_id
       t.integer :post_id
-      t.integer :spamrate
+      t.string :spam
       t.text :upvotes
       t.text :downvotes
       t.attachment :document

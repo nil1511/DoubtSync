@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       pid = data['post_id']
       format= 'json'
       puts data;
-    	comment = Comment.new(:text => data['text'],:spamrate => 0)
+    	comment = Comment.new(:text => data['text'])
     	post = Post.find_by_id(pid)
     	if !post.nil?
     		puts post
@@ -35,6 +35,27 @@ class CommentsController < ApplicationController
       end
     else
     	render :text =>"invalid request"
+    end
+  end
+
+  def spam
+    id =params[:id]
+    comment = Comment.find_by_id(id)
+    if !comment.nil?
+      if comment.spam.to_s.include? (current_user.id.to_s+',')
+        render :text => 'false'
+        return;
+      end
+      comment.spam = comment.spam.to_s + current_user.id.to_s + ','
+
+      if(comment.spam.to_s.count(',')==5)
+        comment.destroy
+      else
+      comment.save
+      end
+      render :text => 'true'
+    else
+      render :text => "invalid request | Post does not exit"
     end
   end
 

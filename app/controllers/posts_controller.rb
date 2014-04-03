@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def create
   	if user_signed_in? and params[:post]
 	  	data=ActiveSupport::JSON.decode(params[:post])
-	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'],:spamrate => 0)      
+	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'])      
 	  	post.save
 	  	current_user.posts << post
       Delayed::Job.enqueue(NotifyPostaddTopic.new(post.id,post.tagged_users,post.htags))
@@ -23,6 +23,26 @@ class PostsController < ApplicationController
 
   def edit
     # TODO Edit a post
+  end
+
+  def spam
+    id =params[:id]
+    post = Post.find_by_id(id)
+    if !post.nil?
+      if post.spam.to_s.include? (current_user.id.to_s+',')
+        render :text => 'false'
+        return;
+      end
+      post.spam = post.spam.to_s + current_user.id.to_s + ','
+      if (post.spam.to_s.count(',')==5)
+        post.destroy
+      else
+      post.save
+      end
+      render :text => 'true'
+    else
+      render :text => "invalid request | Post does not exit"
+    end
   end
 
   def destroy

@@ -52,8 +52,6 @@ $(function(){
     data.tags = "";
     data.htags = "";
       postarea.textntags('getTags', function(tags) {
-        // data.tags = tags.id;
-        // console.log(tags)
         for(a in tags){
           if (tags[a].type == 'user')
           data.tags += tags[a].user_id+','
@@ -138,7 +136,7 @@ $(function(){
     }
   });
 
-  $('.commentpost').on('click',function(e){   
+  $('.commentpost').on('click',function(e){
     var post = $(this).parent('.media-body').parent('.media');
     var inputarea = $(this).parent('.media-body').children('input');
     var img = post.children('a').children('img.profilepic');
@@ -221,6 +219,23 @@ $(function(){
     })
   })
 
-
+$('.spam').on('click',function (e){
+  console.log($(this).parent('.media-body').length)
+  if($(this).prev('ul').length == 0){
+    //Post
+    var pid = $(this).parent('.media-body').parent('.media').parent('.singlepost').data('pid');
+    console.log(pid,$(this).parent('.media-body').parent('.media').parent('.singlepost'))
+    $.post('/posts/'+pid+'/spam',function(data){
+      console.log(data);
+    })
+  }
+  else{
+    //Comment
+    var cid = $(this).prev('ul').data('cid');
+    $.post('/comments/'+cid+'/spam',function(data){
+      console.log(data);
+    })
+  }
+});
 
 });

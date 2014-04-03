@@ -33,6 +33,8 @@ Doubtsync::Application.routes.draw do
   post 'comments/:id/edit' => 'comments#edit'
   post 'comments/:id/up' => 'comments#upvote'
   post 'comments/:id/down' => 'comments#downvote'
+  post 'comments/:id/spam' =>'comments#spam'
+  post 'posts/:id/spam' =>'posts#spam'
   delete 'comments/:id' => 'comments#destroy'
 
   post 'books' => 'books#new'
