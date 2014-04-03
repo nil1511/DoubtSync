@@ -243,122 +243,19 @@ button.post.active .submerge {
  height: 150px;
 }
 
-#posts div{
-  border: #000 solid thin;
-}
 
 #posts{
-  position: relative;
-  top: 30px;
 
 .profilepic{
   width: 50px;
   height: 50px;
   display: inline-block;
 }
-.posttext{
-  margin-left: 10px;
-  width: 400px;
-  display: inline-block;
-  float: right;
-  padding: 5px;
-  margin-right: 20px;
 }
-.view,.delete{
-  float: right;
-  position:absolute;
-  right: 5px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 24px;
-  font-weight: bolder;
+.commentimg{
+  width:40px; 
+  height:40px;
+}
+.number{
   text-align: center;
-  cursor: pointer;
-}
-.delete{
-  margin-top: 35px;  
-}
-}
-.singlepost{
-
-  .imagecontainer{
-    display: inline-block;
-    position: absolute;
-    overflow: hidden;
-    width: 50px;
-    span{
-      display: block;
-      text-align: center;
-    }
-  }
-  p.ptext{
-    margin-top: 30px;
-    position: relative;
-    top: -30px;
-    margin-bottom: -30px;
-    min-height: 70px;
-  }
-}
-.singlepost:hover{
-    background-color: #eee;
-}
-.comments{
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  
-  .up,.down,.number{
-  float: right;
-  position:absolute;
-  right: 0px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 24px;
-  font-weight: bolder;
-  text-align: center;
-  cursor: pointer;
-  }
-
-  .number{
-  margin-top: 26px;
-  font-weight: normal;
-  font-size: small;
-  width: 24px;
-  }
-
-  .down{
-  margin-top: 45px;  
-  } 
-  .commentimage,.commenttext{
-  display: inline-block;
-  }
-  .commentimage{
-    position: absolute;
-    span{
-      display: block;
-      text-align: center;
-    }
-  }
-  .commenttext{
-    width: 400px;
-    min-height: 80px;
-    margin-left: 55px;
-  }
-  .writecomment{
-    width: 400px;
-  }
-  .commentpost{
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-  }
-}
-.singlecomment{
-  position: relative;
-}
-.anon{
-  position: absolute;
-  top: 0;
-  right: 20px;
-  z-index: 1;
 }

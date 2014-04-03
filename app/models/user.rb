@@ -85,6 +85,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name
+    return self.profile.first_name + ' ' + self.profile.last_name
+    
+  end
   def set_role(new_role)
     self.role ||= Role.find_by_name(new_role)
   end

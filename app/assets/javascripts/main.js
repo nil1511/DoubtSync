@@ -151,58 +151,86 @@ $(function(){
     }
   });
 
-  $('.commentpost').on('click',function(e){    
-    var post = $(this).parent('div.insertcomment').parent('div.comments').parent('div.singlepost'); 
-    if($(this).prev().val()==''){
+  $('.commentpost').on('click',function(e){   
+    var post = $(this).parent('.media-body').parent('.media');
+    var inputarea = $(this).parent('.media-body').children('input');
+    var img = post.children('a').children('img.profilepic');
+    if(inputarea.val().trim()==''){
       return false;
     }
-    console.log(post.data('pid'),$(this).prev().val());
     var data = {};
-    var textarea = $(this).prev();
-    data.text = textarea.val();
+    data.text = inputarea.val();
     data.post_id = post.data('pid');
     $.post('/comments',{ comment: JSON.stringify(data)},function(e){
       if(e==1){ 
           var c = 
-          '<div class="singlecomment">\
-          <div class="commentimage">\
-          <img alt="Anonymous" class="profilepic img-responsive" src="/images/original/missing.png">\
-          <span>me</span>\
-          </div>\
-          <div class="commenttext">\
-          <div>\
-          <span class="up glyphicon glyphicon-circle-arrow-up"></span>\
-          <span class="number">0</span>\
-          <span class="down glyphicon glyphicon-circle-arrow-down"></span>\
-          </div>\
-          <p class="ctext">'+data.text+'</p>\
-          </div>\
-          </div>';
-          var comment = post.children('.comments');
-
-          console.log(comment)
-          if(comment.children('.singlecomment').length == 1)
-          comment.children('.singlecomment').last().after(c);
-          else
-          comment.children('.insertcomment').before(c);
-          textarea.val('');
+          '<div class="panel-footer" style="background-color:#F9F9F9">\
+  <li class="media">\
+    <a class="pull-left" href="#">\
+    <img alt="'+img.prop("alt")+'" class="commentimg img-responsive" src="'+img.prop("src")+'" title="'+img.prop("title")+'">\
+    </a>\
+    <div class="media-body">\
+   <ul class="nav nav-pills nav-stacked" style="float:right" data-cid="7">\
+     <li>\
+     <button type="button" class="btn btn-success btn-sm">\
+     <span class="up glyphicon glyphicon-thumbs-up" <="" span="">\
+     </span></button>\
+     </li>\
+     <li>\
+          0\
+     </li>\
+     <li>\
+     <button type="button" class="btn btn-danger btn-sm">\
+      <span class="dowm glyphicon glyphicon-thumbs-down"></span>\
+     </button>\
+     </li>\
+  </ul>\
+  <button type="button" class="btn btn-default btn-xs" style="float:right; margin-right:10px">Mark as spam</button>\
+      <h5 class="media-heading" style="color:#00557D">'+img.prop("title")+'</h5>\
+    <p>'+data.text+'</p>\
+    </div>\
+  </li>\
+  </div>';
+          var comment = post.parent('.panel-footer').siblings('.media-list');
+          comment.append(c);
+          inputarea.val('');
       }
     },"json");
   });
 
   $('.up').on('click',function (e) {
-    var comment = $(this).parent('div').parent('.commenttext').parent('.singlecomment');
+    var comment = $(this).parent('li').parent('ul')
+    var number = $(this).parent('li').siblings('li.number');
     var cid = comment.data('cid');
     $.post('/comments/'+cid+'/up',function (argument) {
       console.log(argument)
+      if(argument == 'up'){
+        a=parseInt(number.html(),10);
+        if((a+1) > 0)
+        number.html('+'+(a+1));
+        else if((a+1) < 0)
+          number.html((a+1));
+        else
+          number.html('0');
+      }
     })
   })
 
-  $('.down').on('click',function (e) {
-    var comment = $(this).parent('div').parent('.commenttext').parent('.singlecomment');
+  $('.down').on('click',function (e) {  
+    var comment = $(this).parent('li').parent('ul');
+    var number = $(this).parent('li').siblings('li.number');
     var cid = comment.data('cid');
     $.post('/comments/'+cid+'/down',function (argument) {
       console.log(argument)
+      if(argument == 'down'){
+       a=parseInt(number.html(),10);
+        if((a-1) > 0)
+        number.html('+'+(a-1));
+        else if((a-1) < 0)
+          number.html((a-1));
+        else
+          number.html('0'); 
+      }
     })
   })
 
