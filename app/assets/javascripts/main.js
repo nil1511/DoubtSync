@@ -68,32 +68,21 @@ $(function(){
         data.htags=data.htags.substring(0,data.htags.length-1);
         $.post('/posts',{ post: JSON.stringify(data)},function(e){
           if(e != 'invalid request'){
-            var anon='';
+            var img='';
             if(data.visibility_to_prof){
-              anon = '<img alt="me" class="profilepic img-responsive" src="/images/original/missing.png" title="Anonymous">\
-        <span>me</span>';
+              img = '<img alt="me" class="profilepic img-responsive media-object" src="/images/original/missing.png" title="me">';
             }else{
-              anon = '<img alt="Anonymous" class="profilepic img-responsive" src="/images/original/anonymous.png" title="Anonymous">\
-        <span>Anonymous</span>';
+              img = '<img alt="Anonymous" class="profilepic img-responsive media-object" src="/images/original/anonymous.png" title="Anonymous">';
             }
-            var p ='<div class="col-md-7 singlepost" data-pid="'+e+'">\
-        <div class="imagecontainer">'+
-        anon
-        +'</div>\
-        <div class="posttext">\
-          <div>\
-          <span class="view glyphicon glyphicon-plus-sign"></span>\
-          <span class="delete glyphicon glyphicon-remove-circle"></span>\
-          </div>\
-          <p class="ptext">'+data.text+'</p>\
-        </div>\
-        <div class="comments" style="display: none;">\
-          <div class="insertcomment">\
-            <textarea class="writecomment"></textarea>\
-            <button class="commentpost">Post</button>\
-          </div>\
-        </div>\
-      </div>';
+            var p ='<div class="col-md-8 singlepost well" data-pid="'+e+'">\
+            <div class="media"><a class="pull-left" href="#">\
+            '+img+'</a><div class="media-body"><button type="button" class="btn btn-warning btn-sm" style="float:right">Spam</button>\
+            <h4 class="media-heading" style="color:#00557D">'+name+'</h4><p>'+data.text+'</p></div></div>\
+            <div class="panel-footer" style="background-color:#FFFFFF"><div class="media" data-pid="'+e+'">\
+            <a class="pull-left" href="#">'+img+'</a><div class="media-body">\
+            <input type="text" class="form-control" id="info" placeholder="Enter Comment"><button type="submit" class="btn btn-info commentpost" style="float:right;margin-top:10px">Submit</button><div class="form-group">\
+            <label for="exampleInputFile" style="margin-top:5px">File input</label><input type="file" id="exampleInputFile"></div></div></div></div><br><button type="button" class="btn btn-info disabled">View Previous Messages</button><ul class="media-list"><br></ul></div>';
+            
        $('#posts').prepend(p);
           }
           console.log(e);
