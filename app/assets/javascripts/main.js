@@ -77,7 +77,7 @@ $(function(){
             <div class="panel-footer" style="background-color:#FFFFFF"><div class="media" data-pid="'+e+'">\
             <a class="pull-left" href="#">'+img+'</a><div class="media-body">\
             <input type="text" class="form-control" id="info" placeholder="Enter Comment"><button type="submit" class="btn btn-info commentpost" style="float:right;margin-top:10px">Submit</button><div class="form-group">\
-            <label for="exampleInputFile" style="margin-top:5px">File input</label><input type="file" id="exampleInputFile"></div></div></div></div><br><button type="button" class="btn btn-info disabled">View Previous Messages</button><ul class="media-list"><br></ul></div>';
+            <label for="exampleInputFile" style="margin-top:5px">File input</label><input type="file" id="exampleInputFile"></div></div></div></div><ul class="media-list"><br></ul></div>';
             
             console.log($('#posts'))
        $('#posts').prepend(p);
@@ -138,6 +138,7 @@ $(function(){
   });
 
   $('.commentpost').on('click',function(e){
+    console.log('click',this)
     var post = $(this).parent('.media-body').parent('.media');
     var inputarea = $(this).parent('.media-body').children('input');
     var img = post.children('a').children('img.profilepic');
@@ -148,6 +149,7 @@ $(function(){
     data.text = inputarea.val();
     data.post_id = post.data('pid');
     $.post('/comments',{ comment: JSON.stringify(data)},function(e){
+      console.log(e)
       if(e==1){ 
           var c = 
           '<div class="panel-footer" style="background-color:#F9F9F9">\
