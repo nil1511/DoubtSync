@@ -43,10 +43,16 @@ $('#following').on('click',function (e){
 	$.get('/users/'+uid+'/following',function (data){
 		var ele ='';
 		for(e in data){
-			ele += '<li><a href="/users/'+data[e].username+'"><div>\
-    <img class="followpic" src="'+data[e].photo+'"><label>'+data[e].name+'</label></div></a></li>'
+			ele += '  <li class="media" style="background-color:#FFFFFF">\
+  <a class="pull-left" href="/users/'+data[e].username+'">\
+    <img class="media-object" src="'+data[e].photo+'" alt=" " style="width:80px; height:80px;">\
+  </a>\
+  <div class="media-body">\
+    <h4 class="media-heading">'+data[e].name+'</h4>\
+	<h5 class="media-heading">'+data[e].college+'</h5>\
+  </div>';
 		}
-		var div = '<ul class="followlist">'+ele+'</ul>';
+		var div = '<div class="well" style="width:400px"><ul class="media-list">'+ele+'</ul></div>';
 		$('#displayarea').html(div);
 	});
 });
@@ -56,10 +62,16 @@ $('#follower').on('click',function (e){
 	$.get('/users/'+uid+'/followers',function (data){
 			var ele ='';
 		for(e in data){
-			ele += '<li><a href="/users/'+data[e].username+'"><div>\
-    <img class="followpic" src="'+data[e].photo+'"><label>'+data[e].name+'</label></div></a></li>'
+		ele += '  <li class="media" style="background-color:#FFFFFF">\
+  <a class="pull-left" href="/users/'+data[e].username+'">\
+    <img class="media-object" src="'+data[e].photo+'" alt=" " style="width:80px; height:80px;">\
+  </a>\
+  <div class="media-body">\
+    <h4 class="media-heading">'+data[e].name+'</h4>\
+	<h5 class="media-heading">'+data[e].college+'</h5>\
+  </div>';
 		}
-		var div = '<ul class="followlist">'+ele+'</ul>';
+		var div = '<div class="well" style="width:400px"><ul class="media-list">'+ele+'</ul></div>';
 		$('#displayarea').html(div);
 	});
 });

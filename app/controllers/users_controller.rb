@@ -81,7 +81,8 @@ class UsersController < ApplicationController
 	    @userlist = @users.map do |u|
   		{ :id => u.id, 
   		  :name => u.name, 
-  		  :photo => u.avatar.url(:thumb), 
+  		  :photo => u.avatar.url(:thumb),
+  		  :college => u.college.name, 
   		  :username => u.username }
   		end
 
@@ -96,6 +97,7 @@ class UsersController < ApplicationController
   		{ :id => u.id, 
   		  :name => u.name, 
   		  :photo => u.avatar.url(:thumb), 
+  		  :college => u.college.name,
   		  :username => u.username }
   		end
 	   	render :json => @userlist
