@@ -1,12 +1,19 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<body style="background:url('http://tonycrabbe.files.wordpress.com/2012/04/doubt2.jpg');background-size:100%">
+   <div class="container">
+     <a class="btn pull-right btn-default" href="/register"><b>Sign Up</b></a>
+     <a class="btn pull-right btn-primary" href="/"><b>Sign in</b></a>
+   </div>
+   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+     <%= devise_error_messages! %>
+   <div class="container">
+     <h1 class="pull-left"><font face="machine" color="white"><i>Forgot Password</i></font></h1>
+   </div>
+   <div class="container">
+     <!-- <span class="label label-warning">Email</span> -->
+     <%= f.label :email,class:"label label-warning" %>
+     <!-- <input type="text" class="form-control" placeholder="Enter the email used for registration"> -->
+     <%= f.email_field :email,:autofocus => true ,class:"form-control", placeholder:"Enter the email used for registration"%>
+     <%= f.submit "Submit Request" ,class:"btn btn-danger btn-sm" %>
+   </div>
+   <% end %>
+ </body>
