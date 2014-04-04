@@ -16,12 +16,12 @@
 
 #wrapper {
   transition: all 0.4s ease 0s;
-  .extralink{
-  	position: absolute;
-  	bottom: 0;
-  	list-style: none;
-  }
 }
+.extralink{
+    position: absolute;
+    bottom: 0;
+    list-style: none;
+  }
 .info{
 	position: relative;
 	margin-left: 50px;
