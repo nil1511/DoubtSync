@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20140402193329) do
   create_table "professor_pending_lists", force: true do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "authcode"
     t.integer  "college_id"
     t.datetime "created_at"
     t.datetime "updated_at"

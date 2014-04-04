@@ -54,7 +54,7 @@ $(function(){
       postarea.textntags('getTags', function(tags) {
         for(a in tags){
           if (tags[a].type == 'user')
-          data.tags += tags[a].user_id+','
+          data.tags += tags[a].id+','
         else if (tags[a].type == 'topic')
           data.htags += tags[a].id+','
         }
