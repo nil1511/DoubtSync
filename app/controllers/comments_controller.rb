@@ -14,6 +14,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def list
+    id =params[:id]
+    user = User.find_by_id(id)
+    if user.nil?
+      render :json => "User does not exisit" 
+      return
+    end
+    @comments=User.find_by_id(id).comments;
+    render :json => @comments.to_json(only: [:id,:text,:tagged_users,:htags,:visibility_to_prof,:upvotes,:downvotes])
+  end
+
   def create
     if user_signed_in?
       data=ActiveSupport::JSON.decode(params[:comment])

@@ -6,6 +6,17 @@ class PostsController < ApplicationController
     render :json => Post.from_users_followed_by(current_user)
   end
 
+  def list
+    id =params[:id]
+    user = User.find_by_id(id)
+    if user.nil?
+      render :json => "User does not exisit" 
+      return
+    end
+    @posts=User.find_by_id(id).posts
+    render :json => @posts.to_json(only: [:id,:text,:tagged_users,:htags,:visibility_to_prof,:upvotes,:downvotes])
+  end
+
   def create
   	if user_signed_in? and params[:post]
 	  	data=ActiveSupport::JSON.decode(params[:post])

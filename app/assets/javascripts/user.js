@@ -39,7 +39,8 @@ $('#updateprofile').on('click',function (e) {
 
 
 $('#following').on('click',function (e){
-	$.get('/users/'+$(this).data('uid')+'/following',function (data){
+	var uid = $(this).parent('li').parent('ul').data('uid');
+	$.get('/users/'+uid+'/following',function (data){
 		var ele ='';
 		for(e in data){
 			ele += '<li><a href="/users/'+data[e].username+'"><div>\
@@ -51,7 +52,8 @@ $('#following').on('click',function (e){
 });
 
 $('#follower').on('click',function (e){
-	$.get('/users/'+$(this).data('uid')+'/followers',function (data){
+	var uid = $(this).parent('li').parent('ul').data('uid');
+	$.get('/users/'+uid+'/followers',function (data){
 			var ele ='';
 		for(e in data){
 			ele += '<li><a href="/users/'+data[e].username+'"><div>\
@@ -62,6 +64,29 @@ $('#follower').on('click',function (e){
 	});
 });
 
+$('#myquestion').on('click',function (e){
+	var uid = $(this).parent('li').parent('ul').data('uid');
+	$.get('/posts/'+uid+'/index',function (data){
+			var ele ='';
+		for(e in data){
+			ele += '<li><div><label>'+data[e].text+'</label></div></a></li>'
+		}
+		var div = '<ul class="followlist">'+ele+'</ul>';
+		$('#displayarea').html(div);
+	});
+});
+
+$('#myanswer').on('click',function (e){
+	var uid = $(this).parent('li').parent('ul').data('uid');
+	$.get('/comments/'+uid+'/index',function (data){
+			var ele ='';
+		for(e in data){
+			ele += '<li><div><label>'+data[e].text+'</label></div></a></li>'
+		}
+		var div = '<ul class="followlist">'+ele+'</ul>';
+		$('#displayarea').html(div);
+	});
+});
 
 });
 

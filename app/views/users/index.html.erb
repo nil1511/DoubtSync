@@ -9,19 +9,19 @@
   <div id="wrapper" style="display:inline-block">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav ">                
-                <li><a id="following"  data-uid="<%= @user.id %>"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.followed_users.count %></span>Following</a>
+            <ul class="sidebar-nav"  data-uid="<%= @user.id %>">                
+                <li><a id="following"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.followed_users.count %></span>Following</a>
                 </li>
-                <li><a id="follower" data-uid="<%= @user.id %>"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.followers.count %></span>Followers</a>
+                <li><a id="follower"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.followers.count %></span>Followers</a>
                 </li>
-                <li><a id="" data-uid="<%= @user.id %>"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.posts.count %></span>My Question</a>
-                <li><a id="" data-uid="<%= @user.id %>"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.comments.count %></span>My Answer</a>
-                <li><a id="" data-uid="<%= @user.id %>"><select class="form-control">
+                <li><a id="myquestion"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.posts.count %></span>My Question</a>
+                <li><a id="myanswer"><span class="badge pull-right" style="margin-top:10px;margin-right:5px"><%= @user.comments.count %></span>My Answer</a>
+                <li><a id=""><select class="form-control">
                 <option>Working Project</option>
                 <option>Completed Project</option>
               </select></a>
-                <li><a id="" data-uid="<%= @user.id %>">Area of Interest</a>
-                <li><a id="" data-uid="<%= @user.id %>">My resume</a>
+                <li><a id="">Area of Interest</a>
+                <li><a id="">My resume</a>
                 </li>
             </ul>
         </div>
