@@ -4,7 +4,6 @@ class EventsController < ApplicationController
 
 	def new
 	  if user_signed_in? and params[:event]	  	
-	  	puts params[:event]
 	  	data=params[:event]
 		event = Event.new(:name => params['name'],:venue => params['venue'],
 			:duration => params['duration'],:description => params['description'],

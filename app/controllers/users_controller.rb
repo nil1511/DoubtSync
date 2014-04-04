@@ -52,8 +52,11 @@ class UsersController < ApplicationController
 				student.update(:first_name => params['first_name'],:last_name => params['last_name'],
 					:degree => params['degree'],:graduate_year => params['graduate'],:gender => gender,
 					:dob => dob['dob'],:mobile => mobile['phone'])
-				student.user.avatar = params['user']['avatar'];
-				student.user.save
+				if !params['user']['avatar'].nil?
+					student.user.avatar = params['user']['avatar'];
+					student.user.save
+				end
+				
 				student.save
 				redirect_to '/users/profile'
 			# end
@@ -65,8 +68,12 @@ class UsersController < ApplicationController
 				prof.update(:first_name => params['first_name'],:last_name => params['last_name'],
 					:aoi => params['aoi'],:gender => gender,
 					:dob => dob['dob'],:mobile => mobile['phone'])
-				prof.user.avatar = params['user']['avatar'];
-				prof.user.save
+				
+				if !params['user']['avatar'].nil?
+					prof.user.avatar = params['user']['avatar'];
+					prof.user.save
+				end
+	
 				prof.save
 				redirect_to '/users/profile'
 			#render :text =>  "TODO"+current_user.role.name
