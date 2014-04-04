@@ -27,7 +27,7 @@
   </a>
   
   <div class="media-body">
-    <button type="button" class="btn btn-warning btn-sm spam" style="float:right">Spam</button>
+    <button type="button" class="btn btn-warning btn-sm spam <%= 'disabled' if post.spam.to_s.include? current_user.id.to_s %>" style="float:right">Spam</button>
     <h4 class="media-heading" style="color:#00557D"><%= name %></h4>
   <p><%= post.text.html_safe %>
   </p>

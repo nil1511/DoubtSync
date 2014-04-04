@@ -54,7 +54,7 @@ class CommentsController < ApplicationController
     comment = Comment.find_by_id(id)
     if !comment.nil?
       if comment.spam.to_s.include? (current_user.id.to_s+',')
-        render :text => 'false'
+        render :text => 'already'
         return;
       end
       comment.spam = comment.spam.to_s + current_user.id.to_s + ','
@@ -68,7 +68,7 @@ class CommentsController < ApplicationController
       end
       render :text => 'true'
     else
-      render :text => "invalid request | Post does not exit"
+      render :text => "false"
     end
   end
 

@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     post = Post.find_by_id(id)
     if !post.nil?
       if post.spam.to_s.include? (current_user.id.to_s+',')
-        render :text => 'false'
+        render :text => 'already'
         return;
       end
       post.spam = post.spam.to_s + current_user.id.to_s + ','
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
       end
       render :text => 'true'
     else
-      render :text => "invalid request | Post does not exit"
+      render :text => "false"
     end
   end
 

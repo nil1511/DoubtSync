@@ -29,7 +29,7 @@
      </button>
      </li>
   </ul>
-  <button type="button" class="btn btn-default btn-xs spam" style="float:right; margin-right:10px">Mark as spam</button>
+  <button type="button" class="btn btn-default btn-xs spam <%= 'disabled' if comment.spam.to_s.include? current_user.id.to_s %>" style="float:right; margin-right:10px">Mark as spam</button>
   
       <h5 class="media-heading" style="color:#00557D"><%= comment.user.name %></h5>
     <p><%= comment.text %></p>

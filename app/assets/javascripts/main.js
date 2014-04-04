@@ -221,20 +221,23 @@ $(function(){
   })
 
 $('.spam').on('click',function (e){
-  console.log($(this).parent('.media-body').length)
+  var button = $(this)
   if($(this).prev('ul').length == 0){
     //Post
     var pid = $(this).parent('.media-body').parent('.media').parent('.singlepost').data('pid');
-    console.log(pid,$(this).parent('.media-body').parent('.media').parent('.singlepost'))
     $.post('/posts/'+pid+'/spam',function(data){
-      console.log(data);
+      if(data){
+        button.addClass('disabled');
+      }
     })
   }
   else{
     //Comment
     var cid = $(this).prev('ul').data('cid');
     $.post('/comments/'+cid+'/spam',function(data){
-      console.log(data);
+      if(data){
+        button.addClass('disabled');
+      }
     })
   }
 });
