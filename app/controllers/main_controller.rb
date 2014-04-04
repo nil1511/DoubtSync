@@ -17,13 +17,13 @@ class MainController < ApplicationController
   	professor = Professor.where('first_name LIKE :s', s:'%'<<key<<'%')
   	@userlist = student.map do |u|
     { :id => u.user_id, 
-      :name => u.first_name, 
+      :name => u.first_name << ' ' <<u.last_name, 
     }
     end
     
     @userlist += professor.map do |u|
     { :id => u.user_id, 
-      :name => u.first_name, 
+      :name => u.first_name << ' '<< u.last_name, 
     }
     end
   	

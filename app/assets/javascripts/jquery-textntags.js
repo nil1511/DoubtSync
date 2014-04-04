@@ -566,7 +566,7 @@
                 }
             });
             var pos = $(editor).getCaretPosition();
-            elTagList.css('left',pos.left);
+            elTagList.css('margin-left',pos.left);
             elTagList.css('top',pos.top - 150 + 7);
             elTagList.show(0,function(){
                 elTagList.css('display','inline-block');
