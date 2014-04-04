@@ -39,6 +39,8 @@ Doubtsync::Application.routes.draw do
   get 'comments/:id/index' =>'comments#list'
   delete 'comments/:id' => 'comments#destroy'
 
+  get 'topics/:name' => 'topics#index'
+
   post 'books' => 'books#new'
   get 'books/:id' => 'books#show'
   post 'books/:id/edit' => 'books#edit'

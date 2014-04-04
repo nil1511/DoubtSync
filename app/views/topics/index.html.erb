@@ -1,0 +1,25 @@
+<%= render 'shared/header' %>
+<div class="container-fuild">
+  <div style="position: relative;display: inline-block;width:100%;">
+  <div class="col-md-2">
+    <!-- left sidebar -->
+    <ul class="leftside">
+      <li>
+        <a href="/users/<%= current_user.id%>"><button class="btn">My Profile</button></a>
+      </li>
+      <br>
+    </ul>
+  </div>
+
+  <div class="col-md-7">
+  <!-- central area -->
+    <div class="row">
+
+    <div id='posts'>
+    <%= render 'shared/post' %>
+    </div>
+  </div>
+  
+  <div class="col-md-3">
+  </div>
+</div>
