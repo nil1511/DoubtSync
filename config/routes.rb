@@ -27,6 +27,8 @@ Doubtsync::Application.routes.draw do
    
   resources :posts
   resources :relationships, only: [:create, :destroy]
+  resources :followed_topics, only: [:create, :destroy]
+  
   
   post 'comments' => 'comments#create'
   get 'comments/:id' => 'comments#index'

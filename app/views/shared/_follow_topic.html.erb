@@ -1,0 +1,4 @@
+<%= form_for(current_user.followed_topics.build(topic_id: @topic.id)) do |f| %>
+  <div><%= f.hidden_field :topic_id %></div>
+  <%= f.submit "Follow Topic", class: "btn btn-large btn-primary" %>
+<% end %>

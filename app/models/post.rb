@@ -7,7 +7,7 @@
 #  tagged_users          :text
 #  htags                 :text
 #  visibility_to_prof    :boolean
-#  spamrate              :integer
+#  spam                  :string(255)
 #  user_id               :integer
 #  upvotes               :text
 #  downvotes             :text

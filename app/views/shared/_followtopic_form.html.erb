@@ -1,0 +1,7 @@
+<div id="follow_topic_form">
+  <% if current_user.following_topic?(@topic) %>
+    <%= render 'shared/unfollow_topic' %>
+  <% else %>
+    <%= render 'shared/follow_topic' %>
+  <% end %>
+</div>

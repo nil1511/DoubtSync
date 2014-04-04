@@ -2,17 +2,21 @@
 #
 # Table name: books
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  author      :string(255)
-#  edition     :string(255)
-#  description :text
-#  tags        :text
-#  price       :integer
-#  contact     :integer
-#  user_id     :integer
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  author             :string(255)
+#  edition            :string(255)
+#  description        :text
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  tags               :text
+#  price              :integer
+#  contact            :string(255)
+#  user_id            :integer
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 class Book < ActiveRecord::Base

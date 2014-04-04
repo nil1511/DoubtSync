@@ -1,0 +1,4 @@
+<%= form_for(current_user.followed_topics.find_by(topic_id: @topic.id), html: { method: :delete })  do |f| %>
+
+  <%= f.submit "Unfollow Topic", class: "btn btn-large btn-primary" %>
+<% end %>

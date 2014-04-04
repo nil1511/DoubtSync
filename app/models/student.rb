@@ -16,6 +16,7 @@
 #  resume_content_type :string(255)
 #  resume_file_size    :integer
 #  resume_updated_at   :datetime
+#  aoi                 :text
 #  created_at          :datetime
 #  updated_at          :datetime
 #

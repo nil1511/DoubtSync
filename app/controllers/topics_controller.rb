@@ -3,13 +3,13 @@ class TopicsController < ApplicationController
 	before_filter :authenticate_user!
 	def index
 		name = params[:name]
-		@posts = Topic.find_by_name(name)
+
+		@topic = Topic.find_by_name(name)
 		
-		if @posts.nil?
+		if @topic.nil?
 			render :text => "No post in this topic"
 		else
-			@posts = @posts.posts;
-			
+			@posts = @topic.posts;
 		end
 	end
 	

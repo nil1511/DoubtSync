@@ -8,7 +8,7 @@
 #  htags                 :text
 #  user_id               :integer
 #  post_id               :integer
-#  spamrate              :integer
+#  spam                  :string(255)
 #  upvotes               :text
 #  downvotes             :text
 #  document_file_name    :string(255)
