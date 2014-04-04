@@ -52,7 +52,7 @@ $('#following').on('click',function (e){
 	<h5 class="media-heading">'+data[e].college+'</h5>\
   </div>';
 		}
-		var div = '<div class="well" style="width:400px"><ul class="media-list">'+ele+'</ul></div>';
+		var div = '<h4>Following</h4><div class="well" style="width:400px"><ul class="media-list">'+ele+'</ul></div>';
 		$('#displayarea').html(div);
 	});
 });
@@ -71,7 +71,7 @@ $('#follower').on('click',function (e){
 	<h5 class="media-heading">'+data[e].college+'</h5>\
   </div>';
 		}
-		var div = '<div class="well" style="width:400px"><ul class="media-list">'+ele+'</ul></div>';
+		var div = '<h4>Follower</h4><div class="well" style="width:400px"><ul class="media-list">'+ele+'</ul></div>';
 		$('#displayarea').html(div);
 	});
 });
