@@ -18,19 +18,19 @@ $('#updateprofile').on('click',function (e) {
 		$('#last_name').parent().parent('.form-group').removeClass('has-error');
 	
 
-	if($('#degree').val().trim()==""){
+	if(typeof($('#degree').val())!=='undefined' && $('#degree').val().trim()==""){
 		$('#degree').parent().parent('.form-group').addClass('has-error');
 		button = false;
 	}
-	else
+	else if(typeof($('#degree').val())!=='undefined')
 		$('#degree').parent().parent('.form-group').removeClass('has-error');
 	
 	
-	if($('#graduate').val().trim()==""){
+	if(typeof($('#graduate').val())!=='undefined' && $('#graduate').val().trim()==""){
 		$('#graduate').parent().parent('.form-group').addClass('has-error');
 		button = false;
 	}
-	else
+	else if(typeof($('#graduate').val())!=='undefined')
 		$('#graduate').parent().parent('.form-group').removeClass('has-error');
 
 	return button;

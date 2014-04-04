@@ -1,5 +1,6 @@
 	<div class="row">
   <%= render 'follow_form' if user_signed_in? %>
+  <div style="position:absolute;right:50px;">Professor</div>
 		<!--Profile Pic-->
     <div class="leftprofile">
 		<div class="profileinfo">
@@ -22,6 +23,7 @@
               </select></a>
                 <li><a id="" data-uid="<%= @user.id %>">Area of Interest</a>
                 <li><a id="" data-uid="<%= @user.id %>">My resume</a>
+                <li><a id="" data-uid="<%= @user.id %>">Interships</a>
                 </li>
             </ul>
         </div>
@@ -34,10 +36,10 @@
 
 <div class="rightprofile">
 <div class="profileinfo info">
-      <h1><%= @student.first_name if @student.first_name<< " " << @student.last_name if @student.last_name %></h1>
-      <h4>Degree: <%= @student.degree if @student.degree %></h4>
-      <h4>College:<%= @user.college.name  if @user.college.name %></h4>
-      <h4>Graduate Year: <%= @student.graduate_year if @student.graduate_year %></h4>
+      <h1><%= @prof.first_name if @prof.first_name<< " " << @prof.last_name if @prof.last_name %></h1>
+      <!-- <h4>Degree: <%#= @prof.degree if @prof.degree %></h4> -->
+      <h4>College:<%= current_user.college.name  if current_user.college.name %></h4>
+      <!-- <h4>Graduate Year: <%#= @prof.graduate_year if @prof.graduate_year %></h4> -->
     </div>
 <div id="displayarea">
 

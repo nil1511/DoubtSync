@@ -33,11 +33,11 @@ class UsersController < ApplicationController
 	def manage
 		if current_user.role.name.eql? "student" or current_user.role.name.eql? "ambassador"
 			@student = Student.find_by user_id: current_user.id
-			
 			render 'profile'
-		else
+		else current_user.role.name.eql? "professor"
+			@prof = Professor.find_by user_id: current_user.id
 			#TODO Edit profile for professor coming soon
-			render :text => current_user.role.name
+			render 'editprofile_prof'
 		end
 	end
 	
@@ -53,13 +53,23 @@ class UsersController < ApplicationController
 					:degree => params['degree'],:graduate_year => params['graduate'],:gender => gender,
 					:dob => dob['dob'],:mobile => mobile['phone'])
 				student.user.avatar = params['user']['avatar'];
-				a= student.user.save
-				puts a
+				student.user.save
 				student.save
 				redirect_to '/users/profile'
 			# end
-		else
-			render :text =>  "TODO"+current_user.role.name
+		else current_user.role.name.eql? "professor"
+				prof = current_user.profile
+				dob = params['user']
+				mobile = params['mobile']
+				gender = params['gender'].eql?"male"
+				prof.update(:first_name => params['first_name'],:last_name => params['last_name'],
+					:aoi => params['aoi'],:gender => gender,
+					:dob => dob['dob'],:mobile => mobile['phone'])
+				prof.user.avatar = params['user']['avatar'];
+				prof.user.save
+				prof.save
+				redirect_to '/users/profile'
+			#render :text =>  "TODO"+current_user.role.name
 		end
 	end
 
@@ -107,8 +117,15 @@ class UsersController < ApplicationController
 					render 'index'
 			end
 		elsif @user.role.name.eql? "professor"
+			if !@user.profile != nil? 
+				#TODO Implement a proper page
+				render :text => "Profile does not exits"
+			else
+				@prof = @user.profile
+					render 'profprofile'
+			end
 			#TODO Profile page for professor
-		 	render :text => "professor profile comming soon"
+		 	#render :text => "professor profile comming soon"
 
 		elsif @user.role.name.eql? "ambassador"
 			# TODO create new page using partial views
