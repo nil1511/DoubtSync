@@ -1,12 +1,17 @@
-<div>
-	<%= form_tag do %>
-
-		<%= label_tag(:college_name, "College Name") %>
-  		<%= text_field_tag(:college_name) %><br/>
-  		<div>Explain the email address needed in details and we will email them with a link for student ambassador</div>
-		<%= label_tag(:email, "Email Address of College representative") %>
-  		<%= text_field_tag(:email) %><br/>
-		<%= submit_tag("Submit") %>
-		
-	<% end %>
-</div>
+ <body style="background:url('http://tonycrabbe.files.wordpress.com/2012/04/doubt2.jpg');background-size:100%">
+   <div class="container">
+     <h1 class="pull-left"><b><font face="machine" color="white"><i>College Registration</i></font></b></h1>
+   </div>
+   <%= form_tag do %>
+   <div class="container">
+     <%= label_tag(:college_name, "College Name",class:"label label-success") %>
+     <%= text_field_tag(:college_name,'',class:"form-control",placeholder:"Enter Full name of your college") %>
+   </div>
+   <br>
+   <div class="container">
+     <%= label_tag(:email, "Email Address of College representative",class:"label label-success") %>
+     <%= text_field_tag(:email,'',class:"form-control",placeholder:"Enter email address of your college or academic committee member") %>
+     <%= submit_tag("Submit",class:"btn btn-primary") %>
+   </div>
+   <% end %>
+ </body>
