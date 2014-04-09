@@ -7,8 +7,8 @@
           next
         end
         student = Student.find_by_id(tag.to_i)
-        if post.text.include? student.first_name.to_s
-        post.text[student.first_name.to_s] = '<a href="/users/'+student.user_id.to_s+'" target="_blank">'+student.first_name+'</a>' 
+        if !student.nil? and post.text.include? student.first_name.to_s
+        post.text[student.first_name.to_s] = '<a href="/users/'+student.user_id.to_s+'" target="_blank">'+student.first_name.to_s+'</a>' 
         end
       end
   %>
@@ -46,11 +46,11 @@
          <input type="text" class="form-control" id="info" placeholder="Enter Comment">
         
         <button type="submit" class="btn btn-info commentpost" style="float:right; margin-top:10px">Comment</button>
-         <div class="form-group">
+  <!-- <div class="form-group">
     <label for="exampleInputFile" style="margin-top:5px">File input</label>
     <input type="file" id="exampleInputFile">
    
-  </div>
+  </div> -->
   
         
   </div>
@@ -66,7 +66,7 @@
 <ul class="media-list">
 <br>
 <% post.comments.each do |comment| %>
-<%= render 'comment', comment: comment %>
+<%= render 'shared/comment', comment: comment %>
 <% end %>  
 </ul>
 </div>

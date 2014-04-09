@@ -16,7 +16,10 @@ class BooksController < ApplicationController
 			:edition => params['edition'],:description => params['description'],
 			:tags => params['tags'],:price => params['price'],:contact => params['contact'],
 			:user_id => current_user.id)
-		book.photo = params['book']['photo'];
+		if !params['book'].nil? and !params['book']['photo'].nil?
+			book.photo = params['book']['photo'];
+		end
+		
 	  	book.save
 	  	current_user.books << book
 	  	#render :text => 'suceeded'

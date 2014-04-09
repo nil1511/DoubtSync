@@ -18,9 +18,16 @@ class NotifyPostaddTopic < Struct.new(:post_id)
 			if index == 0
 				next
 			end
-			n = item.split(' ')[0]
-			topic = Topic.create(name: n);
-			post.htags = post.htags.to_s +','+ topic.id.to_s;
+			puts item;
+			if !item.nil?
+				n = item.split(' ')[0]
+				puts n;
+				topic = Topic.create(name: n);
+				puts topic
+				puts post.htags.to_s;
+				puts topic.id.to_s;
+				post.htags = post.htags.to_s + ',' + topic.id.to_s;
+			end
 		end
 		post.save
 	

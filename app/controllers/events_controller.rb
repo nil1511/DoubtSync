@@ -9,11 +9,18 @@ class EventsController < ApplicationController
 			:duration => params['duration'],:description => params['description'],
 			:date => params[:event]['date'],:url => params['url'],
 			:college_id => current_user.college.id,:user_id => current_user.id)
+			
+			puts event
+		if !params['event'].nil? and !params['event']['photo'].nil?
 			event.photo = params['event']['photo'];
-	  	event.save
+		end
+			
+	  	if event.save
 	  	current_user.events << event
 	  	redirect_to '/'
-	  	#render :text => 'suceeded'
+	  	else
+	  	render :text => 'please fill all the details'
+	  	end
 	  else
 	  	render :text => 'failed'
 	  end
