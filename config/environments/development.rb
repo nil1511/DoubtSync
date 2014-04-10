@@ -6,6 +6,7 @@ Doubtsync::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+
   # Do not eager load code on boot.
   config.eager_load = true
   Paperclip.options[:command_path] = "/bin/"
@@ -15,8 +16,9 @@ Doubtsync::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # ActionMailer::Base.default_url_options[:host] = "localhost:3000"
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -28,5 +30,20 @@ Doubtsync::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+ 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.gmail.com',
+  port: 587,
+  domain: 'gmail.com',
+  user_name: 'doubtsync@gmail.com',
+  password: '@sen@Password',
+  authentication: 'plain',
+  enable_starttls_auto: true }
+
+
+  config.action_mailer.raise_delivery_errors = true
+
   
 end
