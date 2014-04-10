@@ -57,8 +57,13 @@ class UsersController < ApplicationController
 					student.user.save
 				end
 				
-				student.save
-				redirect_to '/users/profile'
+				if student.save
+					redirect_to '/users/profile'
+				else
+					@error_message = "Please Fill vaild details"
+					@student = Student.find_by user_id: current_user.id
+					render 'profile'
+				end
 			# end
 		else current_user.role.name.eql? "professor"
 				prof = current_user.profile
@@ -73,9 +78,14 @@ class UsersController < ApplicationController
 					prof.user.avatar = params['user']['avatar'];
 					prof.user.save
 				end
-	
-				prof.save
-				redirect_to '/users/profile'
+				if prof.save
+					redirect_to '/users/profile'
+				else
+					@error_message = "Please Fill vaild details"
+					@prof = Professor.find_by user_id: current_user.id
+					render 'editprofile_prof'
+				end
+				
 			#render :text =>  "TODO"+current_user.role.name
 		end
 	end

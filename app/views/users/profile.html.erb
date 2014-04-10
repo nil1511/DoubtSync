@@ -1,5 +1,8 @@
 <div class="container">
 	<%= form_tag '/users/manage', role: 'form' ,class:'form-horizontal',multipart: true do %>
+	<% if @error_message %>
+	<%= @error_message %>
+	<% end %>
 		<% if@student %>
 		<div class="form-group">
 		<%= label_tag(:avatar, "Profile Pic" ,class: 'col-sm-2 control-label') %>

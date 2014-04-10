@@ -3,7 +3,7 @@ class CreateProfessors < ActiveRecord::Migration
     create_table :professors do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :mobile
+      t.string :mobile
       t.boolean :gender
       t.date :dob
       t.integer :spamrate
