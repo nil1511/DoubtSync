@@ -21,7 +21,14 @@ button.post {
   overflow: hidden;
   cursor: pointer;
 }
-
+.notfication{
+padding: 10px 0px;
+}
+.notfication:hover{
+color: #00007F;
+background-color: #efefef;
+cursor: pointer;
+}
 button.post:active {
   box-shadow: 0px 3px 0px #3a7faa, 0px 3px 6px rgba(0, 0, 0, 0.9);
   top: 6px;

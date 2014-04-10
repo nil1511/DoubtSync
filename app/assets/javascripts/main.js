@@ -42,7 +42,20 @@ $(function() {
     });
 
 
-    // $('#notification span').hasClass('new')
+    if($('#notification span').hasClass('new')){
+        $.get('/main/notificationlist',function(e){
+            var d= '<ul style=" list-style: none; width: 250px;padding:0; ">';
+            for(a in e){
+                d+='<li class="notfication" data-nid='+e[a].id+'>'+e[a].text+'</li>';
+            }
+            d+='</ul>';
+            $('#notification').popover({
+                content: d,
+                html: true
+            })
+        })
+
+    }
 
     postbutton = $('button.post');
 
