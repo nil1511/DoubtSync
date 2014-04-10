@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402193329) do
+ActiveRecord::Schema.define(version: 20140410124625) do
 
   create_table "ambassador_registrations", force: true do |t|
     t.string   "name"
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(version: 20140402193329) do
     t.datetime "updated_at"
   end
 
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.text     "text"
+    t.boolean  "read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notifications", force: true do |t|
     t.string   "text"
     t.integer  "user_id"
@@ -141,7 +150,7 @@ ActiveRecord::Schema.define(version: 20140402193329) do
   create_table "professors", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "mobile"
+    t.string   "mobile"
     t.boolean  "gender"
     t.date     "dob"
     t.integer  "spamrate"
@@ -176,7 +185,7 @@ ActiveRecord::Schema.define(version: 20140402193329) do
   create_table "students", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "mobile"
+    t.string   "mobile"
     t.boolean  "gender"
     t.date     "dob"
     t.string   "degree"

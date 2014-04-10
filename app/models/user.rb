@@ -58,6 +58,19 @@ class User < ActiveRecord::Base
   
   has_many :followers, through: :reverse_relationships, source: :follower
 
+
+
+  has_many :messages, foreign_key: "sender_id", dependent: :destroy
+
+  has_many :inbox, through: :messages, source: :receiver
+
+  has_many :reverse_messages, foreign_key: "receiver_id",
+                                   class_name:  "Message",
+                                   dependent:   :destroy
+  
+  has_many :outbox, through: :reverse_messages, source: :sender
+
+
   before_create :set_default_role
 
   after_create :link_profile
