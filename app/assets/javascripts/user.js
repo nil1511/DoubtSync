@@ -81,9 +81,13 @@ $('#myquestion').on('click',function (e){
 	$.get('/posts/'+uid+'/index',function (data){
 			var ele ='';
 		for(e in data){
-			ele += '<li><div><label>'+data[e].text+'</label></div></a></li>'
+			var img ='';
+			var p = '<div class="singlepost well" data-pid="' + data[e].id + '">\
+            <div class="media"><div class="media-body">\
+            <h4 class="media-heading" style="color:#00557D">me</h4><p>' + data[e].text + '</p></div></div></div>';
+			ele += p;
 		}
-		var div = '<ul class="followlist">'+ele+'</ul>';
+		var div = '<div>'+ele+'</div>';
 		$('#displayarea').html(div);
 	});
 });
@@ -93,9 +97,13 @@ $('#myanswer').on('click',function (e){
 	$.get('/comments/'+uid+'/index',function (data){
 			var ele ='';
 		for(e in data){
-			ele += '<li><div><label>'+data[e].text+'</label></div></a></li>'
+			var img ='';
+			var p = '<div class="singlepost well" data-pid="' + data[e].id + '">\
+            <div class="media"><div class="media-body">\
+            <h4 class="media-heading" style="color:#00557D">me</h4><p>' + data[e].text + '</p></div></div></div>';
+			ele += p;
 		}
-		var div = '<ul class="followlist">'+ele+'</ul>';
+		var div = '<div>'+ele+'</div>';
 		$('#displayarea').html(div);
 	});
 });

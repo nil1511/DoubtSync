@@ -37,4 +37,9 @@ class MainController < ApplicationController
     @topic = topic.to_json(only: [:id,:name])  
     render :json => @topic
   end
+
+  def notificationlist
+    @notifications = current_user.notifications.to_json(only: [:id,:text,:read,:url])  
+    render :json => @notifications
+  end
 end

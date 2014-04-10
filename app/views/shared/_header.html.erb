@@ -21,7 +21,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
       <li><a id="messegebtn"><span class="glyphicon glyphicon-comment"></span></a></li>
-       <li><a  id="notification"><span class="glyphicon glyphicon-volume-up"<%= "style=color:red;" if current_user.notifications.count>0 %>></span></a></li>
+       <li><a  id="notification"  data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-volume-up <%= "new" if current_user.notifications.count>0 %>"</span></a></li>
 	    <li><a href="/main/feed#post">Posts</a></li>
 		<li><a href="/main/feed#books" title="Coming Soon">Books</a></li>
 		<li><a href="/main/feed#events" title="Coming Soon">Events</a></li>

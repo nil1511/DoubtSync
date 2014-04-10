@@ -41,6 +41,9 @@ $(function() {
         }
     });
 
+
+    // $('#notification span').hasClass('new')
+
     postbutton = $('button.post');
 
     postbutton.click(function(e) {
