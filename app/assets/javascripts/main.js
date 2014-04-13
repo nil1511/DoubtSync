@@ -121,7 +121,7 @@ $(function() {
         postbutton.removeClass('active');
     });
 
-    $('.view.glyphicon-plus-sign').on('click', function(e) {
+    $(document).on('click','.view.glyphicon-plus-sign', function(e) {
         var post = $(this).parent('div').parent('div.posttext').parent('div.singlepost');
         c = post.children('.comments');
 
@@ -144,7 +144,7 @@ $(function() {
         }
     });
 
-    $('.delete').on('click', function(e) {
+    $(document).on('click','.delete', function(e) {
 
         c = confirm('Do you want to delete this query?');
         if (c) {
@@ -160,7 +160,7 @@ $(function() {
         }
     });
 
-    $('.commentpost').on('click', function(e) {
+    $(document).on('click','.commentpost', function(e) {
         console.log('click', this)
         var post = $(this).parent('.media-body').parent('.media');
         var inputarea = $(this).parent('.media-body').children('input');
@@ -211,7 +211,7 @@ $(function() {
         }, "json");
     });
 
-    $('.up').on('click', function(e) {
+    $(document).on('click','.up', function(e) {
         var comment = $(this).parent('li').parent('ul')
         var number = $(this).parent('li').siblings('li.number');
         var cid = comment.data('cid');
@@ -229,7 +229,7 @@ $(function() {
         })
     })
 
-    $('.down').on('click', function(e) {
+    $(document).on('click','.down', function(e) {
         var comment = $(this).parent('li').parent('ul');
         var number = $(this).parent('li').siblings('li.number');
         var cid = comment.data('cid');
@@ -247,7 +247,7 @@ $(function() {
         })
     })
 
-    $('.spam').on('click', function(e) {
+    $(document).on('click','.spam', function(e) {
         var button = $(this)
         if ($(this).prev('ul').length == 0) {
             //Post
