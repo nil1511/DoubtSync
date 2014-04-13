@@ -1,4 +1,9 @@
 $(function(){
+	// $('#college_id').select2();
+	$('#college_id').select2({
+    	placeholder: "Select a College",
+    	allowClear: true
+	});
 	$('#loginform .btn.login').on('click',function (event) {
 
 		if($('#user_email').val()==''){
