@@ -37,6 +37,11 @@ $('#updateprofile').on('click',function (e) {
 
 });
 
+$('#send_message_btn').on('click',function(){
+	if($('#message').val().trim()!==''){
+		$.get('/message')
+	}
+})
 
 $('#following').on('click',function (e){
 	var uid = $(this).parent('li').parent('ul').data('uid');

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140410124625) do
+ActiveRecord::Schema.define(version: 20140413170036) do
 
   create_table "ambassador_registrations", force: true do |t|
     t.string   "name"
@@ -99,6 +99,22 @@ ActiveRecord::Schema.define(version: 20140410124625) do
   create_table "followed_topics", force: true do |t|
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "internships", force: true do |t|
+    t.text     "title"
+    t.text     "description"
+    t.text     "tags"
+    t.date     "start_date"
+    t.text     "duration"
+    t.text     "location"
+    t.date     "deadline"
+    t.text     "opening"
+    t.text     "url"
+    t.text     "eligible_students"
+    t.text     "required_skills"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

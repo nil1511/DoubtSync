@@ -5,7 +5,7 @@
 #  id                  :integer          not null, primary key
 #  first_name          :string(255)
 #  last_name           :string(255)
-#  mobile              :integer
+#  mobile              :string(255)
 #  gender              :boolean
 #  dob                 :date
 #  spamrate            :integer
@@ -22,7 +22,7 @@
 
 class Professor < ActiveRecord::Base
 	belongs_to :user
-	has_many: internships
+	has_many :internships
 	#validates_format_of :mobile, :with => /(7|8|9)\d{9}/, :message => "Invalid Mobile Number"
 
 end

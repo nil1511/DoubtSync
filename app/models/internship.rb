@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: internships
+#
+#  id                :integer          not null, primary key
+#  title             :text
+#  description       :text
+#  tags              :text
+#  start_date        :date
+#  duration          :text
+#  location          :text
+#  deadline          :date
+#  opening           :text
+#  url               :text
+#  eligible_students :text
+#  required_skills   :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
 class Internship < ActiveRecord::Base
-	belongs_to: professor
+	belongs_to :professor
 end
