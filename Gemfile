@@ -18,6 +18,8 @@ gem 'uglifier'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'rails-latex'
+
 
 #TODO add turbolinks latter
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

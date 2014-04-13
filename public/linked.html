@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Linkedin</title>
+</head>
+
+<body>
+    <form action="https://www.linkedin.com/uas/oauth2/authorization" method="POST" target="_blank">
+        <p>response_type:
+            <input type="text" name="response_type" value="code">
+        </p>
+        <!-- <p>scope:
+            <input type="text" name="scope" value="r_basicprofile r_fullprofile r_emailaddress r_network r_contactinfo rw_nus rw_groups w_messages">
+        </p> -->
+        <p>redirect_uri:
+            <input type="text" name="redirect_uri" value="http://localhost:3000/linked.html">
+        </p>
+        <p>client_id:
+            <input type="text" name="client_id" value="75a7wxnouqd92h">
+        </p>
+        <p>state:
+            <input type="text" name="state" value="AAAA">
+        </p>
+        <input type="submit" value="Generate Authorization Code">
+    </form>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <form action="https://www.linkedin.com/uas/oauth2/accessToken" method="POST" target="_blank">
+        <p>grant_type:
+            <input type="text" name="grant_type" value="authorization_code">
+        </p>
+        <p>code:
+            <input type="text" name="code" value="">
+        </p>
+        <p>redirect_uri:
+            <input type="text" name="redirect_uri" value="http://localhost:3000/linked.html">
+        </p>
+        <p>client_id:
+            <input type="text" name="client_id" value="75a7wxnouqd92h">
+        </p>
+        <p>client_secret:
+            <input type="text" name="client_secret" value="UFlWPbLksGlAOyVD">
+        </p>
+        <input type="submit" value="Request Access Token">
+    </form>
+
+</body>
+
+</html>

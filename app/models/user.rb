@@ -25,8 +25,6 @@
 #  updated_at             :datetime
 #
 
-#FIXME link to student or professor
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -94,6 +92,11 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
   
+
+  def send_message!(other_user, message)
+    messages.create!(receiver_id: other_user.id,text: message)
+  end
+
   def profile
     if self.role.name=='student' or self.role.name=='ambassador'
       Student.find_by(user_id: self.id)
