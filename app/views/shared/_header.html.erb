@@ -20,7 +20,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-      <li><a id="messegebtn"><span class="glyphicon glyphicon-comment"></span></a></li>
+      <li><a id="messegebtn"><span class="glyphicon glyphicon-comment <%= "new" if current_user.unread_message.length > 0 %>"></span></a></li>
        <li><a  id="notification"  data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-volume-up <%= "new" if current_user.notifications.count>0 %>"</span></a></li>
 	    <li><a href="/main/feed#post">Posts</a></li>
 		<li><a href="/main/feed#books" title="Coming Soon">Books</a></li>

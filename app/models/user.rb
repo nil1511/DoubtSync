@@ -58,15 +58,12 @@ class User < ActiveRecord::Base
 
 
 
-  has_many :messages, foreign_key: "sender_id", dependent: :destroy
+  has_many :sent, foreign_key: "sender_id",class_name:  "Message", dependent: :destroy
 
-  has_many :inbox, through: :messages, source: :receiver
-
-  has_many :reverse_messages, foreign_key: "receiver_id",
+  has_many :inbox, foreign_key: "receiver_id",
                                    class_name:  "Message",
                                    dependent:   :destroy
   
-  has_many :outbox, through: :reverse_messages, source: :sender
 
 
   before_create :set_default_role
@@ -91,10 +88,13 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
-  
 
   def send_message!(other_user, message)
-    messages.create!(receiver_id: other_user.id,text: message)
+    Message.create!(sender_id: self.id, receiver_id: other_user.id,text: message)
+  end
+
+  def unread_message
+    self.inbox.where(read: nil)
   end
 
   def profile
