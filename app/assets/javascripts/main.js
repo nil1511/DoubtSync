@@ -60,6 +60,21 @@ $(function() {
 
     }
 
+    if($('#messegebtn span').hasClass('new')){
+        $.get('/main/unreadmsg',function(e){
+            var d= '<ul style=" list-style: none; width: 250px;padding:0; ">';
+            for(a in e){
+                d+='<li class="umsg" data-nid='+e[a].id+'>'+e[a].text+'</li>';
+            }
+            d+='</ul>';
+            $('#messegebtn').popover({
+                content: d,
+                html: true
+            })
+        })
+
+    }
+
     postbutton = $('button.post');
 
     postbutton.click(function(e) {

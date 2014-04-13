@@ -23,6 +23,7 @@ Doubtsync::Application.routes.draw do
   get 'main/user' => 'main#user'
   get 'main/topic' => 'main#topic'
   get 'main/notificationlist' => 'main#notificationlist'
+  get 'main/unreadmsg' => 'main#unreadmsg'
 
   devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
    

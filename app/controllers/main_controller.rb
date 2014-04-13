@@ -42,4 +42,9 @@ class MainController < ApplicationController
     @notifications = current_user.notifications.to_json(only: [:id,:text,:read,:url])  
     render :json => @notifications
   end
+
+  def unreadmsg
+    @msg = current_user.unread_message.to_json(only: [:id,:text,:read])  
+    render :json => @msg
+  end
 end
