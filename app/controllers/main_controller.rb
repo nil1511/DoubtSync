@@ -44,7 +44,16 @@ class MainController < ApplicationController
   end
 
   def unreadmsg
-    @msg = current_user.unread_message.to_json(only: [:id,:text,:read])  
+    msg = current_user.unread_message
+
+    @msg = msg.map do |u|
+    { :id => u.id,
+      :name => u.sender.name,
+      :text => u.text,
+      :pic =>u.sender.avatar('thumb'),
+      :read => u.read
+    }
+  end
     render :json => @msg
   end
 end

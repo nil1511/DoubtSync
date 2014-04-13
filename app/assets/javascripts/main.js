@@ -62,11 +62,22 @@ $(function() {
 
     if($('#messegebtn span').hasClass('new')){
         $.get('/main/unreadmsg',function(e){
-            var d= '<ul style=" list-style: none; width: 250px;padding:0; ">';
+            var d= '<ul class="media-list" style=" list-style: none; width: 250px;padding:0; ">';
             for(a in e){
-                d+='<li class="umsg" data-nid='+e[a].id+'>'+e[a].text+'</li>';
+                // '<li class="umsg" data-nid='+e[a].id+'>'+e[a].text+'</li>';
+                d+= '<li class="media" style="background-color:#FFFFFF" data-mid='+e[a].id+'>\
+  <a class="pull-left" href="#">\
+    <img class="media-object" src="'+e[a].pic+'" alt=" " style="width:50px; height:50px;">\
+  </a>\
+  <div class="media-body">\
+    <h4 class="media-heading">'+e[a].name+'</h4>\
+    <h5 class="media-heading">'+e[a].text+'</h5>\
+  </div>\
+  </li>';
             }
-            d+='</ul>';
+            d+='</ul><div style="text-align:center">\
+<button type="submit" class="btn btn-primary">See all messages</button>\
+</div>';
             $('#messegebtn').popover({
                 content: d,
                 html: true
