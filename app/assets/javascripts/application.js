@@ -17,4 +17,5 @@
 //= require jquery.caretposition
 //= require jquery-textntags
 //= require bootstrap/bootstrap.min
+//= require jquery.ui.widget
 //= require_tree .
