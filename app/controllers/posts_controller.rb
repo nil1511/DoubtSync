@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	skip_before_action :verify_authenticity_token
   before_filter :authenticate_user!
-  # TODO Check Authentication while crud
+
   def index
     render :json => Post.from_users_followed_by(current_user)
   end
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-  	if user_signed_in? and params[:post]
+  	if params[:post]
 	  	data=ActiveSupport::JSON.decode(params[:post])
 	  	post = Post.new(:text => data['text'],:tagged_users => data['tags'],:htags => data['htags'],:visibility_to_prof => data['visibility_to_prof'])      
 	  	post.save
@@ -60,7 +60,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # TODO Give JSON response
     id =params[:id]
     post = Post.find_by_id(id)
     if post.user == current_user
@@ -69,7 +68,6 @@ class PostsController < ApplicationController
     else
       render :text => "You are not autorized to delete this post"
     end
-
   end
   
   def show
@@ -80,7 +78,6 @@ class PostsController < ApplicationController
     else
       render :text => "invalid request | Post does not exit"
     end
-
   end
 
 end

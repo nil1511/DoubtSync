@@ -2,8 +2,6 @@ class CommentsController < ApplicationController
 	skip_before_action :verify_authenticity_token
   before_filter :authenticate_user!
 
-  # TODO Check Authentication while crud
-
   def index
   	id =params[:id]
     post = Post.find_by_id(id)
@@ -26,26 +24,21 @@ class CommentsController < ApplicationController
   end
 
   def create
-    if user_signed_in?
-      data=ActiveSupport::JSON.decode(params[:comment])
-      pid = data['post_id']
-      format= 'json'
-      puts data;
-    	comment = Comment.new(:text => data['text'])
-    	post = Post.find_by_id(pid)
-    	if !post.nil?
-    		puts post
-      	comment.save
-      	post.comments << comment
-      	current_user.comments << comment
-#      	render get_type format => post
-#        TODO use function
-        render format.to_sym => '1'
-      else
-      	render format.to_sym => "failed"
-      end
+    data=ActiveSupport::JSON.decode(params[:comment])
+    pid = data['post_id']
+    format= 'json'
+    puts data;
+  	comment = Comment.new(:text => data['text'])
+  	post = Post.find_by_id(pid)
+  	if !post.nil?
+  		puts post
+    	comment.save
+    	post.comments << comment
+    	current_user.comments << comment
+# TODO use function
+      render format.to_sym => '1'
     else
-    	render :text =>"invalid request"
+    	render format.to_sym => "failed"
     end
   end
 
@@ -73,7 +66,6 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    # TODO Modularized functions DRY Code
     id =params[:id]
     data=params[:comment]
     comment = Comment.update(id,text: data['text'],tag: data['tag'])
@@ -94,6 +86,7 @@ class CommentsController < ApplicationController
       render :text => "invalid request"
     end
   end
+
   def upvote
     id =params[:id]
     comment = Comment.find_by_id(id)
@@ -112,6 +105,7 @@ class CommentsController < ApplicationController
       render :text => "invalid request"
     end
   end
+
   def downvote
     id =params[:id]
     comment = Comment.find_by_id(id)
@@ -128,7 +122,7 @@ class CommentsController < ApplicationController
       render :text => "down"
     else
       render :text => "invalid request"
-    end
-    
+    end 
   end
+  
 end

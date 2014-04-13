@@ -20,7 +20,6 @@ class AmbassadorController < ApplicationController
 	end
   	 render :text => x ;
   	else
-  		#render :text => io.content_type;
   		render :text => 'please upload a proper csv file';
   	end
   end
