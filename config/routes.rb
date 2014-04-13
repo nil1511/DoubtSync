@@ -29,8 +29,10 @@ Doubtsync::Application.routes.draw do
   resources :posts
   resources :relationships, only: [:create, :destroy]
   resources :followed_topics, only: [:create, :destroy]
-  
-  
+
+  post 'message/:id' => 'messages#send_message'
+  get 'message' => 'messages#list_message'
+
   post 'comments' => 'comments#create'
   get 'comments/:id' => 'comments#index'
   post 'comments/:id/edit' => 'comments#edit'
