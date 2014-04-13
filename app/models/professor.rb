@@ -22,6 +22,7 @@
 
 class Professor < ActiveRecord::Base
 	belongs_to :user
+	has_many: internships
 	#validates_format_of :mobile, :with => /(7|8|9)\d{9}/, :message => "Invalid Mobile Number"
 
 end
