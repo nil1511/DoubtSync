@@ -28,6 +28,11 @@ class InternshipsController < ApplicationController
 		id =params[:id]
 	    internship = Internship.find_by_id(id)
 	    if !internship.nil?
+		 	# if current_user.role.name == "professor"
+			# 	@message
+			# else
+			# 	render :text => 'some thing went wrong plz report a bug'
+			# end
 	      render :json => internship
 	    else
 	      render :text => "invalid request | Internship does not exit"

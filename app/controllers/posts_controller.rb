@@ -72,9 +72,16 @@ class PostsController < ApplicationController
   
   def show
     id =params[:id]
-    post = Post.find_by_id(id)
-    if !post.nil?
-      render :json => post
+    type = params[:format]
+
+    @post = Post.find_by_id(id)
+
+    if !@post.nil? and type.nil?
+      @posts = Array.new()
+      @posts << @post
+      render 'show'
+    elsif !@post.nil? and type=='json'
+      render :json => @post
     else
       render :text => "invalid request | Post does not exit"
     end

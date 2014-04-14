@@ -1,0 +1,49 @@
+<%= render 'shared/header' %>
+<div class="container-fuild">
+  <div style="position: relative;display: inline-block;width:100%;">
+  <div class="col-md-2">
+    <!-- left sidebar -->
+    <ul class="leftside">
+      <li>
+        <a href="/users/<%= current_user.id%>"><button class="btn">My Profile</button></a>
+      </li>
+      <br>
+      <li>
+        <button id="addbook" class="btn" data-toggle='modal' data-target='#newbook'>Advertise a Book</button>
+      </li>
+      <% if current_user.role.name == 'professor' %>
+      <br>
+      <li>
+        <button id="addinternship" class="btn" data-toggle='modal' data-target='#newinternship'>Create a Internship Opening</button>
+      </li>
+      <% end %>  
+    </ul>
+  </div>
+	<!-- New Book Form -->
+  <%= render 'shared/add_book_model' %>
+  <% if current_user.role.name == 'professor' %>
+    <%= render 'shared/add_internship_model' %>
+  <% end %>
+
+  <div class="col-md-7">
+  <!-- central area -->
+    
+    <div id='posts'>
+    <%= render 'shared/post' %>
+    </div>
+  </div>
+	
+  <div class="col-md-3">
+    <!-- <ul class="rightside">
+      <li>
+        <button id="addevent" class="btn" data-toggle='modal' data-target='#newevent'>Create a Event</button>
+      </li>
+    </ul> -->
+    <%= render 'shared/event' %>
+  </div>
+
+  <!-- New Event Form -->
+  <%= render 'shared/add_event_model' %>
+	
+  </div>
+</div>
