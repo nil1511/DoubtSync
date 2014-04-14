@@ -32,12 +32,20 @@ class BooksController < ApplicationController
 
 	def show
 		id =params[:id]
-	    book = Book.find_by_id(id)
-	    if !book.nil?
-	      render :json => book
+	    type = params[:format]
+
+	    @book = Book.find_by_id(id)
+
+	    if !@book.nil? and type.nil?
+	      @books = Array.new()
+	      @books << @book
+	      render 'show'
+	    elsif !@book.nil? and type=='json'
+	      render :json => @book
 	    else
 	      render :text => "invalid request | Book does not exit"
 	    end
+		
 	end
 
 	def edit

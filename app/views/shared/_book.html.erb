@@ -1,0 +1,23 @@
+<% @books.each do |book| %>
+<div class="panel panel-info" style="width:500px;">
+  <div class="panel-heading">
+  <% if !book.price.nil? %>
+   <div style="width:60px; height:30px; float:right; background-color: #7F7F7F; border-radius:10px; color:#FFFFFF; text-align:center;" align="justify"><h5>Rs <%= book.price.to_s %></h5></div>
+   <% end %>
+   <h3  class="panel-title">
+   <%= book.name.to_s %>, <%= book.author.to_s %>
+   </h3>
+  
+  </div>
+  <div class="panel-body">
+   
+    <%= book.description.to_s %>
+  </div>
+  <div class="panel-footer">Seller Information
+   <button  type:"button" class="btn btn-success btn-sm" style="margin-left:245px" data-userid="<%= book.user_id.to_s %>">Send Message
+   </button>
+  
+  </div>
+</div>
+
+<% end %>
