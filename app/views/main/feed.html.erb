@@ -11,10 +11,19 @@
       <li>
         <button id="addbook" class="btn" data-toggle='modal' data-target='#newbook'>Advertise a Book</button>
       </li>
+      <% if current_user.role.name == 'professor' %>
+      <br>
+      <li>
+        <button id="addinternship" class="btn" data-toggle='modal' data-target='#newinternship'>Create a Internship Opening</button>
+      </li>
+      <% end %>  
     </ul>
   </div>
 	<!-- New Book Form -->
   <%= render 'shared/add_book_model' %>
+  <% if current_user.role.name == 'professor' %>
+    <%= render 'shared/add_internship_model' %>
+  <% end %>
 
   <div class="col-md-7">
   <!-- central area -->

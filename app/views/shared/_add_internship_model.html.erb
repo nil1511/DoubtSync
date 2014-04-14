@@ -1,0 +1,107 @@
+<div class="modal fade" id="newinternship" tabindex="-1" role="dialog" aria-labelledby="newInternshipForm" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="newInternshipForm">Add New Intership</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag '/internship', role: 'form' ,class:'form-horizontal' do %>
+
+    <div class="form-group">
+      <%= label_tag(:title, "Title" , class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:title,'', class: 'form-control', placeholder: 'Enter the title for Internship') %>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= label_tag(:description, "Description" , class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_area(:description,'', class: 'form-control', placeholder: 'Enter the description for Internship') %>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= label_tag(:tags, "Tags" , class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:tags,'', class: 'form-control', placeholder: 'Enter the tags applicable for Internship') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:start_date, "Start Date" , class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= date_field_tag(:start_date,'',class: 'form-control') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:duration, "Duration" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:duration,'', class: 'form-control',placeholder: 'Months') %>
+    </div>
+    </div>
+    
+    <div class="form-group">
+      <%= label_tag(:location, "Location" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:duration,'', class: 'form-control' ) %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:deadline, "Deadline" , class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= date_field_tag(:deadline,'',class: 'form-control') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:opening, "Openings" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= number_field_tag(:opening,'', class: 'form-control',placeholder: 'Enter number of Openings for the Internship') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:price, "Price" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:price,'', class: 'form-control',placeholder: 'Enter approximate price') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:url, "Url" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:url,'', class: 'form-control',placeholder: 'Enter Url for additional info') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:eligible_students, "Eligible Students" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_field_tag(:eligible_students,'', class: 'form-control') %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag(:required_skills, "Required Skills" ,class: 'col-sm-4 control-label') %>
+    <div class="col-sm-8">
+      <%= text_area(:required_skills,'', class: 'form-control',placeholder: 'Enter description here') %>
+    </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        
+        <%= submit_tag("Add Book",class: "btn btn-primary", id: "savebook") %>    
+      </div> 
+    
+        <% end %>
+      </div>
+       
+    </div>
+  </div>
+</div>
