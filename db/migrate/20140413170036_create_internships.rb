@@ -1,6 +1,8 @@
 class CreateInternships < ActiveRecord::Migration
   def change
     create_table :internships do |t|
+      t.integer :professor_id
+
       t.text :title
       t.text :description
       t.text :tags

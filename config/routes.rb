@@ -52,6 +52,11 @@ Doubtsync::Application.routes.draw do
   post 'books/:id/edit' => 'books#edit'
   delete 'books/:id' => 'books#destroy'
 
+  post 'internship' => 'internships#new'
+  get 'internship/:id' => 'internships#show'
+  post 'internship/:id/edit' => 'internships#edit'
+  delete 'internship/:id' => 'internships#destroy'
+
   post 'events' => 'events#new'
   get 'events/:date' => 'events#show'
   post 'events/:id/edit' => 'events#edit'

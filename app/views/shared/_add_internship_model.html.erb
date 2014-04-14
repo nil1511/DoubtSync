@@ -48,7 +48,7 @@
     <div class="form-group">
       <%= label_tag(:location, "Location" ,class: 'col-sm-4 control-label') %>
     <div class="col-sm-8">
-      <%= text_field_tag(:duration,'', class: 'form-control' ) %>
+      <%= text_field_tag(:location,'', class: 'form-control' ) %>
     </div>
     </div>
 
@@ -63,13 +63,6 @@
       <%= label_tag(:opening, "Openings" ,class: 'col-sm-4 control-label') %>
     <div class="col-sm-8">
       <%= number_field_tag(:opening,'', class: 'form-control',placeholder: 'Enter number of Openings for the Internship') %>
-    </div>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag(:price, "Price" ,class: 'col-sm-4 control-label') %>
-    <div class="col-sm-8">
-      <%= text_field_tag(:price,'', class: 'form-control',placeholder: 'Enter approximate price') %>
     </div>
     </div>
 
@@ -96,7 +89,7 @@
 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>        
-        <%= submit_tag("Add Book",class: "btn btn-primary", id: "savebook") %>    
+        <%= submit_tag("Create Internship",class: "btn btn-primary", id: "savebook") %>    
       </div> 
     
         <% end %>

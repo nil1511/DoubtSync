@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140413170036) do
   end
 
   create_table "internships", force: true do |t|
+    t.integer  "professor_id"
     t.text     "title"
     t.text     "description"
     t.text     "tags"
