@@ -300,9 +300,11 @@ $(function() {
     $('#InputFile').fileupload({
        dataType: 'json',
         add: function (e, data) {
+            console.log('Added File to upload');
             data.context = $('<button/>').text('Upload')
                 .appendTo(document.body)
                 .click(function () {
+                    console.log('Sending file to upload')
                     data.context = $('<p/>').text('Uploading...').replaceAll($(this));
                     data.submit();
                 });

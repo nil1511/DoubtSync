@@ -59,6 +59,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def file
+
+    io=params[:files]
+    file = io.open;
+    render :text => file.read.to_s;
+  end
+
   def destroy
     id =params[:id]
     post = Post.find_by_id(id)
