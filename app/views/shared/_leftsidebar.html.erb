@@ -1,0 +1,15 @@
+<ul class="leftside">
+      <li>
+        <a href="/users/<%= current_user.id%>"><button class="btn">My Profile</button></a>
+      </li>
+      <br>
+      <li>
+        <button id="addbook" class="btn" data-toggle='modal' data-target='#newbook'>Advertise a Book</button>
+      </li>
+      <% if current_user.role.name == 'professor' %>
+      <br>
+      <li>
+        <button id="addinternship" class="btn" data-toggle='modal' data-target='#newinternship'>Create a Internship Opening</button>
+      </li>
+      <% end %>  
+    </ul>
