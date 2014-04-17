@@ -61,8 +61,9 @@ Doubtsync::Application.routes.draw do
   delete 'internship/:id' => 'internships#destroy'
 
   post 'events' => 'events#new'
-  get 'events/:date' => 'events#show'
+  get 'events/date/:date' => 'events#search_date'
   post 'events/:id/edit' => 'events#edit'
+  get 'events/:id' => 'events#show'
   delete 'events/:id' => 'events#destroy'
 
   root 'home#index'

@@ -1,3 +1,4 @@
+<% #TODO Move JS Code to new File  %>
 <script type="text/javascript">
 	window.onload = function(){
 		
@@ -17,7 +18,7 @@
 			if (obj.day < 10)
 				d='0'+obj.day
 			console.log('/events/'+obj.year+'-'+m+'-'+d);
-			$.get('/events/'+obj.year+'-'+m+'-'+d,function(e){
+			$.get('/events/date/'+obj.year+'-'+m+'-'+d,function(e){
 				$('#events').html('');
 
 				for(a in e){
@@ -33,6 +34,7 @@
 		});
 		
 	};
+
 </script>
 <div class="well">
   <div style="text-align:center">

@@ -27,6 +27,24 @@ class EventsController < ApplicationController
 	end
 
 	def show
+		id =params[:id]
+	    type = params[:format]
+
+	    @event = Event.find_by_id(id)
+
+	    if !@event.nil? and type.nil?
+	      @events = Array.new()
+	      @events << @event
+	      render 'show'
+	    elsif !@event.nil? and type=='json'
+	      render :json => @event
+	    else
+	      render :text => "invalid request | Event does not exit"
+	    end
+		
+	end
+
+	def search_date
 		date =params[:date]
 	    event = Event.where('date like :d',d:'%'+date+'%')
 	    if !event.nil?
