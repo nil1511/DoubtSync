@@ -8,7 +8,11 @@ class MainController < ApplicationController
     if current_user.profile.first_name.to_s == ''
       redirect_to '/users/manage'
     end
-  	@posts = Post.from_users_followed_by(current_user).paginate(page: params[:page])
+  	post = Post.from_users_followed_by(current_user).paginate(page: params[:page])
+    event =  Event.where('college_id= :cid',cid: current_user.college.id) 
+    book = Book.all
+    data = post + event + book
+    @data = data.sort_by {|a| a.created_at }
   end
 
   def user
