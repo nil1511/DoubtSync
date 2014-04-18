@@ -49,7 +49,7 @@ $(function() {
         $.get('/main/notificationlist',function(e){
             var d= '<ul style=" list-style: none; width: 250px;padding:0; ">';
             for(a in e){
-                d+='<li class="notfication" data-nid='+e[a].id+'>'+e[a].text+'</li>';
+                d+='<a href="'+e[a].url+'"><li class="notfication" data-nid='+e[a].id+'>'+e[a].text+'</li></a>';
             }
             d+='</ul>';
             $('#notification').popover({

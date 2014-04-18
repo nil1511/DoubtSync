@@ -10,7 +10,7 @@ class NotifyPostaddTopic < Struct.new(:post_id)
 		tagged_users.each do |userid|
 			text = name +' tagged you in a Post'
 			if userid.to_i != 0
-				Notification.create(text: text,user_id: userid.to_i);
+				Notification.create(text: text,user_id: userid.to_i,url: '/posts/'+post_id.to_s)
 			end
 		end
 		puts "Added Notification";
