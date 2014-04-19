@@ -3,6 +3,7 @@
 # Table name: internships
 #
 #  id                :integer          not null, primary key
+#  professor_id      :integer
 #  title             :text
 #  description       :text
 #  tags              :text
@@ -20,4 +21,5 @@
 
 class Internship < ActiveRecord::Base
 	belongs_to :professor
+	has_many :internship_applications
 end

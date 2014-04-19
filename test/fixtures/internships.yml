@@ -3,6 +3,7 @@
 # Table name: internships
 #
 #  id                :integer          not null, primary key
+#  professor_id      :integer
 #  title             :text
 #  description       :text
 #  tags              :text

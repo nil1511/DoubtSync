@@ -24,5 +24,6 @@
 class Student < ActiveRecord::Base
 	#validates :name, presence: true
 	belongs_to :user
+	has_many :internship_applications
 	#validates_format_of :mobile, :with => /(7|8|9)\d{9}/, :message => "Invalid Mobile Number"
 end

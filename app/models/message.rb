@@ -2,13 +2,17 @@
 #
 # Table name: messages
 #
-#  id          :integer          not null, primary key
-#  sender_id   :integer
-#  receiver_id :integer
-#  text        :text
-#  read        :boolean
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                    :integer          not null, primary key
+#  sender_id             :integer
+#  receiver_id           :integer
+#  text                  :text
+#  document_file_name    :string(255)
+#  document_content_type :string(255)
+#  document_file_size    :integer
+#  document_updated_at   :datetime
+#  read                  :boolean
+#  created_at            :datetime
+#  updated_at            :datetime
 #
 
 class Message < ActiveRecord::Base
