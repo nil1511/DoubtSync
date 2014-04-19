@@ -14,13 +14,66 @@
   <!-- central area -->
     <div class="row">
 	  <% @internship.each do |ob| %>
-      <div id='posts'>
-      <h2>fegfe
-        <%= ob.title %>
-        <%= ob.duration %>
-        <%= ob.start_date %>
-        
-      </h2>
+      <div id='internship_div'>
+
+      <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">                        
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed"><%= ob.title %></a>
+                <div class="pull-right">By:<a href="/users/<%= ob.professor.user_id.to_s %>"><%= ob.professor.first_name.to_s << ' ' << ob.professor.last_name.to_s %></a></div>
+                </h4>
+                <h4>Duration:<%= ob.duration %><span class="pull-right">Location:<%= ob.location %></span></h4>
+                <h4>Last Date:<%= ob.deadline %></h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                  <div class="form-horizontal">
+                  <style>
+                  .control-label{
+                    padding: 0 !important;
+                  }
+                  </style>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name">Description</label>
+                      <div class="col-sm-8"><%= ob.description %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name">Start Date</label>
+                      <div class="col-sm-8"><%= ob.start_date %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name">Number of Openings</label>
+                      <div class="col-sm-8"><%= ob.opening %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name">Eligible Students</label>
+                      <div class="col-sm-8"><%= ob.eligible_students %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name">Required Skills</label>
+                      <div class="col-sm-8"><%= ob.required_skills %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name">Url</label>
+                      <div class="col-sm-8"><%= ob.url %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label" for="name"></label>
+                      <div class="col-sm-8"><button type="button" class="btn btn-primary">Apply for this position</button>
+                      </div>
+                    </div>
+                    
+                </div>
+
+              </div>
+            </div>
+          </div>
       </div>
     <% end %>
 
