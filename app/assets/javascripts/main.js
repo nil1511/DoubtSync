@@ -2,6 +2,7 @@ $(function() {
     $('#profselect').select2({
             placeholder: "Ask to Professors"
     });
+    $('.dropdown-toggle').dropdown();
     $('.comments').hide();
     var ajax_request = false;
     $('textarea.postarea').textntags({
