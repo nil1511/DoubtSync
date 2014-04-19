@@ -1,5 +1,6 @@
 Doubtsync::Application.routes.draw do
   
+  get "internships" => 'internships#list'
   get "resume/daiict"
   get "ambassador/proflist"
   post "ambassador/proflist" => 'ambassador#uploadFile'

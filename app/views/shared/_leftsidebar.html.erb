@@ -1,4 +1,4 @@
-<ul class="leftside">
+<ul class="leftside" style="padding: 0;">
       <li>
         <a href="/users/<%= current_user.id%>"><button class="btn">My Profile</button></a>
       </li>
@@ -18,6 +18,12 @@
       <br>
       <li>
         <button id="addinternship" class="btn" data-toggle='modal' data-target='#newinternship'>Create a Internship Opening</button>
+      </li>
+      <% end %>  
+      <% if current_user.role.name != 'professor' %>
+      <br>
+      <li>
+        <a href="/internships"><button id="availableinternships" class="btn">Available Internship Opening</button></a>
       </li>
       <% end %>  
     </ul>

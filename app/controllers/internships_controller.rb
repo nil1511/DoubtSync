@@ -39,6 +39,12 @@ class InternshipsController < ApplicationController
 	    end
 	end
 
+	def list
+		#TODO Show internship which have still not crossed deadline
+		@internship = Internship.all
+		render 'list'
+	end
+
 	def edit
 		#TODO Edit for internship
 	end
