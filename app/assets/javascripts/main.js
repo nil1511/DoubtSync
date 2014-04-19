@@ -5,6 +5,7 @@ $(function() {
     $('.dropdown-toggle').dropdown();
     $('.comments').hide();
     var ajax_request = false;
+    
     $('textarea.postarea').textntags({
         triggers: {
             '#': {

@@ -1,5 +1,7 @@
 Doubtsync::Application.routes.draw do
   
+
+  get 'search' => 'search#q'
   get "internships" => 'internships#list'
   get "resume/daiict"
   get "ambassador/proflist"
