@@ -1,10 +1,12 @@
 class CustomFailure < Devise::FailureApp
-  def redirect_url
-    new_user_session_url(:subdomain => 'secure')
-  end
-
-  # Redirect to root_url
   def respond
+    if flash[:timedout] && flash[:alert]
+      flash.keep(:timedout)
+      flash.keep(:alert)
+    else
+      flash[:alert] = i18n_message
+    end
+
     if http_auth?
       http_auth
     else

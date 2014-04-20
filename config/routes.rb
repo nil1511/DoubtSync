@@ -10,6 +10,8 @@ Doubtsync::Application.routes.draw do
   post "colleges/new" => 'colleges#create'
   get "colleges/:id" => 'colleges#show'
   post "colleges/ambassadorregistration" => 'colleges#update'
+  
+  devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
 
   get "users/manage" => 'users#manage'
   post "users/manage" => 'users#save'
@@ -30,7 +32,6 @@ Doubtsync::Application.routes.draw do
 
   post 'posts/file'
   
-  devise_for :users, path: "", path_names: { sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: '' }, :controllers => { :registrations => 'registers' }
    
   resources :posts
   resources :relationships, only: [:create, :destroy]

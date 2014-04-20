@@ -59,6 +59,8 @@
 	</div>
 	<div class="col-md-3 pull-right">
 <%= form_for(resource, :as => resource_name,:url => session_path(:user), html: {role: 'form',id:'loginform' } ) do |f| %>
+
+  <%= alert %>
 	<div class="form-group">
 		<%= f.label :username %>
 	  	<%= f.text_field :username, class: 'form-control', placeholder: "Enter username",:autofocus=>true %>
