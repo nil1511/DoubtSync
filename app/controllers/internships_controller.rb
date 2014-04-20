@@ -59,7 +59,14 @@ class InternshipsController < ApplicationController
 	end
 
 	def internship_response
-
+		internship_id = params[:id];
+		internship = Internship.find_by_id(internship_id)
+		if internship.professor == current_user.profile
+			@applications = internship.internship_applications
+			render 'response'
+		else
+			render :json => 'Unauthorized Request'
+		end
 	end
 
 	def apply

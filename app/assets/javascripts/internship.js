@@ -36,7 +36,24 @@ $(function(){
 		}
 	});
 
-	$('#apply').on('click',function(){
+	$('#send_message_btn').on('click',function(){
+	if($('#message').val().trim()!==''){
+		data = {};
+		data.text = $('#message').val();
+		$.post('/message/'+$('#send_message').data('userid'),{message: JSON.stringify(data)},function(res){
+			if(res==$('#send_message').data('userid')){
+				$('#message').val('');
+				$('#send_message_btn').html('Sent');
+				$('#send_message_btn').attr('id','discard');
+			}
+		})
+	}
+	});
+	$(document).on('click','#discard',function(){
+		console.log('fewf')
+		$('#sendmessage').modal('hide');
+		$('#send_message_btn').html('Send Message');
+		$('#discard').attr('id','send_message_btn');
 		
 	})
 })
