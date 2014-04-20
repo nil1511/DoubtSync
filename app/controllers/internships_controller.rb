@@ -41,17 +41,36 @@ class InternshipsController < ApplicationController
 
 	def list
 		#TODO Show internship which have still not crossed deadline
-		@internship = Internship.all
-		render 'list'
+		if current_user.role.name == "student"
+			@internship = Internship.all
+			render 'list'
+		else
+			render :json => 'Only Student can see this page'
+		end
+	end
+
+	def myinternship
+		if current_user.role.name == "professor"
+			@internship = current_user.profile.internships
+			render 'plist'
+		else
+			render :json => 'Invalid Request'
+		end
+	end
+
+	def internship_response
+
 	end
 
 	def apply
+		
 		data = params[:data]
 		internship_id = params[:id];
 		message = params[:message];
 		resume = data['file'];
 		internship = Internship.find_by_id(internship_id)
-		if !internship.nil?
+
+		if !internship.nil? and current_user.role.name == "student"
 			puts internship;
 			result = InternshipApplication.create(internship_id: internship.id,student_id: current_user.profile.id,
 				message: message,resume: resume);

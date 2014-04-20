@@ -19,6 +19,10 @@
       <li>
         <button id="addinternship" class="btn" data-toggle='modal' data-target='#newinternship'>Create a Internship Opening</button>
       </li>
+      <br>
+      <li>
+        <a href="/internships/list"><button id="availableinternships" class="btn">My Internship</button></a>
+      </li>
       <% end %>  
       <% if current_user.role.name != 'professor' %>
       <br>
