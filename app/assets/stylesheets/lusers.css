@@ -2,4 +2,5 @@
 *= require_self
 *= require user
 *= require bootstrap/bootstrap.min
+*= require bootstrapValidator
 */

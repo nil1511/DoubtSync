@@ -1,5 +1,5 @@
 <div class="container">
-	<%= form_tag '/users/manage', role: 'form' ,class:'form-horizontal',multipart: true do %>
+	<%= form_tag '/users/manage', role: 'form' ,class:'form-horizontal',id:'updateprofileform',multipart: true do %>
 	<% if @error_message %>
 	<%= @error_message %>
 	<% end %>
