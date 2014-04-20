@@ -1,20 +1,9 @@
 $(function(){
-	// $('#college_id').select2();
 	$('#college_id').select2({
     	placeholder: "Select a College",
     	allowClear: true
 	});
-	$('#loginform .btn.login').on('click',function (event) {
 
-		if($('#user_username').val()==''){
-			$('#user_username').parent('.form-group').addClass('has-error')
-			return false;
-		}
-		if($('#user_password').val()==''){
-			$('#user_password').parent('.form-group').addClass('has-error')
-			return false;
-		}
-	});
 	$('#loginform').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -23,6 +12,7 @@ $(function(){
             validating: 'glyphicon glyphicon-refresh'
         },
         live: 'enabled', 
+        submitButtons : '#loginbtn',
         fields: {
             'user[username]': {
                 message: 'The username is not valid',
@@ -31,7 +21,7 @@ $(function(){
                         message: 'The username is required and cannot be empty'
                     },
                     stringLength: {
-                        min: 6,
+                        min: 4,
                         max: 10,
                         message: 'The username must be more than 6 and less than 10 characters long'
                     },
@@ -60,7 +50,7 @@ $(function(){
                         message: 'The username is required and cannot be empty'
                     },
                     stringLength: {
-                        min: 6,
+                        min: 4,
                         max: 10,
                         message: 'The username must be more than 6 and less than 10 characters long'
                     },
