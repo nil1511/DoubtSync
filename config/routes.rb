@@ -2,7 +2,6 @@ Doubtsync::Application.routes.draw do
   
 
   get 'search' => 'search#q'
-  get "internships" => 'internships#list'
   get "resume/daiict"
   get "ambassador/proflist"
   post "ambassador/proflist" => 'ambassador#uploadFile'
@@ -62,6 +61,8 @@ Doubtsync::Application.routes.draw do
   get 'internship/:id' => 'internships#show'
   post 'internship/:id/edit' => 'internships#edit'
   delete 'internship/:id' => 'internships#destroy'
+  get "internships" => 'internships#list'
+  post "internship/apply" => 'internships#apply'
 
   post 'events' => 'events#new'
   get 'events/date/:date' => 'events#search_date'

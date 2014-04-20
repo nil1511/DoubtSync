@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419181251) do
+ActiveRecord::Schema.define(version: 20140419181857) do
 
   create_table "ambassador_registrations", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "authcode"
     t.string   "college_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "block_users", force: true do |t|
+    t.integer  "blocker_id"
+    t.integer  "blocked_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

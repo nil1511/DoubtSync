@@ -45,6 +45,28 @@ class InternshipsController < ApplicationController
 		render 'list'
 	end
 
+	def apply
+		data = params[:data]
+		internship_id = params[:id];
+		message = params[:message];
+		resume = data['file'];
+		internship = Internship.find_by_id(internship_id)
+		if !internship.nil?
+			puts internship;
+			result = InternshipApplication.create(internship_id: internship.id,student_id: current_user.profile.id,
+				message: message,resume: resume);
+			puts result;
+			if result
+				
+				render :json => "Your Application SuccessFully Submitted"
+			else
+				render :json => "Something Went Wrong"
+			end
+		else
+			render :json => "Invalid request"
+		end
+	end
+
 	def edit
 		#TODO Edit for internship
 	end
