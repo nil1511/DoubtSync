@@ -1,0 +1,58 @@
+<%= render 'shared/header' %>
+<div class="container-fuild">
+  <div style="position: relative;display: inline-block;width:100%;">
+  <div class="col-md-2">
+    <!-- left sidebar -->
+    <%= render 'shared/leftsidebar' %>
+  </div>
+	<!-- New Book Form -->
+  <%= render 'shared/add_book_model' %>
+  <% if current_user.role.name == 'professor' %>
+    <%= render 'shared/add_internship_model' %>
+  <% end %>
+
+  <div class="col-md-7">
+  <!-- central area -->
+  <div class="new_message form-group">
+   <div class="col-sm-10">
+    <input type="text" value="" id="user" class="form-control" placeholder="Enter username" />
+    </div>
+    <div class="col-sm-2">
+    <button type="button" class="btn btn-info">New Message</button></div>
+  </div>
+  <br> <br>
+  <div class="show_messages">
+    <% @messages.each do |message| %>
+    <% #TODO Message should be conversation based so create a new message only if users appear first time else prepend the old message to the list %>
+
+    <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#message<%= message.id %>" class="collapsed">Message 1</a><div class="pull-right">By: <a>Nilesh Suthar</a></div></h4></div>
+              <div id="message<%= message.id %>" class="panel-collapse collapse" style="height: 0px;">
+                <div class="panel-body">Here we will have the doubts sent by the students
+                  <textarea class="form-control" placeholder="Reply Here"></textarea>
+                <table style="width:100%"><tbody><tr>
+                <td><a class="btn btn-primary ">Attachment</a></td>
+                 <td><a class="btn pull-right btn-danger">Reply</a></td></tr></tbody></table>
+                </div>
+              </div>
+            </div>
+    </div>
+    <% end %>
+  </div>
+  </div>
+  <div class="col-md-3">
+    <!-- <ul class="rightside">
+      <li>
+        <button id="addevent" class="btn" data-toggle='modal' data-target='#newevent'>Create a Event</button>
+      </li>
+    </ul> -->
+    <%= render 'shared/event' %>
+  </div>
+
+  <!-- New Event Form -->
+  <%= render 'shared/add_event_model' %>
+	
+  
+</div>

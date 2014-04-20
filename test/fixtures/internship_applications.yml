@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: internship_applications
+#
+#  id                  :integer          not null, primary key
+#  internship_id       :integer
+#  student_id          :integer
+#  message             :text
+#  resume_file_name    :string(255)
+#  resume_content_type :string(255)
+#  resume_file_size    :integer
+#  resume_updated_at   :datetime
+#  created_at          :datetime
+#  updated_at          :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined.  If you add columns to the

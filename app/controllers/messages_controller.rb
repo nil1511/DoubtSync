@@ -15,7 +15,14 @@ class MessagesController < ApplicationController
 	end
 
 	def list_message
-		messages = Message.where('sender_id = :id or receiver_id = :id',id:current_user.id)
-		render :json => messages
+		type = params[:format]
+		@messages = Message.where('sender_id = :id or receiver_id = :id',id:current_user.id)
+		if type.nil?
+			render 'show'
+		elsif type == 'json'
+			render :json => @messages
+		else
+			render 'show'
+		end
 	end
 end
