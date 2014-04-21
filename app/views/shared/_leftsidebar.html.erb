@@ -12,10 +12,16 @@
       </li>
       <% @topics = current_user.topics %>
       <% if @topics.count > 0 %>
+  
       <li>
+      <br>
+      <li class="list-group-item active">My Topics</li>
+      <ul class="list-group" style="max-height:300px;overflow-y:auto">
       <% @topics.each do |topic| %>
-      <% topic.name %>
+      <li class="list-group-item"><%= topic.name %></li>
       <% end %>
+      </ul>
+    
       </li>
       <% end %>
       <% if current_user.role.name == 'professor' %>
