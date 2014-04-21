@@ -134,8 +134,7 @@ $(function() {
             <input type="text" class="form-control" id="info" placeholder="Enter Comment"><button type="submit" class="btn btn-info commentpost" style="float:right;margin-top:10px">Submit</button><div class="form-group">\
             <label for="exampleInputFile" style="margin-top:5px">File input</label><input type="file" id="exampleInputFile"></div></div></div></div><ul class="media-list"><br></ul></div>';
 
-                    console.log($('#posts'))
-                    $('#posts').prepend(p);
+                    $('#feeddata').prepend(p);
                 }
                 console.log(e);
             }, "json");
