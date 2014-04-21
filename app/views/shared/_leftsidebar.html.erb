@@ -6,6 +6,10 @@
       <li>
         <button id="addbook" class="btn" data-toggle='modal' data-target='#newbook'>Advertise a Book</button>
       </li>
+      <br>
+      <li>
+        <a href="/exploretopic"><button class="btn">Explore Topics</button></a>
+      </li>
       <% @topics = current_user.topics %>
       <% if @topics.count > 0 %>
       <li>

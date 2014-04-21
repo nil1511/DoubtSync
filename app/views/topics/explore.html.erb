@@ -1,0 +1,29 @@
+<%= render 'shared/header' %>
+<div class="container-fuild">
+  <div style="position: relative;display: inline-block;width:100%;">
+  <div class="col-md-2">
+    <!-- left sidebar -->
+    <%= render 'shared/leftsidebar' %>
+  </div>
+  <div class="col-md-7">
+  <!-- central area -->
+    <div class="row">
+    <table class="table table-condensed">
+    <tbody>
+    <% @topiclist.each do |topic| %>
+    <tr><td><a href="topics/<%= topic.name %>"><%= topic.name %></a></td><td><%= topic.posts.count %> Post in this topic</td>
+    <% @topic = topic %>
+    <td><%= render 'shared/followtopic_form' %></td></tr>
+    <% end %>
+    </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="col-md-3">
+    <%= render 'shared/event' %>
+  </div>
+  <!-- New Event Form -->
+  <%= render 'shared/add_event_model' %>
+  </div>
+</div>

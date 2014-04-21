@@ -12,5 +12,10 @@ class TopicsController < ApplicationController
 			@posts = @topic.posts;
 		end
 	end
+
+	def explore
+		@topiclist = Topic.all
+		render 'explore'
+	end
 	
 end
