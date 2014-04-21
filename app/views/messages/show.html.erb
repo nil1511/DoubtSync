@@ -26,12 +26,18 @@
     @messages.each do |message| %>
     <% #TODO Message should be conversation based so create a new message only if users appear first time else prepend the old message to the list %>
 
-      <% if mess[message.sender.id] !=nil 
+      <% 
+      if message.sender!= current_user && mess[message.sender.id] !=nil 
         mess[message.sender.id] << message
-        %>
-      <% else
-      mess[message.sender.id] = Array.new
-      mess[message.sender.id] << message %>
+      elsif message.sender!= current_user && mess[message.sender.id] ==nil 
+        mess[message.sender.id] = Array.new
+        mess[message.sender.id] << message 
+      elsif message.sender == current_user && mess[message.receiver.id] !=nil 
+        mess[message.receiver.id] << message
+      elsif message.sender == current_user && mess[message.receiver.id] ==nil 
+        mess[message.receiver.id] = Array.new
+        mess[message.receiver.id] << message 
+      %>
       
       <% end %>
     <% end %>
@@ -45,13 +51,19 @@
             <div class="panel-body">
             <div id="messagelist<%= key %>">      
     <% conversation.reverse.each do |v| %>
-      <div class="messagetext">From <%=v.sender.name %>: <%= v.text %> at <%= v.created_at %> </div>
+      <div class="messagetext">From <%= if v.sender == current_user
+       'me' else v.sender.name end %>: <%= v.text %> at <%= v.created_at %> </div>
     <% end %>
       </div>
         <textarea class="form-control" placeholder="Reply Here"></textarea>
         <br>
         <!-- <button class="btn btn-primary ">Attachment</button> -->
-         <button class="btn pull-right btn-danger">Reply</button>
+        <% if conversation.last.sender == current_user
+            other = conversation.last.receiver
+          else
+            other = conversation.last.sender
+          end %>
+         <button class="btn pull-right btn-danger" data-user-id="<%= other.id %>">Reply</button>
         </div>
       </div>
     </div>
