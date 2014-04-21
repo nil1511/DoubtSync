@@ -1,7 +1,7 @@
 Doubtsync::Application.routes.draw do
   
 
-  get 'search' => 'search#q'
+  get 'search' => 'search#query'
   get "resume/daiict"
   get "ambassador/proflist"
   post "ambassador/proflist" => 'ambassador#uploadFile'

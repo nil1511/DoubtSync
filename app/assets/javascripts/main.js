@@ -190,6 +190,12 @@ $(function() {
         }
     });
 
+    $('#searchsubmit').on('click',function(){
+        if($('#searchquery').val().trim()!=''){
+            window.location = 'http://localhost:3000/search?query='+$('#searchquery').val().trim()+'&type='+$('#searchtype').val()
+        }
+    })
+
     $(document).on('click','.commentpost', function(e) {
         console.log('click', this)
         var post = $(this).parent('.media-body').parent('.media');

@@ -1,0 +1,70 @@
+<%= render 'shared/header' %>
+<div class="container-fuild">
+  <div style="position: relative;display: inline-block;width:100%;">
+  <div class="col-md-2">
+    <!-- left sidebar -->
+    <%= render 'shared/leftsidebar' %>
+  </div>
+	<!-- New Book Form -->
+  <%= render 'shared/add_book_model' %>
+  <% if current_user.role.name == 'professor' %>
+    <%= render 'shared/add_internship_model' %>
+  <% end %>
+
+  <div class="col-md-7">
+  <!-- central area -->
+    <div class="row">
+
+    <div id="feeddata">
+    <% @result.each do |ob| %>
+      <% if ob.class == Post %>
+      <% @posts = Array.new
+         @posts << ob;
+
+       %>
+       <div class='posts'>
+        <%= render 'shared/post' %>
+        </div>
+      <% elsif ob.class == Book %>
+      <% @books = Array.new
+         @books << ob;
+       %>
+       <div class='books'>
+        <%= render 'shared/book' %>
+        </div>
+      <% elsif ob.class == Student || ob.class == Professor %>
+      <% @users = Array.new
+         @users << ob.user;
+       %>
+       <div class='users'>
+        <%= render 'shared/users' %>
+        </div>
+      <% elsif ob.class == Event %>
+      <% @events = Array.new
+         @events << ob;
+       %>
+       <div class='events'>
+        <%= render 'shared/eventshow' %>
+      </div>  
+      <% end %>
+
+    <% end %>
+    </div>
+  </div>
+  </div>
+	
+  <div class="col-md-3">
+    <!-- <ul class="rightside">
+      <li>
+        <button id="addevent" class="btn" data-toggle='modal' data-target='#newevent'>Create a Event</button>
+      </li>
+    </ul> -->
+    <%= render 'shared/event' %>
+  </div>
+
+  <!-- New Event Form -->
+  <%= render 'shared/add_event_model' %>
+	
+
+  </div>
+</div>
