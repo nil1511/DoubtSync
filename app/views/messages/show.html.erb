@@ -15,10 +15,11 @@
   <!-- central area -->
   <div class="new_message form-group">
    <div class="col-sm-10">
-    <input type="text" value="" id="user" class="form-control" placeholder="Enter username" />
+    <!-- <input type="text" value="" id="user" class="form-control" placeholder="Enter username" /> -->
+    <input type="hidden" class="form-control" id="userselect" />
     </div>
     <div class="col-sm-2">
-    <button type="button" class="btn btn-info">New Message</button></div>
+    <button type="button" class="btn btn-info" id="newmessagebtn">New Message</button></div>
   </div>
   <br> <br>
   <div class="show_messages">
@@ -46,7 +47,7 @@
     <div class="panel-group" id="mesbox<%= key %>">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#mesbox<%= key %>" href="#message<%= key %>" class="collapsed"><%= conversation.first.text %></a><div class="pull-right">By: <a href="/users/<%= key %>"><%= conversation.first.sender.name %></a></div></h4></div>
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#mesbox<%= key %>" href="#message<%= key %>" class="collapsed"><%= conversation.first.text %></a><div class="pull-right">To:<a href="/users/<%= conversation.first.receiver.id %>"><%= conversation.first.receiver.name %></a> By:<a href="/users/<%= key %>"><%= conversation.first.sender.name %></a></div></h4></div>
           <div id="message<%= key %>" class="panel-collapse collapse" style="height: 0px;">
             <div class="panel-body">
             <div id="messagelist<%= key %>">      
@@ -68,6 +69,25 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="sendmessage" tabindex="-1" role="dialog" aria-labelledby="sendmessageLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="sendmessageLabel">Send Message</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" rows="3" id="message"></textarea>
+        <input type="file" class="form-control" id="attachment"> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Discard</button>
+        <button type="button" class="btn btn-primary" id="send_message_btn1">Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
     <% end %>
 
   </div>

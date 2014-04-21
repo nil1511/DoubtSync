@@ -174,7 +174,6 @@ $('#send_message_btn').on('click',function(){
 	}
 })
 $(document).on('click','#discard',function(){
-	console.log('fewf')
 	$('#sendmessage').modal('hide');
 	$('#send_message_btn').html('Send Message');
 	$('#discard').attr('id','send_message_btn');
