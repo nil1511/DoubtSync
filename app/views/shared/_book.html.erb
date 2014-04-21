@@ -14,8 +14,8 @@
     <%= book.description.to_s %>
   </div>
   <div class="panel-footer">Seller Information
-   <button  type:"button" class="btn btn-success btn-sm" style="margin-left:245px" data-userid="<%= book.user_id.to_s %>">Send Message
-   </button>
+   <a href="/users/<%= book.user_id.to_s %>"><button  type:"button" class="btn btn-success btn-sm pull-right" data-userid="<%= book.user_id.to_s %>">Contact Seller
+   </button></a>
   
   </div>
 </div>
