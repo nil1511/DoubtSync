@@ -78,7 +78,7 @@ $(function() {
   </li>';
             }
             d+='</ul><div style="text-align:center">\
-<button type="submit" class="btn btn-primary">See all messages</button>\
+<a href="/message"><button type="submit" class="btn btn-primary">See all messages</button></a>\
 </div>';
             $('#messegebtn').popover({
                 content: d,
