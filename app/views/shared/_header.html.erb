@@ -33,9 +33,9 @@
       <ul class="nav navbar-nav navbar-right">
       <li><a id="messegebtn" data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-comment <%= "new" if current_user.unread_message.length > 0 %>"></span></a></li>
        <li><a  id="notification" data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-volume-up <%= "new" if current_user.notifications.count>0 %>"</span></a></li>
-	    <li><a href="/main/feed#post">Posts</a></li>
-		<li><a href="/main/feed#books" title="Coming Soon">Books</a></li>
-		<li><a href="/main/feed#events" title="Coming Soon">Events</a></li>
+	    <li><a href="/main/feed#post" id='filterposts'>Posts</a></li>
+		<li><a href="/main/feed#books" id='filterbooks'>Books</a></li>
+		<li><a href="/main/feed#events" id='filterevents'>Events</a></li>
     <li style="position:absolute;right:0;"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       </ul>
     </div>

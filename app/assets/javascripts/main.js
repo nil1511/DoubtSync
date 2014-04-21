@@ -299,6 +299,19 @@ $(function() {
         }
     });
 
+    $('#filterposts').on('click',function(){
+        $('.events,.books').hide();
+        $('.posts').show();
+    })
+    $('#filterbooks').on('click',function(){ 
+        $('.events,.posts').hide();
+        $('.books').show();
+    })
+    $('#filterevents').on('click',function(){ 
+        $('.posts,.books').hide();
+        $('.events').show();
+    })
+
     $('#InputFile').fileupload({
        dataType: 'json',
         add: function (e, data) {

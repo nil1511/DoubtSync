@@ -59,33 +59,34 @@
     </div>
     
     <br >
+    <div id="feeddata">
     <% @data.each do |ob| %>
       
       <% if ob.class == Post %>
       <% @posts = Array.new
          @posts << ob;
        %>
-       <div id='posts'>
+       <div class='posts'>
         <%= render 'shared/post' %>
         </div>
       <% elsif ob.class == Book %>
       <% @books = Array.new
          @books << ob;
        %>
-       <div id='books'>
+       <div class='books'>
         <%= render 'shared/book' %>
         </div>
       <% elsif ob.class == Event %>
       <% @events = Array.new
          @events << ob;
        %>
-       <div id='events'>
+       <div class='events'>
         <%= render 'shared/eventshow' %>
       </div>  
       <% end %>
 
     <% end %>
-
+    </div>
   </div>
 	
   <div class="col-md-3">
