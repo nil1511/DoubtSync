@@ -1,5 +1,5 @@
 <% @books.each do |book| %>
-<div class="panel panel-info" style="width:500px;">
+<div class="col-md-8 panel panel-info" style="padding:0">
   <div class="panel-heading">
   <% if !book.price.nil? %>
    <div style="width:60px; height:30px; float:right; background-color: #7F7F7F; border-radius:10px; color:#FFFFFF; text-align:center;" align="justify"><h5>Rs <%= book.price.to_s %></h5></div>

@@ -1,5 +1,5 @@
 <% @events.each do |event| %>
-<div class="panel-group" id="accordion">
+<div class="col-md-8 panel-group" id="accordion" style="padding:0">
   <div class="panel panel-default">
     <div class="panel-heading">
           <h4 class="panel-title">
@@ -36,26 +36,4 @@
       </div>
   </div>
  </div>
-<!-- <div class="panel panel-info" style="width:500px;">
-  <div class="panel-heading">
-   <div style="width:60px; height:30px; float:right; background-color: #7F7F7F; border-radius:10px; color:#FFFFFF; text-align:center;" align="justify"><h5>Rs <%= event.name.to_s %></h5></div>
-   
-   <h3  class="panel-title">
-   <%= event.venue.to_s %>, <%= event.duration.to_s %>, <%= event.date.to_s %>
-   </h3>
-  
-  </div>
-  <div class="panel-body">
-   
-    <%= event.description.to_s %>
-    <%= event.url.to_s %>
-    <%= event.college_id.to_s %>
-  </div>
-  <div class="panel-footer">Seller Information
-   <button  type:"button" class="btn btn-success btn-sm" style="margin-left:245px" data-userid="<%= event.user_id.to_s %>">Send Message
-   </button>
-  
-  </div>
-</div> -->
-
 <% end %>
