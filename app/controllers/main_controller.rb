@@ -12,7 +12,7 @@ class MainController < ApplicationController
     event =  Event.where('college_id= :cid',cid: current_user.college.id) 
     book = Book.all
     data = post + event + book
-    @data = data.sort_by {|a| a.created_at }
+    @data = data.sort_by {|a| a.created_at }.reverse
   end
 
   def user
