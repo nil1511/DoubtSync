@@ -22,24 +22,42 @@
   </div>
   <br> <br>
   <div class="show_messages">
-    <% @messages.each do |message| %>
+    <% mess = {}
+    @messages.each do |message| %>
     <% #TODO Message should be conversation based so create a new message only if users appear first time else prepend the old message to the list %>
 
-    <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#message<%= message.id %>" class="collapsed">Message 1</a><div class="pull-right">By: <a>Nilesh Suthar</a></div></h4></div>
-              <div id="message<%= message.id %>" class="panel-collapse collapse" style="height: 0px;">
-                <div class="panel-body">Here we will have the doubts sent by the students
-                  <textarea class="form-control" placeholder="Reply Here"></textarea>
-                <table style="width:100%"><tbody><tr>
-                <td><a class="btn btn-primary ">Attachment</a></td>
-                 <td><a class="btn pull-right btn-danger">Reply</a></td></tr></tbody></table>
-                </div>
-              </div>
-            </div>
-    </div>
+      <% if mess[message.sender.id] !=nil 
+        mess[message.sender.id] << message
+        %>
+      <% else
+      mess[message.sender.id] = Array.new
+      mess[message.sender.id] << message %>
+      
+      <% end %>
     <% end %>
+
+    <% mess.each do |key,conversation| %>
+    <div class="panel-group" id="mesbox<%= key %>">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#mesbox<%= key %>" href="#message<%= key %>" class="collapsed"><%= conversation.first.text %></a><div class="pull-right">By: <a href="/users/<%= key %>"><%= conversation.first.sender.name %></a></div></h4></div>
+          <div id="message<%= key %>" class="panel-collapse collapse" style="height: 0px;">
+            <div class="panel-body">
+            <div id="messagelist<%= key %>">      
+    <% conversation.reverse.each do |v| %>
+      <div class="messagetext">From <%=v.sender.name %>: <%= v.text %> at <%= v.created_at %> </div>
+    <% end %>
+      </div>
+        <textarea class="form-control" placeholder="Reply Here"></textarea>
+        <br>
+        <!-- <button class="btn btn-primary ">Attachment</button> -->
+         <button class="btn pull-right btn-danger">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <% end %>
+
   </div>
   </div>
   <div class="col-md-3">
