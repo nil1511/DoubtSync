@@ -15,12 +15,16 @@ body{
 #follow_form{
 	display: inline-block;
 	float: right;
+  position: relative;
+  z-index: 1;
 	margin: 30px 50px 0;
 }
 
 #send_message{
   display: inline-block;
   float: right;
+  position: relative;
+  z-index: 1;
   margin: 30px 0px 0;
 }
 

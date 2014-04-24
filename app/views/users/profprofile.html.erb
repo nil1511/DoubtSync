@@ -1,12 +1,13 @@
 	<div class="row" style="margin-top:54px">
   <%= render 'follow_form' if user_signed_in? %>
-  <div style="position:absolute;right:50px;">Professor</div>
+  <div style="position: relative;color: #fff;z-index: 1;float: right;display: inline-block;">Professor</div>
 		<!--Profile Pic-->
     <div class="leftprofile">
 		<div class="profileinfo">
 			<img src="<%= @user.avatar.url %>" alt="" width="200" height="200" style="border: 1px #ddd solid;">
 		</div>
 		<!--Information-->
+    <br><br>
   <div id="wrapper" style="display:inline-block">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -27,10 +28,7 @@
                 </li>
             </ul>
         </div>
-        <ul class="extralink">
-          <li><a href="/users/manage">Edit Profile</a></li>
-            <li><a href="#">Need Help?</a></li>
-        </ul>
+        
 </div>
 </div>
 
@@ -41,10 +39,15 @@
       <h4>College:<%= current_user.college.name  if current_user.college.name %></h4>
       <!-- <h4>Graduate Year: <%#= @prof.graduate_year if @prof.graduate_year %></h4> -->
     </div>
-<div id="displayarea" style="padding:'0 50px'">
 
 </div>
+<div id="displayarea" style="padding:0 50px;margin-top:20px;color:#000;" class="col-md-8"></div>
 
 </div>
+<ul class="extralink">
+          <li><a href="/users/manage">Edit Profile</a></li>
+            <li><a href="#">Need Help?</a></li>
+        </ul>
+
 
 </div>
