@@ -1,11 +1,11 @@
 <% @books.each do |book| %>
-<div class="col-md-8 panel panel-info" style="padding:0">
+<div class="col-md-8 panel panel-info" style="padding:0;border-radius:0;">
   <div class="panel-heading">
-  <% if !book.price.nil? %>
-   <div style="width:60px; height:30px; float:right; background-color: #7F7F7F; border-radius:10px; color:#FFFFFF; text-align:center;" align="justify"><h5>Rs <%= book.price.to_s %></h5></div>
-   <% end %>
    <h3  class="panel-title">
    <%= book.name.to_s %>, <%= book.author.to_s %>
+   <% if !book.price.nil? %>
+   <div style="height:30px; float:right; color: #000; text-align:center;position: absolute;right: 5px;top: 0;" ><h5>Priced at Rs <%= book.price.to_s %></h5></div>
+   <% end %>
    </h3>
   
   </div>
@@ -14,7 +14,7 @@
     <%= book.description.to_s %>
   </div>
   <div class="panel-footer">Seller Information
-   <a href="/users/<%= book.user_id.to_s %>"><button  type:"button" class="btn btn-success btn-sm pull-right" data-userid="<%= book.user_id.to_s %>">Contact Seller
+   <a href="/users/<%= book.user_id.to_s %>"><button  type:"button" class="btn btn-success btn-sm pull-right" data-userid="<%= book.user_id.to_s %>" style=" position: absolute; right: 5px; bottom: 5px; ">Contact Seller
    </button></a>
   
   </div>

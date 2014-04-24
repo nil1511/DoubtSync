@@ -1,10 +1,10 @@
 <% @events.each do |event| %>
 <div class="col-md-8 panel-group" id="accordion" style="padding:0">
-  <div class="panel panel-default">
+  <div class="panel panel-info" style=" border-radius: 0;">
     <div class="panel-heading">
           <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#event<%= event.id %>" class="collapsed">
-          <%= event.name %></a>
+          <%= event.name %></a> at Venue:<%= event.venue %>
           <div class="pull-right">By:<a href="/users/<%= event.user.id %>"><%= event.user.name %></a></div>
           </h4>
           <div class="media">
@@ -16,8 +16,8 @@
 
               </div>
           </div>
-          <h4><span class="pull-right">Date:<%= event.date %></span></h4>
-          <h4>Venue:<%= event.venue %></h4>
+          <h4><span class="pull-right">Date:<%= event.date.strftime('%B %d, %Y %H:%M') %></span></h4>
+          <br>
       </div>
       <div id="event<%= event.id %>" class="panel-collapse collapse" style="height: 0px;">
 
@@ -29,7 +29,7 @@
               </div>
               <div class="form-group">
                   <label class="col-sm-4 control-label" style="padding:0" for="name">URL</label>
-                  <div class="col-sm-8"><%= event.url %>
+                  <div class="col-sm-8"><a href="<%= event.url %>" target="_blank"><%= event.url %></a>
                   </div>
               </div>
           </div>
