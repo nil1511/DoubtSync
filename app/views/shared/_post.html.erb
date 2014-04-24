@@ -38,7 +38,7 @@
   </a>
   
   <div class="media-body">
-    <button type="button" class="btn btn-warning btn-sm spam <%= 'disabled' if post.spam.to_s.include? current_user.id.to_s %>" style="float:right">Spam</button>
+    <button type="button" class="btn btn-warning btn-sm spam <%= 'disabled' if post.spam.to_s.include? current_user.id.to_s %>" style="float:right;padding: 0px 5px;">Spam</button>
     <h4 class="media-heading" style="color:#00557D"><a href="/users/<%= name %>"><%= name %></a> on <%= post.created_at.strftime('%B %d, %Y %H:%M') %></h4>
   <p><%= post.text.html_safe %>
   </p>
