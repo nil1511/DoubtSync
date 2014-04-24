@@ -5,7 +5,7 @@
     padding: 10px;
     box-shadow: 0px 0px 1px #000;
   }
-  button{
+  button.btn{
     border-radius: 0;
   }
 </style>
@@ -39,7 +39,7 @@
   
   <div class="media-body">
     <button type="button" class="btn btn-warning btn-sm spam <%= 'disabled' if post.spam.to_s.include? current_user.id.to_s %>" style="float:right">Spam</button>
-    <h4 class="media-heading" style="color:#00557D"><a href="/users/<%= name %>"><%= name %></a> on <%= post.created_at %></h4>
+    <h4 class="media-heading" style="color:#00557D"><a href="/users/<%= name %>"><%= name %></a> on <%= post.created_at.strftime('%B %d, %Y %H:%M') %></h4>
   <p><%= post.text.html_safe %>
   </p>
   </div>
