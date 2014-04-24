@@ -3,6 +3,7 @@
   <div style="position: relative;display: inline-block;width:100%;">
   <div class="col-md-2">
     <!-- left sidebar -->
+    <br>
     <%= render 'shared/leftsidebar' %>
 	<!-- New Book Form -->
   <%= render 'shared/add_book_model' %>
@@ -12,6 +13,7 @@
 </div>
   <div class="col-md-7">
   <!-- central area -->
+  <br>
     <div class="row">
 	  <% @internship.each do |ob| %>
       <div id='internship_div'>
@@ -118,6 +120,7 @@
   </div>
 	
   <div class="col-md-3">
+  <br>
     <%= render 'shared/event' %>
   </div>
 
