@@ -3,15 +3,15 @@
   background: url('/assets/fabric_of_squares_gray.png')
 }
 .centralarea{
-  
+  margin-left: 5%;
 }
 button.post {
   position: relative;
   display: block;
-  line-height: 65px;
+  line-height: 40px;
   text-decoration: none;
   text-align: center;
-  font-size: 28px;
+  font-size: 24px;
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   text-shadow: 2px 2px 2px #3a7faa;
@@ -23,8 +23,8 @@ button.post {
   border-radius: 8px;
   border: none;
   outline: 0 none;
-  width: 250px;
-  height: 75px;
+  width: 150px;
+  height: 45px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -43,7 +43,7 @@ button.post:active {
 
 .main-text {
   position: absolute;
-  left: 110px;
+  left: 60px;
 }
 
 .submit {
@@ -53,7 +53,7 @@ button.post:active {
 
 .sent-text {
   position: absolute;
-  left: 40px;
+  left: 20px;
   opacity: 0;
 }
 
@@ -71,8 +71,8 @@ button.post.active .sent-text {
 .sub {
   float: left;
   padding: 0 0 0 10px;
-  width: 65px;
-  height: 65px;
+  width: 40px;
+  height: 40px;
 }
 
 button.post.active .sub {
@@ -100,7 +100,7 @@ button.post.active .sub {
 
 .submerge {
   position: absolute;
-  top: 80px;
+  top: 30px;
   border-radius: 0 0 10px 10px;
   left: 0;
   opacity: .7;
@@ -140,7 +140,7 @@ button.post.active .submerge {
 }
 @keyframes drive {
   to {
-    transform: translateX(140px);
+    transform: translateX(100px);
   }
 }
 @keyframes sent {
@@ -155,7 +155,7 @@ button.post.active .submerge {
 }
 @-webkit-keyframes drive {
   to {
-    -webkit-transform: translateX(140px);
+    -webkit-transform: translateX(100px);
   }
 }
 @-webkit-keyframes sent {
@@ -165,15 +165,15 @@ button.post.active .submerge {
 }
 @keyframes jump {
   25% {
-    transform: translateY(-90px) rotate(-40deg);
+    transform: translateY(-50px) rotate(-40deg);
   }
 
   75% {
-    transform: translateY(-90px) translateX(150px) rotate(40deg);
+    transform: translateY(-50px) translateX(100px) rotate(40deg);
   }
 
   100% {
-    transform: translateY(0) translateX(150px);
+    transform: translateY(0) translateX(100px);
   }
 }
 @keyframes water-splash {
@@ -191,15 +191,15 @@ button.post.active .submerge {
 }
 @-webkit-keyframes jump {
   25% {
-    -webkit-transform: translateY(-90px) rotate(-40deg);
+    -webkit-transform: translateY(-50px) rotate(-40deg);
   }
 
   75% {
-    -webkit-transform: translateY(-90px) translateX(150px) rotate(40deg);
+    -webkit-transform: translateY(-50px) translateX(100px) rotate(40deg);
   }
 
   100% {
-    -webkit-transform: translateY(0) translateX(150px);
+    -webkit-transform: translateY(0) translateX(100px);
   }
 }
 @-webkit-keyframes water-splash {
@@ -253,6 +253,7 @@ button.post.active .submerge {
   width: 50px;
   height: 50px;
   display: inline-block;
+  border: 1px solid #ddd;
 }
 .commentimg{
   width:40px; 

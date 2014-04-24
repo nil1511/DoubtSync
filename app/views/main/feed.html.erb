@@ -20,11 +20,11 @@
 	   <div id="newpost" class="col-md-8 well">
       <!-- new post -->
         <textarea class="postarea form-control" id="posta"></textarea>
-        <div class="btn-group" style="margin-top:10px">
+        <!-- <div class="btn-group" style="margin-top:10px">
           <button type="button" class="btn btn-success">
             Ask a Professor 
           </button>
-        </div>
+        </div> -->
         <div class="btn-group" style="margin-top:10px;width:160px;">
          <select multiple class="form-control" id="profselect">
             <option></option>
@@ -36,16 +36,8 @@
       <div class="btn-group">
       <input type="checkbox" id="anoncheckbox">Post as Anonymous
       </div>
-      <!-- <div class="form-group">
-        <label for="InputFile" style="margin-top:5px">File input</label>
-        <input type="file" name="files" id="InputFile" data-url='/posts/file'>
-      </div> -->
-      
-      </div>
-
-
-      <div id="newpostbutton" class="col-md-4">
-    	<button class="post">
+      <div id="newpostbutton" style=" display: inline-block; position: absolute; right: 0; padding: 0 10px; ">
+      <button class="post">
         <img class="splash" src="/assets/watersplash_3.svg" alt="Splash!" />
         <img class="splash splash-2" src="/assets/watersplash_3.svg" alt="Splash!" />
         <img class="sub" src="/assets/sublogo_16.svg" class="Submarine" />
@@ -60,6 +52,15 @@
       </div>
     </div>
     
+
+      <!-- <div class="form-group">
+        <label for="InputFile" style="margin-top:5px">File input</label>
+        <input type="file" name="files" id="InputFile" data-url='/posts/file'>
+      </div> -->
+      
+      </div>
+
+
     <br >
     <div id="feeddata">
     <% @data.each do |ob| %>
