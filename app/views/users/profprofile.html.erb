@@ -1,10 +1,10 @@
-	<div class="row">
+	<div class="row" style="margin-top:54px">
   <%= render 'follow_form' if user_signed_in? %>
   <div style="position:absolute;right:50px;">Professor</div>
 		<!--Profile Pic-->
     <div class="leftprofile">
 		<div class="profileinfo">
-			<img src="<%= @user.avatar.url %>" alt="" width="200" height="200" style="border:double #FFFFFF thick">
+			<img src="<%= @user.avatar.url %>" alt="" width="200" height="200" style="border: 1px #ddd solid;">
 		</div>
 		<!--Information-->
   <div id="wrapper" style="display:inline-block">

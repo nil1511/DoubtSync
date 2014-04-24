@@ -1,3 +1,7 @@
+body{
+  background: url('/assets/fabric_of_squares_gray.png')
+}
+
 .profileinfo{
 	display:inline-block;
 	
@@ -36,13 +40,15 @@
 
 #sidebar-wrapper {
   width: 200px;
-  background: #B6B4B4;
-  border-radius: 5px;
+  background: #3498DB;  
   position: relative;
   height: 100%;
   transition: all 0.4s ease 0s;
 }
-
+.badge{
+  background:#fff !important;
+  color: #000 !important;
+}
 
 .sidebar-nav {
   list-style: none;
@@ -62,7 +68,7 @@
 
 .sidebar-nav li a:hover {
   color: #fff;
-  background: rgba(255,255,255,0.2);
+  background: #2980B9;
   text-decoration: none;
 }
 
@@ -86,12 +92,17 @@
   background: none;
 }
 .leftprofile{
+  color: #fff;
   width: 200px;
   display: inline-block;
   float: left;
+  z-index: 1;
+  position: relative;
 }
 .rightprofile{
-  display: inline-block;
+  color: #fff;
+  background: url('stressed_linen.png');
+  box-shadow: 0px 2px 10px 2px #111;
   position: relative;
 }
 .displayarea{
