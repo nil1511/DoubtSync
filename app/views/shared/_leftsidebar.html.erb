@@ -39,7 +39,7 @@
       <li class="list-group-item active">My Topics</li>
       <ul class="list-group" style="max-height:300px;overflow-y:auto">
       <% @topics.each do |topic| %>
-      <li class="list-group-item"><%= topic.name %></li>
+      <li class="list-group-item"><a href="/topics/<%= topic.name %>"><%= topic.name %></a></li>
       <% end %>
       </ul>
     

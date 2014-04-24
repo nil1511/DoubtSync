@@ -49,7 +49,7 @@ $(function() {
 
     if($('#notification span').hasClass('new')){
         $.get('/main/notificationlist',function(e){
-            var d= '<ul style=" list-style: none; width: 250px;padding:0; ">';
+            var d= '<ul style=" list-style: none;color:#000; width: 250px;padding:0; ">';
             for(a in e){
                 d+='<a href="'+e[a].url+'"><li class="notfication" data-nid='+e[a].id+'>'+e[a].text+'</li></a>';
             }
@@ -64,7 +64,7 @@ $(function() {
 
     if($('#messegebtn span').hasClass('new')){
         $.get('/main/unreadmsg',function(e){
-            var d= '<ul class="media-list" style=" list-style: none; width: 250px;padding:0; ">';
+            var d= '<ul class="media-list" style=" list-style: none;color:#000; width: 250px;padding:0; ">';
             for(a in e){
                 // '<li class="umsg" data-nid='+e[a].id+'>'+e[a].text+'</li>';
                 d+= '<li class="media" style="background-color:#FFFFFF" data-mid='+e[a].id+'>\
