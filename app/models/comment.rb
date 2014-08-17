@@ -19,7 +19,9 @@
 #  updated_at            :datetime
 #
 
-class Comment < ActiveRecord::Base
+class Comment
+	include Mongoid::Document
+	include Mongoid::Paperclip
 	belongs_to :post
 	belongs_to :user
 

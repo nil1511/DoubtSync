@@ -25,11 +25,13 @@
 #  updated_at             :datetime
 #
 
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
+  include Mongoid::Paperclip
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 #   validates :username, presence: true
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_mongoid_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   validates :username,
@@ -53,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",
                                    dependent:   :destroy
-  
+
   has_many :followers, through: :reverse_relationships, source: :follower
 
 
@@ -63,7 +65,7 @@ class User < ActiveRecord::Base
   has_many :inbox, foreign_key: "receiver_id",
                                    class_name:  "Message",
                                    dependent:   :destroy
-  
+
 
 
   before_create :set_default_role
@@ -72,15 +74,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  
+
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end
-  
+
   def following_topic?(topic)
     topics.find_by(id: topic.id)
   end
-  
+
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)
   end
@@ -107,7 +109,7 @@ class User < ActiveRecord::Base
 
   def name
     return self.profile.first_name.to_s + ' ' + self.profile.last_name.to_s
-    
+
   end
   def set_role(new_role)
     self.role ||= Role.find_by_name(new_role)

@@ -19,9 +19,11 @@
 #  updated_at            :datetime
 #
 
-class Post < ActiveRecord::Base
+class Post
+	include Mongoid::Document
+	include Mongoid::Paperclip
 	belongs_to :user
-	
+
 	has_many :comments
 
 	has_many :topic_posts

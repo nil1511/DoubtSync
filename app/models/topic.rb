@@ -9,7 +9,8 @@
 #  updated_at :datetime
 #
 
-class Topic < ActiveRecord::Base
+class Topic
+	include Mongoid::Document
 	validates :name, presence: true
 
 	has_many :topic_posts

@@ -9,7 +9,8 @@
 #  updated_at :datetime
 #
 
-class TopicPost < ActiveRecord::Base
+class TopicPost
+	include Mongoid::Document
 	belongs_to :post
 	belongs_to :topic
 end

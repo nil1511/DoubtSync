@@ -11,7 +11,8 @@
 #  updated_at :datetime
 #
 
-class Notification < ActiveRecord::Base
+class Notification
+	include Mongoid::Document
 	belongs_to :user
   	default_scope -> { order('created_at DESC') }
 

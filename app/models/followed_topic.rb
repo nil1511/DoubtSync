@@ -9,11 +9,12 @@
 #  updated_at :datetime
 #
 
-class FollowedTopic < ActiveRecord::Base
+class FollowedTopic
+	include Mongoid::Document
 	belongs_to :user
 	belongs_to :topic
 
-	validates :user_id,  presence: true	
-	validates :topic_id,  presence: true	
-	
+	validates :user_id,  presence: true
+	validates :topic_id,  presence: true
+
 end

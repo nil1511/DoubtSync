@@ -9,15 +9,16 @@
 #  updated_at :datetime
 #
 
-class UpComingCollege < ActiveRecord::Base
+class UpComingCollege
+  include Mongoid::Document
 
   validates :name, presence: true,
   :uniqueness => {:case_sensitive => false}
 
-  validates :email, presence: true, 
+  validates :email, presence: true,
   :uniqueness => {:case_sensitive => false}
-  
+
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
-  
+
 
 end

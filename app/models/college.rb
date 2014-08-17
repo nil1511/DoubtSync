@@ -9,7 +9,8 @@
 #  updated_at :datetime
 #
 
-class College < ActiveRecord::Base
+class College
+	include Mongoid::Document
 	has_many :users
 	has_many :events
 	validates :name, presence: true

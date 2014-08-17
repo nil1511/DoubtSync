@@ -20,7 +20,9 @@
 #  updated_at          :datetime
 #
 
-class Professor < ActiveRecord::Base
+class Professor
+	include Mongoid::Document
+	include Mongoid::Paperclip
 	belongs_to :user
 	has_many :internships
 	#validates_format_of :mobile, :with => /(7|8|9)\d{9}/, :message => "Invalid Mobile Number"

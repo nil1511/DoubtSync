@@ -8,7 +8,8 @@
 #  updated_at :datetime
 #
 
-class Role < ActiveRecord::Base
+class Role
+	include Mongoid::Document
 	has_many :users
 	validates :name, presence: true
 end

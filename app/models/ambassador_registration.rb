@@ -11,7 +11,8 @@
 #  updated_at   :datetime
 #
 
-class AmbassadorRegistration < ActiveRecord::Base
+class AmbassadorRegistration
+	include Mongoid::Document
 	validates :email, presence: true
 	validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 	validates :authcode, presence: true

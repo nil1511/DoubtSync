@@ -11,7 +11,8 @@
 #  updated_at :datetime
 #
 
-class ProfessorPendingList < ActiveRecord::Base
+class ProfessorPendingList
+	include Mongoid::Document
 	validates :email, presence: true
 	validates :college_id, presence: true
 	validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/

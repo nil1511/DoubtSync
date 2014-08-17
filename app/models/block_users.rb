@@ -9,5 +9,6 @@
 #  updated_at :datetime
 #
 
-class BlockUsers < ActiveRecord::Base
+class BlockUsers
+  include Mongoid::Document
 end

@@ -21,7 +21,9 @@
 #  updated_at          :datetime
 #
 
-class Student < ActiveRecord::Base
+class Student
+	include Mongoid::Document
+	include Mongoid::Paperclip
 	#validates :name, presence: true
 	belongs_to :user
 	has_many :internship_applications

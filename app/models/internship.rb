@@ -19,7 +19,8 @@
 #  updated_at        :datetime
 #
 
-class Internship < ActiveRecord::Base
+class Internship
+	include Mongoid::Document
 	belongs_to :professor
 	has_many :internship_applications
 end
