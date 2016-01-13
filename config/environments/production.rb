@@ -9,6 +9,8 @@ Doubtsync::Application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  Paperclip.options[:command_path] = "/bin/"
+
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -21,6 +23,8 @@ Doubtsync::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -71,6 +75,20 @@ Doubtsync::Application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
+  config.assets.debug = true
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: 'doubtsync@gmail.com',
+    password: '@sen@Password',
+    authentication: 'plain',
+    enable_starttls_auto: true }
+
+  config.action_mailer.raise_delivery_errors = true
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
