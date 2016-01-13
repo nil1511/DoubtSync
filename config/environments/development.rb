@@ -33,6 +33,9 @@ Doubtsync::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
+
+  # encoding: utf-8
+  # encoding: UTF-8
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
