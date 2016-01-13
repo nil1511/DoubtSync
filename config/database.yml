@@ -1,0 +1,41 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+#   mysql://bb09dbfd4674bc:a3b9d1eb@us-cdbr-iron-east-03.cleardb.net/heroku_452f437f38e4dd4?reconnect=true
+development:
+  host: us-cdbr-iron-east-03.cleardb.net
+  adapter: mysql2
+  encoding: utf8
+  database: heroku_452f437f38e4dd4
+  pool: 5
+  username: bb09dbfd4674bc
+  password: a3b9d1eb
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  host: us-cdbr-iron-east-03.cleardb.net
+  adapter: mysql2
+  encoding: utf8
+  database: heroku_452f437f38e4dd4
+  pool: 5
+  username: bb09dbfd4674bc
+  password: a3b9d1eb
+
+production:
+  adapter: mysql2
+  host: us-cdbr-iron-east-03.cleardb.net
+  adapter: mysql2
+  encoding: utf8
+  database: heroku_452f437f38e4dd4
+  pool: 5
+  username: bb09dbfd4674bc
+  password: a3b9d1eb
