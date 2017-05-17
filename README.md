@@ -1,7 +1,7 @@
-#DoubtSync
+# DoubtSync
 
 
-###Intercollege Education Portal for professor and student.
+### Intercollege Education Portal for professor and student.
 
 
 To run this you will need mysql2 
